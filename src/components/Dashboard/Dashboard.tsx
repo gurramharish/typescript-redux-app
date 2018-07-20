@@ -13,6 +13,8 @@ import Typography from "@material-ui/core/Typography";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import Clock from "../Clock";
+
 export interface IDashboardStyles {
   root: React.CSSProperties;
   heading: React.CSSProperties;
@@ -48,6 +50,9 @@ export class Dashboard extends Component<
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>
+          <Grid item={true} xs={12}>
+            <Clock />
+          </Grid>
           <Grid item={true} xs={12}>
             <ExpansionPanel
               expanded={expanded === "fontawesome"}
