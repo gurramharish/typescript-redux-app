@@ -1,69 +1,61 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
 
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import classNames from "classnames";
 
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
+import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
-import { changeThemeAction, IStoreAction, IStoreState } from "../../store";
+import Content from "../Content";
+import Header from "../Header";
 
-export interface IAppData {
-  theme: "dark" | "light";
+export interface IAppStyles {
+  root: React.CSSProperties;
+  content: React.CSSProperties;
 }
 
-export interface IAppActions {
-  changeTheme(theme: "dark" | "light"): void;
-}
+export interface IAppStyleProps extends WithStyles<keyof IAppStyles> {}
 
-// tslint:disable-next-line:no-empty-interface
-export interface IAppProps extends IAppData, IAppActions {}
+export interface IAppProps {
+  style?: React.CSSProperties;
+  className?: string;
+}
 
 // tslint:disable-next-line:no-empty-interface
 export interface IAppStates {}
 
-export class App extends Component<IAppProps, IAppStates> {
-  constructor(props: IAppProps, context: {}) {
+export class App extends Component<IAppProps & IAppStyleProps, IAppStates> {
+  constructor(props: IAppProps & IAppStyleProps, context: {}) {
     super(props, context);
   }
 
   public render(): ReactNode {
-    const { theme } = this.props;
+    const { className, classes, style } = this.props;
+    const root: string = classNames(classes!.root, className);
     return (
-      <div>
-        <header>
-          <Typography variant="display4" color="primary">
-            Welcome to TypeScript React App
-          </Typography>
-        </header>
-        <Typography variant="display2" color="secondary">
-          Current Theme is : {theme}
-        </Typography>
-        <TextField label="Name" margin="normal" fullWidth={true} />
-        <Button variant="raised" color="primary" onClick={this.toggleTheme}>
-          Change Theme
-        </Button>
+      <div className={root} style={{ ...style }}>
+        <Header />
+        <Content className={classes.content} />
       </div>
     );
   }
-
-  private toggleTheme = () => {
-    const { theme, changeTheme } = this.props;
-    changeTheme(theme === "light" ? "dark" : "light");
-  };
 }
 
-const stator = (state: IStoreState): IAppData => ({ theme: state.theme });
-
-const actioner = (dispatch: Dispatch<IStoreAction>): IAppActions => ({
-  changeTheme: theme => {
-    dispatch(changeThemeAction(theme));
+export default withStyles<keyof IAppStyles>({
+  content: {
+    alignSets: "center",
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    paddingLeft: 5,
+    paddingRight: 5
+  },
+  root: {
+    display: "flex",
+    flex: "1 1",
+    flexDirection: "column",
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0
   }
-});
-
-export default connect(
-  stator,
-  actioner
-)(App);
+})(App);
