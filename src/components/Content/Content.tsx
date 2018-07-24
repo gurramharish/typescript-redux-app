@@ -1,9 +1,18 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
-import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
+
+import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
 import Dashboard from "../Dashboard";
+
+export interface IContentStyles {
+  root: React.CSSProperties;
+}
+
+export interface IContentStyleProps extends WithStyles<keyof IContentStyles> {}
 
 export interface IContentProps {
   style?: React.CSSProperties;
@@ -13,21 +22,34 @@ export interface IContentProps {
 // tslint:disable-next-line:no-empty-interface
 export interface IContentStates {}
 
-export default class Content extends Component<IContentProps, IContentStates> {
-  constructor(props: IContentProps, context: {}) {
+export class Content extends Component<
+  IContentProps & IContentStyleProps,
+  IContentStates
+> {
+  constructor(props: IContentProps & IContentStyleProps, context: {}) {
     super(props, context);
   }
 
   public render(): ReactNode {
+    const { className, classes, style } = this.props;
+    const root: string = classNames(classes!.root, className);
     return (
-      <div>
-        <header>
-          <Typography variant="display2" color="primary">
-            Welcome to TypeScript React Content
-          </Typography>
-        </header>
-        <Dashboard />
-      </div>
+      <Router>
+        <div className={root} style={{ ...style }}>
+          <Switch>
+            <Route exact={true} path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/blocks">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
+
+export default withStyles<keyof IContentStyles>(theme => ({
+  root: {}
+}))(Content);
