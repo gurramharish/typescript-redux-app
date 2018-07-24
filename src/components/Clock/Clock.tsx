@@ -8,7 +8,6 @@ export interface IClockProps {
   className?: string;
 }
 
-// tslint:disable-next-line:no-empty-interface
 export interface IClockStates {
   time: string;
 }

@@ -6,6 +6,7 @@ import classNames from "classnames";
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
 import Content from "../Content";
+import Footer from "../Footer";
 import Header from "../Header";
 
 export interface IAppStyles {
@@ -32,10 +33,11 @@ export class App extends Component<IAppProps & IAppStyleProps, IAppStates> {
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
     return (
-      <div className={root} style={{ ...style }}>
+      <main className={root} style={{ ...style }}>
         <Header />
         <Content className={classes.content} />
-      </div>
+        <Footer text="typescript redux client" />
+      </main>
     );
   }
 }

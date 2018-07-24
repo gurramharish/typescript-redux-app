@@ -23,7 +23,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { changeThemeAction, IStoreAction, IStoreState } from "../../store";
 
 export interface IHeaderData {
-  theme: "dark" | "light";
+  mode: "dark" | "light";
 }
 
 export interface IHeaderActions {
@@ -54,11 +54,11 @@ export class Header extends Component<
   }
 
   public render(): ReactNode {
-    const { theme } = this.props;
+    const { mode } = this.props;
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
     return (
-      <div className={root} style={{ ...style }}>
+      <header className={root} style={{ ...style }}>
         <AppBar position="static">
           <Toolbar>
             <IconButton color="inherit" aria-label="Open drawer">
@@ -78,7 +78,7 @@ export class Header extends Component<
                 onClick={this.toggleTheme}
                 aria-label="Toggle light/dark theme"
               >
-                {theme === "light" ? (
+                {mode === "light" ? (
                   <LightbulbOutlineIcon />
                 ) : (
                   <LightbulbFullIcon />
@@ -87,17 +87,17 @@ export class Header extends Component<
             </Tooltip>
           </Toolbar>
         </AppBar>
-      </div>
+      </header>
     );
   }
 
   private toggleTheme = () => {
-    const { theme, changeTheme } = this.props;
-    changeTheme(theme === "light" ? "dark" : "light");
+    const { mode, changeTheme } = this.props;
+    changeTheme(mode === "light" ? "dark" : "light");
   };
 }
 
-const stator = (state: IStoreState): IHeaderData => ({ theme: state.theme });
+const stator = (state: IStoreState): IHeaderData => ({ mode: state.theme });
 
 const actioner = (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
   changeTheme: theme => {
