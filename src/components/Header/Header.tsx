@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import AppBar from "@material-ui/core/AppBar";
+import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
@@ -15,19 +16,24 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 
+import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import LightbulbFullIcon from "../../icons/LightbulbFull";
 import LightbulbOutlineIcon from "../../icons/LightbulbOutline";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { changeThemeAction, IStoreAction, IStoreState } from "../../store";
+import { IStoreAction, IStoreState } from "../../store";
+import { addNotificationsAction, changeThemeAction } from "../../store";
 
 export interface IHeaderData {
   mode: "dark" | "light";
+  notifications: number;
 }
 
 export interface IHeaderActions {
   changeTheme(theme: "dark" | "light"): void;
+  addNotifications(notifications: number): void;
 }
 
 export interface IHeaderStyles {
@@ -54,7 +60,7 @@ export class Header extends Component<
   }
 
   public render(): ReactNode {
-    const { mode } = this.props;
+    const { mode, notifications } = this.props;
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
     return (
@@ -85,6 +91,13 @@ export class Header extends Component<
                 )}
               </IconButton>
             </Tooltip>
+            <Tooltip title="Notifications" enterDelay={300}>
+              <IconButton aria-label={`${notifications} pending notifications`}>
+                <Badge badgeContent={notifications} color="primary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
           </Toolbar>
         </AppBar>
       </header>
@@ -92,14 +105,22 @@ export class Header extends Component<
   }
 
   private toggleTheme = () => {
-    const { mode, changeTheme } = this.props;
+    const { mode, changeTheme, addNotifications } = this.props;
     changeTheme(mode === "light" ? "dark" : "light");
+    addNotifications(1);
   };
 }
 
-const stator = (state: IStoreState): IHeaderData => ({ mode: state.theme });
+const stator = (state: IStoreState): IHeaderData => ({
+  mode: state.theme,
+  notifications: state.notifications
+});
 
 const actioner = (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
+  addNotifications: notifications => {
+    dispatch(addNotificationsAction(notifications));
+  },
+
   changeTheme: theme => {
     dispatch(changeThemeAction(theme));
   }

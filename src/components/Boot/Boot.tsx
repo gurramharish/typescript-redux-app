@@ -9,6 +9,7 @@ import { IStoreAction, IStoreState, reducer } from "../../store";
 import Theme from "./Theme";
 
 const store = createStore<IStoreState, IStoreAction, {}, {}>(reducer, {
+  notifications: 0,
   theme: "light"
 });
 
