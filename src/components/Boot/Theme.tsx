@@ -18,7 +18,7 @@ const generateClassName = createGenerateClassName();
 
 import Frame from "./Frame";
 
-import { IStoreState } from "../../store";
+import { IStoreState } from "../../stores";
 
 export interface IThemeProps {
   theme: "dark" | "light";
@@ -43,5 +43,5 @@ export class Theme extends Component<IThemeProps, IThemeStates> {
 }
 
 export default connect(
-  (state: IStoreState): IThemeProps => ({ theme: state.theme })
+  (state: IStoreState): IThemeProps => ({ theme: state.theme.mode })
 )(Theme);

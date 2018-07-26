@@ -29,10 +29,10 @@ export default class Frame extends Component<IFrameProps, IFrameStates> {
   public render(): ReactNode {
     const { theme } = this.props;
     return (
-        <MuiFrameProvider theme={this.getFrame(theme)}>
-          <CssBaseline />
-          <App />
-        </MuiFrameProvider>
+      <MuiFrameProvider theme={this.getFrame(theme)}>
+        <CssBaseline />
+        <App />
+      </MuiFrameProvider>
     );
   }
 

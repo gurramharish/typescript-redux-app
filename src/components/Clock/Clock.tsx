@@ -39,7 +39,7 @@ export default class Clock extends Component<IClockProps, IClockStates> {
   public render(): ReactNode {
     const { time } = this.state;
     return (
-      <Typography variant="display3" color="inherit" noWrap={true}>
+      <Typography variant="display3" noWrap={true}>
         {time}
       </Typography>
     );

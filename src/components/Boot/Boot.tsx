@@ -4,13 +4,13 @@ import { Component, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import { IStoreAction, IStoreState, reducer } from "../../store";
+import { IStoreAction, IStoreState, reducer } from "../../stores";
 
 import Theme from "./Theme";
 
 const store = createStore<IStoreState, IStoreAction, {}, {}>(reducer, {
-  notifications: 0,
-  theme: "light"
+  notification: { count: 0 },
+  theme: { mode: "light" }
 });
 
 // tslint:disable-next-line:no-empty-interface

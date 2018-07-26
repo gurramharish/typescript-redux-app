@@ -9,6 +9,7 @@ import { Dispatch } from "redux";
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
+import Switch from "@material-ui/core/Switch";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
@@ -18,13 +19,17 @@ import Typography from "@material-ui/core/Typography";
 
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
-import LightbulbFullIcon from "../../icons/LightbulbFull";
-import LightbulbOutlineIcon from "../../icons/LightbulbOutline";
+import MoonIcon from "../../icons/Moon";
+import SunIcon from "../../icons/Sun";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { IStoreAction, IStoreState } from "../../store";
-import { addNotificationsAction, changeThemeAction } from "../../store";
+import { IStoreAction, IStoreState } from "../../stores";
+import {
+  addNotificationsAction,
+  changeThemeAction,
+  clearNotificationsAction
+} from "../../stores";
 
 export interface IHeaderData {
   mode: "dark" | "light";
@@ -32,8 +37,9 @@ export interface IHeaderData {
 }
 
 export interface IHeaderActions {
-  changeTheme(theme: "dark" | "light"): void;
   addNotifications(notifications: number): void;
+  changeTheme(theme: "dark" | "light"): void;
+  clearNotifications(): void;
 }
 
 export interface IHeaderStyles {
@@ -55,8 +61,11 @@ export class Header extends Component<
   IHeaderProps & IHeaderStyleProps,
   IHeaderStates
 > {
+  private timeout: { add?: number; clear?: number };
+
   constructor(props: IHeaderProps & IHeaderStyleProps, context: {}) {
     super(props, context);
+    this.timeout = {};
   }
 
   public render(): ReactNode {
@@ -78,18 +87,18 @@ export class Header extends Component<
             >
               TypeScript Redux App
             </Typography>
+            <Tooltip title="light mode" enterDelay={300}>
+              <SunIcon />
+            </Tooltip>
             <Tooltip title="Toggle light/dark theme" enterDelay={300}>
-              <IconButton
-                color="inherit"
-                onClick={this.toggleTheme}
-                aria-label="Toggle light/dark theme"
-              >
-                {mode === "light" ? (
-                  <LightbulbOutlineIcon />
-                ) : (
-                  <LightbulbFullIcon />
-                )}
-              </IconButton>
+              <Switch
+                color="default"
+                onChange={this.toggleTheme}
+                checked={mode === "dark"}
+              />
+            </Tooltip>
+            <Tooltip title="dark mode" enterDelay={300}>
+              <MoonIcon />
             </Tooltip>
             <Tooltip title="Notifications" enterDelay={300}>
               <IconButton aria-label={`${notifications} pending notifications`}>
@@ -104,37 +113,49 @@ export class Header extends Component<
     );
   }
 
+  public componentDidMount(): void {
+    const { addNotifications, clearNotifications } = this.props;
+    this.timeout.add = window.setInterval(() => addNotifications(1), 5000);
+    this.timeout.clear = window.setInterval(
+      () => clearNotifications(),
+      6 * 5000
+    );
+  }
+
+  public componentWillUnmount(): void {
+    window.clearInterval(this.timeout.add);
+    window.clearInterval(this.timeout.clear);
+  }
+
   private toggleTheme = () => {
-    const { mode, changeTheme, addNotifications } = this.props;
+    const { mode, changeTheme } = this.props;
     changeTheme(mode === "light" ? "dark" : "light");
-    addNotifications(1);
   };
 }
 
-const stator = (state: IStoreState): IHeaderData => ({
-  mode: state.theme,
-  notifications: state.notifications
-});
-
-const actioner = (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
-  addNotifications: notifications => {
-    dispatch(addNotificationsAction(notifications));
-  },
-
-  changeTheme: theme => {
-    dispatch(changeThemeAction(theme));
-  }
-});
-
 export default connect(
-  stator,
-  actioner
+  (state: IStoreState): IHeaderData => ({
+    mode: state.theme.mode,
+    notifications: state.notification.count
+  }),
+  (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
+    addNotifications(notifications): void {
+      dispatch(addNotificationsAction(notifications));
+    },
+    changeTheme(theme): void {
+      dispatch(changeThemeAction(theme));
+    },
+    clearNotifications(): void {
+      dispatch(clearNotificationsAction());
+    }
+  })
 )(
   withStyles<keyof IHeaderStyles>({
     root: {},
     title: {
       flex: "0 1 auto",
-      marginLeft: 24
+      marginLeft: 24,
+      marginRight: 30
     }
   })(Header)
 );
