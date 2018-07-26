@@ -3,6 +3,7 @@ import { Component, ReactNode } from "react";
 
 import classNames from "classnames";
 
+import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
@@ -14,11 +15,13 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import Clock from "../Clock";
+import Statistic from "../Statistic";
 
 export interface IDashboardStyles {
   root: React.CSSProperties;
   heading: React.CSSProperties;
   secondaryHeading: React.CSSProperties;
+  statistics: React.CSSProperties;
 }
 
 export interface IDashboardStyleProps
@@ -53,6 +56,14 @@ export class Dashboard extends Component<
           <Grid item={true} xs={12}>
             <Clock />
           </Grid>
+          <Grid item={true} sm={12}>
+            <Card className={classes.statistics} square={true}>
+              <Statistic count={4} label="BLOCKS" />
+              <Statistic count={5} label="TRANSACTIONS" />
+              <Statistic count={0} label="NODES" />
+              <Statistic count={1} label="CHAINCODES" />
+            </Card>
+          </Grid>
           <Grid item={true} xs={12}>
             <ExpansionPanel
               expanded={expanded === "fontawesome"}
@@ -65,7 +76,9 @@ export class Dashboard extends Component<
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                {expanded === "fontawesome" && "Font Awesome"}
+                <Typography variant="display1" noWrap={true}>
+                  {expanded === "fontawesome" && "Font Awesome"}
+                </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Grid>
@@ -82,7 +95,9 @@ export class Dashboard extends Component<
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                {expanded === "charts" && "Charts"}
+                <Typography variant="display1" noWrap={true}>
+                  {expanded === "charts" && "Charts"}
+                </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Grid>
@@ -99,7 +114,9 @@ export class Dashboard extends Component<
                 </Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                {expanded === "datetime" && "Datetime"}
+                <Typography variant="display1" noWrap={true}>
+                  {expanded === "datetime" && "Datetime"}
+                </Typography>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Grid>
@@ -131,5 +148,9 @@ export default withStyles<keyof IDashboardStyles>(theme => ({
   secondaryHeading: {
     color: theme.palette.text.secondary,
     fontSize: theme.typography.pxToRem(15)
+  },
+  statistics: {
+    height: 175,
+    marginBottom: 20
   }
 }))(Dashboard);
