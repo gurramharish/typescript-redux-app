@@ -1,6 +1,9 @@
 import { Action } from "redux";
+
 import { ADD_NOTIFICATIONS, AddNotifications } from "./types";
 import { CLEAR_NOTIFICATIONS, ClearNotifications } from "./types";
+import { START_NOTIFICATIONS, StartNotifications } from "./types";
+import { STOP_NOTIFICATIONS, StopNotifications } from "./types";
 
 export interface IAddNotificationsAction extends Action {
   type: AddNotifications;
@@ -26,6 +29,28 @@ export function clearNotificationsAction(): IClearNotificationsAction {
   };
 }
 
+export interface IStartNotificationsAction extends Action {
+  type: StartNotifications;
+}
+
+export function startNotificationsAction(): IStartNotificationsAction {
+  return {
+    type: START_NOTIFICATIONS
+  };
+}
+
+export interface IStopNotificationsAction extends Action {
+  type: StopNotifications;
+}
+
+export function stopNotificationsAction(): IStopNotificationsAction {
+  return {
+    type: STOP_NOTIFICATIONS
+  };
+}
+
 export type INotificationAction =
   | IAddNotificationsAction
-  | IClearNotificationsAction;
+  | IClearNotificationsAction
+  | IStartNotificationsAction
+  | IStopNotificationsAction;

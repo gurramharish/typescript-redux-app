@@ -2,16 +2,25 @@ import * as React from "react";
 import { Component, ReactNode } from "react";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import { createEpicMiddleware } from "redux-observable";
 
-import { IStoreAction, IStoreState, reducer } from "./stores";
+import { epic, IStoreAction, IStoreState, reducer } from "./stores";
 
 import Theme from "./containers/Theme";
 
-const store = createStore<IStoreState, IStoreAction, {}, {}>(reducer, {
-  notification: { count: 0 },
-  theme: { mode: "light" }
-});
+const epicMiddleware = createEpicMiddleware();
+
+const store = createStore<IStoreState, IStoreAction, {}, {}>(
+  reducer,
+  {
+    notification: { count: 0 },
+    theme: { mode: "light" }
+  },
+  applyMiddleware(epicMiddleware)
+);
+
+epicMiddleware.run(epic);
 
 // tslint:disable-next-line:no-empty-interface
 export interface IBootProps {}
