@@ -3,9 +3,6 @@ import { Component, ReactNode } from "react";
 
 import classNames from "classnames";
 
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-
 import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
@@ -23,13 +20,6 @@ import MoonIcon from "../../icons/Moon";
 import SunIcon from "../../icons/Sun";
 
 import MenuIcon from "@material-ui/icons/Menu";
-
-import { IStoreAction, IStoreState } from "../../stores";
-import {
-  addNotificationsAction,
-  changeThemeAction,
-  clearNotificationsAction
-} from "../../stores";
 
 export interface IHeaderData {
   mode: "dark" | "light";
@@ -133,29 +123,11 @@ export class Header extends Component<
   };
 }
 
-export default connect(
-  (state: IStoreState): IHeaderData => ({
-    mode: state.theme.mode,
-    notifications: state.notification.count
-  }),
-  (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
-    addNotifications(notifications): void {
-      dispatch(addNotificationsAction(notifications));
-    },
-    changeTheme(theme): void {
-      dispatch(changeThemeAction(theme));
-    },
-    clearNotifications(): void {
-      dispatch(clearNotificationsAction());
-    }
-  })
-)(
-  withStyles<keyof IHeaderStyles>({
-    root: {},
-    title: {
-      flex: "0 1 auto",
-      marginLeft: 24,
-      marginRight: 30
-    }
-  })(Header)
-);
+export default withStyles<keyof IHeaderStyles>({
+  root: {},
+  title: {
+    flex: "0 1 auto",
+    marginLeft: 24,
+    marginRight: 30
+  }
+})(Header);

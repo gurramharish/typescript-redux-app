@@ -4,9 +4,9 @@ import { Component, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import { IStoreAction, IStoreState, reducer } from "../../stores";
+import { IStoreAction, IStoreState, reducer } from "./stores";
 
-import Theme from "./Theme";
+import Theme from "./containers/Theme";
 
 const store = createStore<IStoreState, IStoreAction, {}, {}>(reducer, {
   notification: { count: 0 },

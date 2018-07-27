@@ -16,7 +16,7 @@ const jss = create(preset());
 
 const generateClassName = createGenerateClassName();
 
-import Frame from "./Frame";
+import Frame from "../Frame";
 
 import { IStoreState } from "../../stores";
 

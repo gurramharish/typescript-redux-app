@@ -5,8 +5,8 @@ import classNames from "classnames";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
-import Content from "../Content";
-import Footer from "../Footer";
+import Content from "../../components/Content";
+import Footer from "../../components/Footer";
 import Header from "../Header";
 
 export interface IAppStyles {

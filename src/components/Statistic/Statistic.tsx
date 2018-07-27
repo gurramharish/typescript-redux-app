@@ -59,10 +59,12 @@ export class Statistic extends Component<
               {count}
             </Typography>
           </Grid>
+          <Grid item={true} sm={12}>
+            <Typography variant="display1" noWrap={true}>
+              {label}
+            </Typography>
+          </Grid>
         </Grid>
-        <Typography variant="display1" noWrap={true}>
-          {label}
-        </Typography>
       </div>
     );
   }
@@ -78,7 +80,7 @@ export default withStyles<keyof IStatisticStyles>(theme => ({
     marginTop: "30%"
   },
   root: {
-    "&::after": {
+    "&:not(:last-child)::after": {
       borderRight: "2px #DFF1FE solid",
       bottom: "55%",
       content: '" "',
