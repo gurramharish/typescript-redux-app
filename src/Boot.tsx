@@ -3,6 +3,7 @@ import { Component, ReactNode } from "react";
 
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from "redux-observable";
 
 import { epic, IStoreAction, IStoreState, reducer } from "./stores";
@@ -11,13 +12,17 @@ import Theme from "./containers/Theme";
 
 const epicMiddleware = createEpicMiddleware();
 
+const composeEnhancers = composeWithDevTools({
+  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
+
 const store = createStore<IStoreState, IStoreAction, {}, {}>(
   reducer,
   {
     notification: { count: 0 },
     theme: { mode: "light" }
   },
-  applyMiddleware(epicMiddleware)
+  composeEnhancers(applyMiddleware(epicMiddleware))
 );
 
 epicMiddleware.run(epic);
