@@ -27,8 +27,10 @@ export interface IHeaderData {
 }
 
 export interface IHeaderActions {
-  startNotifications(): void;
-  stopNotifications(): void;
+  startAddNotifications(count?: number): void;
+  stopAddNotifications(): void;
+  startResetNotifications(): void;
+  stopResetNotifications(): void;
   changeTheme(theme: "dark" | "light"): void;
   clearNotifications(): void;
 }
@@ -52,8 +54,6 @@ export class Header extends Component<
   IHeaderProps & IHeaderStyleProps,
   IHeaderStates
 > {
-  private timeout: number;
-
   constructor(props: IHeaderProps & IHeaderStyleProps, context: {}) {
     super(props, context);
   }
@@ -104,19 +104,15 @@ export class Header extends Component<
   }
 
   public componentDidMount(): void {
-    const { startNotifications, clearNotifications } = this.props;
-
-    startNotifications();
-
-    this.timeout = window.setInterval(() => clearNotifications(), 6 * 5000);
+    const { startAddNotifications, startResetNotifications } = this.props;
+    startAddNotifications(2);
+    startResetNotifications();
   }
 
   public componentWillUnmount(): void {
-    const { stopNotifications } = this.props;
-
-    stopNotifications();
-
-    window.clearInterval(this.timeout);
+    const { stopAddNotifications, stopResetNotifications } = this.props;
+    stopAddNotifications();
+    stopResetNotifications();
   }
 
   private toggleTheme = () => {

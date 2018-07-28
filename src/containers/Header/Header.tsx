@@ -9,8 +9,10 @@ import { IStoreAction, IStoreState } from "../../stores";
 import {
   changeThemeAction,
   clearNotificationsAction,
-  startNotificationsAction,
-  stopNotificationsAction
+  startAddNotificationsAction,
+  startResetNotificationsAction,
+  stopAddNotificationsAction,
+  stopResetNotificationsAction
 } from "../../stores";
 
 export default connect(
@@ -19,11 +21,17 @@ export default connect(
     notifications: state.notification.count
   }),
   (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
-    startNotifications(): void {
-      dispatch(startNotificationsAction());
+    startAddNotifications(count?: number): void {
+      dispatch(startAddNotificationsAction(count));
     },
-    stopNotifications(): void {
-      dispatch(stopNotificationsAction());
+    stopAddNotifications(): void {
+      dispatch(stopAddNotificationsAction());
+    },
+    startResetNotifications(): void {
+      dispatch(startResetNotificationsAction());
+    },
+    stopResetNotifications(): void {
+      dispatch(stopResetNotificationsAction());
     },
     changeTheme(theme): void {
       dispatch(changeThemeAction(theme));
