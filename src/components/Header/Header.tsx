@@ -30,9 +30,9 @@ export interface IHeaderData {
 
 export interface IHeaderActions {
   changeTheme(theme: "dark" | "light"): void;
-  startIncrementNotifications(count?: number): void;
+  startIncrementNotifications(increment?: number): void;
   stopIncrementNotifications(): void;
-  toggleIncrementNotifications(count?: number): void;
+  toggleIncrementNotifications(): void;
   startResetNotifications(): void;
   stopResetNotifications(): void;
 }
@@ -127,7 +127,7 @@ export class Header extends Component<
   };
 
   private toggleIncrement = () => {
-    this.props.toggleIncrementNotifications(2);
+    this.props.toggleIncrementNotifications();
   };
 }
 

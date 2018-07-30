@@ -16,7 +16,12 @@ const reducers: IReducers<INotificationState, INotificationAction> = {
 };
 
 export function notificationReducer(
-  state: INotificationState = { count: 0, incrementing: false, reseting: false },
+  state: INotificationState = {
+    count: 0,
+    increment: 1,
+    incrementing: false,
+    reseting: false
+  },
   action: INotificationAction
 ): INotificationState {
   const reducer = reducers[action.type];

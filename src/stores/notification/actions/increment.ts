@@ -4,7 +4,7 @@ import { INotificationState } from "../states";
 import { interval, Observable } from "rxjs";
 import { filter, map, mapTo, mergeMap, scan, takeUntil } from "rxjs/operators";
 
-import { ofType } from "redux-observable";
+import { ofType, StateObservable } from "redux-observable";
 
 import { addNotifications, IAddNotifications } from "./add";
 
@@ -22,14 +22,14 @@ export type ToggleIncrementNotifications = typeof TOGGLE_INCREMENT_NOTIFICATIONS
 
 export interface IStartIncrementNotifications extends IAction {
   type: StartIncrementNotifications;
-  count: number;
+  increment: number;
 }
 
 export function startIncrementNotifications(
-  count: number = 1
+  increment: number = 1
 ): IStartIncrementNotifications {
   return {
-    count,
+    increment,
     type: START_INCREMENT_NOTIFICATIONS
   };
 }
@@ -46,14 +46,10 @@ export function stopIncrementNotifications(): IStopIncrementNotifications {
 
 export interface IToggleIncrementNotifications extends IAction {
   type: ToggleIncrementNotifications;
-  count: number;
 }
 
-export function toggleIncrementNotifications(
-  count: number = 1
-): IToggleIncrementNotifications {
+export function toggleIncrementNotifications(): IToggleIncrementNotifications {
   return {
-    count,
     type: TOGGLE_INCREMENT_NOTIFICATIONS
   };
 }
@@ -72,6 +68,7 @@ const startIncrementReducer: IReducer<
 ): INotificationState => {
   return {
     ...state,
+    increment: action.increment,
     incrementing: true
   };
 };
@@ -106,32 +103,22 @@ export const startStopIncrementEpic = (
     ofType(START_INCREMENT_NOTIFICATIONS),
     mergeMap((action: IStartIncrementNotifications) =>
       interval(5000).pipe(
-        mapTo(addNotifications(action.count)),
+        mapTo(addNotifications(action.increment)),
         takeUntil(action$.pipe(ofType(STOP_INCREMENT_NOTIFICATIONS)))
       )
     )
   );
 
-interface IToggleData {
-  count: number;
-  click: number;
-}
-
 export const toggleStartIncrementEpic = (
-  action$: Observable<IToggleIncrementNotifications>
+  action$: Observable<IToggleIncrementNotifications>,
+  state$: StateObservable<INotificationState>
 ): Observable<IStartIncrementNotifications | IStopIncrementNotifications> =>
   action$.pipe(
     ofType(TOGGLE_INCREMENT_NOTIFICATIONS),
-    map<IToggleIncrementNotifications, IToggleData>(({ count }) => ({
-      click: 1,
-      count
-    })),
-    scan<IToggleData>((acc, { click, count }) => ({
-      click: click + acc.click,
-      count
-    })),
-    filter(value => value.click % 2 === 0),
-    map(data => startIncrementNotifications(data.count))
+    mapTo(1),
+    scan((acc, value) => acc + value),
+    filter(value => value % 2 === 0),
+    map(() => startIncrementNotifications(state$.value.increment))
   );
 
 export const toggleStopIncrementEpic = (
