@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 
 import HeaderComponent from "../../components/Header";
 import { IHeaderActions, IHeaderData } from "../../components/Header";
@@ -19,21 +19,12 @@ export default connect(
     mode: state.theme.mode,
     notifications: state.notification.count
   }),
-  (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
-    startIncrementNotifications(count?: number): void {
-      dispatch(startIncrementNotifications(count));
-    },
-    stopIncrementNotifications(): void {
-      dispatch(stopIncrementNotifications());
-    },
-    startResetNotifications(): void {
-      dispatch(startResetNotifications());
-    },
-    stopResetNotifications(): void {
-      dispatch(stopResetNotifications());
-    },
-    changeTheme(theme): void {
-      dispatch(changeTheme(theme));
-    }
-  })
+  (dispatch: Dispatch<IStoreAction>): IHeaderActions =>
+    bindActionCreators<IHeaderActions, any>({
+      changeTheme,
+      startIncrementNotifications,
+      startResetNotifications,
+      stopIncrementNotifications,
+      stopResetNotifications
+    } as IHeaderActions, dispatch)
 )(HeaderComponent);
