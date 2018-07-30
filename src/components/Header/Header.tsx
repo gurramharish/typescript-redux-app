@@ -24,19 +24,23 @@ import MenuIcon from "@material-ui/icons/Menu";
 export interface IHeaderData {
   mode: "dark" | "light";
   notifications: number;
+  incrementing: boolean;
+  reseting: boolean;
 }
 
 export interface IHeaderActions {
+  changeTheme(theme: "dark" | "light"): void;
   startIncrementNotifications(count?: number): void;
   stopIncrementNotifications(): void;
+  toggleIncrementNotifications(count?: number): void;
   startResetNotifications(): void;
   stopResetNotifications(): void;
-  changeTheme(theme: "dark" | "light"): void;
 }
 
 export interface IHeaderStyles {
   root: React.CSSProperties;
   title: React.CSSProperties;
+  incrementing: React.CSSProperties;
 }
 
 export interface IHeaderStyleProps extends WithStyles<keyof IHeaderStyles> {}
@@ -58,9 +62,10 @@ export class Header extends Component<
   }
 
   public render(): ReactNode {
-    const { mode, notifications } = this.props;
+    const { mode, notifications, incrementing } = this.props;
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
+    const bubble: string = incrementing ? classes!.incrementing : "";
     return (
       <header className={root} style={{ ...style }}>
         <AppBar position="static">
@@ -90,7 +95,11 @@ export class Header extends Component<
               <MoonIcon />
             </Tooltip>
             <Tooltip title="Notifications" enterDelay={300}>
-              <IconButton aria-label={`${notifications} pending notifications`}>
+              <IconButton
+                className={bubble}
+                aria-label={`${notifications} pending notifications`}
+                onClick={this.toggleIncrement}
+              >
                 <Badge badgeContent={notifications} color="primary">
                   <NotificationsIcon />
                 </Badge>
@@ -116,9 +125,16 @@ export class Header extends Component<
     const { mode, changeTheme } = this.props;
     changeTheme(mode === "light" ? "dark" : "light");
   };
+
+  private toggleIncrement = () => {
+    this.props.toggleIncrementNotifications(2);
+  };
 }
 
 export default withStyles<keyof IHeaderStyles>({
+  incrementing: {
+    color: "green"
+  },
   root: {},
   title: {
     flex: "0 1 auto",

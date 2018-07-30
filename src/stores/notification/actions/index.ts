@@ -1,25 +1,18 @@
 import { IAddNotifications } from "./add";
 import { IClearNotifications } from "./clear";
-import {
-  IStartIncrementNotifications,
-  IStopIncrementNotifications
-} from "./increment";
-import {
-  IStartResetNotifications,
-  IStopResetNotifications
-} from "./reset";
+import { IIncrementNotifications } from "./increment";
+import { IResetNotifications } from "./reset";
 
 export { addNotifications, IAddNotifications } from "./add";
 export { clearNotifications, IClearNotifications } from "./clear";
 export {
-  IStartIncrementNotifications,
-  IStopIncrementNotifications,
+  IIncrementNotifications,
   startIncrementNotifications,
-  stopIncrementNotifications
+  stopIncrementNotifications,
+  toggleIncrementNotifications
 } from "./increment";
 export {
-  IStartResetNotifications,
-  IStopResetNotifications,
+  IResetNotifications,
   startResetNotifications,
   stopResetNotifications
 } from "./reset";
@@ -27,7 +20,5 @@ export {
 export type INotificationAction =
   | IAddNotifications
   | IClearNotifications
-  | IStartIncrementNotifications
-  | IStopIncrementNotifications
-  | IStartResetNotifications
-  | IStopResetNotifications;
+  | IIncrementNotifications
+  | IResetNotifications;

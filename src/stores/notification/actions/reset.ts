@@ -1,4 +1,5 @@
-import { IAction } from "../../types";
+import { IAction, IReducer, IReducers } from "../../types";
+import { INotificationState } from "../states";
 
 import { interval, Observable } from "rxjs";
 import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
@@ -34,6 +35,44 @@ export function stopResetNotifications(): IStopResetNotifications {
     type: STOP_RESET_NOTIFICATIONS
   };
 }
+
+export type IResetNotifications =
+  | IStartResetNotifications
+  | IStopResetNotifications;
+
+const startResetReducer: IReducer<
+  INotificationState,
+  IStartResetNotifications
+> = (
+  state: INotificationState,
+  action: IStartResetNotifications
+): INotificationState => {
+  return {
+    ...state,
+    reseting: true
+  };
+};
+
+const stopResetReducer: IReducer<
+  INotificationState,
+  IStopResetNotifications
+> = (
+  state: INotificationState,
+  action: IStopResetNotifications
+): INotificationState => {
+  return {
+    ...state,
+    reseting: false
+  };
+};
+
+export const resetReducers: IReducers<
+  INotificationState,
+  IResetNotifications
+> = {
+  [START_RESET_NOTIFICATIONS]: startResetReducer,
+  [STOP_RESET_NOTIFICATIONS]: stopResetReducer
+};
 
 export const startStopResetEpic = (
   action$: Observable<IStartResetNotifications | IStopResetNotifications>

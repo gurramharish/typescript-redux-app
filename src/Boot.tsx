@@ -25,7 +25,7 @@ const store = createStore<IStoreState, IStoreAction, {}, {}>(
   composeEnhancers(applyMiddleware(epicMiddleware))
 );
 
-epicMiddleware.run(epic);
+epicMiddleware.run(epic as any);
 
 // tslint:disable-next-line:no-empty-interface
 export interface IBootProps {}

@@ -11,20 +11,27 @@ import {
   startIncrementNotifications,
   startResetNotifications,
   stopIncrementNotifications,
-  stopResetNotifications
+  stopResetNotifications,
+  toggleIncrementNotifications
 } from "../../stores";
 
 export default connect(
   (state: IStoreState): IHeaderData => ({
+    incrementing: state.notification.incrementing,
     mode: state.theme.mode,
-    notifications: state.notification.count
+    notifications: state.notification.count,
+    reseting: state.notification.reseting
   }),
   (dispatch: Dispatch<IStoreAction>): IHeaderActions =>
-    bindActionCreators<IHeaderActions, any>({
-      changeTheme,
-      startIncrementNotifications,
-      startResetNotifications,
-      stopIncrementNotifications,
-      stopResetNotifications
-    } as IHeaderActions, dispatch)
+    bindActionCreators<IHeaderActions, any>(
+      {
+        changeTheme,
+        startIncrementNotifications,
+        startResetNotifications,
+        stopIncrementNotifications,
+        stopResetNotifications,
+        toggleIncrementNotifications
+      } as IHeaderActions,
+      dispatch
+    )
 )(HeaderComponent);

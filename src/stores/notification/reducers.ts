@@ -5,14 +5,18 @@ import { INotificationState } from "./states";
 
 import { addReducers } from "./actions/add";
 import { clearReducers } from "./actions/clear";
+import { incrementReducers } from "./actions/increment";
+import { resetReducers } from "./actions/reset";
 
 const reducers: IReducers<INotificationState, INotificationAction> = {
   ...addReducers,
-  ...clearReducers
+  ...clearReducers,
+  ...incrementReducers,
+  ...resetReducers
 };
 
 export function notificationReducer(
-  state: INotificationState = { count: 0 },
+  state: INotificationState = { count: 0, incrementing: false, reseting: false },
   action: INotificationAction
 ): INotificationState {
   const reducer = reducers[action.type];
