@@ -1,13 +1,11 @@
-import { Action } from "redux";
-
-import { IReducer, IReducers } from "../../type";
+import { IAction, IReducer, IReducers } from "../../types";
 import { INotificationState } from "../states";
 
 const ADD_NOTIFICATIONS = "ADD_NOTIFICATIONS";
 
 export type AddNotifications = typeof ADD_NOTIFICATIONS;
 
-export interface IAddNotifications extends Action {
+export interface IAddNotifications extends IAction {
   type: AddNotifications;
   notifications: number;
 }

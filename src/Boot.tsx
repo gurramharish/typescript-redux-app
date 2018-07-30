@@ -3,7 +3,7 @@ import { Component, ReactNode } from "react";
 
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
 import { createEpicMiddleware } from "redux-observable";
 
 import { epic, IStoreAction, IStoreState, reducer } from "./stores";

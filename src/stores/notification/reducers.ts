@@ -1,4 +1,4 @@
-import { IReducers } from "../type";
+import { IReducers } from "../types";
 
 import { INotificationAction } from "./actions";
 import { INotificationState } from "./states";

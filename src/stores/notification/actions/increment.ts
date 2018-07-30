@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { IAction } from "../../types";
 
 import { interval, Observable } from "rxjs";
 import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
@@ -15,7 +15,7 @@ export type StartIncrementNotifications = typeof START_INCREMENT_NOTIFICATIONS;
 
 export type StopIncrementNotifications = typeof STOP_INCREMENT_NOTIFICATIONS;
 
-export interface IStartIncrementNotifications extends Action {
+export interface IStartIncrementNotifications extends IAction {
   type: StartIncrementNotifications;
   count: number;
 }
@@ -29,7 +29,7 @@ export function startIncrementNotifications(
   };
 }
 
-export interface IStopIncrementNotifications extends Action {
+export interface IStopIncrementNotifications extends IAction {
   type: StopIncrementNotifications;
 }
 

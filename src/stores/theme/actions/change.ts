@@ -1,13 +1,11 @@
-import { Action } from "redux";
-
-import { IReducer, IReducers } from "../../type";
+import { IAction, IReducer, IReducers } from "../../types";
 import { IThemeState } from "../states";
 
 const CHANGE_THEME = "CHANGE_THEME";
 
 export type ChangeTheme = typeof CHANGE_THEME;
 
-export interface IChangeTheme extends Action {
+export interface IChangeTheme extends IAction {
   type: ChangeTheme;
   mode: "light" | "dark";
 }

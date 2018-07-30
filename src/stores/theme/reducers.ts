@@ -1,4 +1,4 @@
-import { IReducers } from "../type";
+import { IReducers } from "../types";
 
 import { IThemeAction } from "./actions";
 import { IThemeState } from "./states";

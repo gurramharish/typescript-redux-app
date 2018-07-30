@@ -1,4 +1,4 @@
-import { Action } from "redux";
+import { IAction } from "../../types";
 
 import { interval, Observable } from "rxjs";
 import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
@@ -15,7 +15,7 @@ export type StartResetNotifications = typeof START_RESET_NOTIFICATIONS;
 
 export type StopResetNotifications = typeof STOP_RESET_NOTIFICATIONS;
 
-export interface IStartResetNotifications extends Action {
+export interface IStartResetNotifications extends IAction {
   type: StartResetNotifications;
 }
 
@@ -25,7 +25,7 @@ export function startResetNotifications(): IStartResetNotifications {
   };
 }
 
-export interface IStopResetNotifications extends Action {
+export interface IStopResetNotifications extends IAction {
   type: StopResetNotifications;
 }
 
