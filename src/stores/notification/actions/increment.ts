@@ -2,7 +2,15 @@ import { IAction, IReducer, IReducers } from "../../types";
 import { INotificationState } from "../states";
 
 import { interval, Observable } from "rxjs";
-import { filter, map, mapTo, mergeMap, scan, takeUntil } from "rxjs/operators";
+import {
+  filter,
+  map,
+  mapTo,
+  mergeMap,
+  scan,
+  takeUntil,
+  withLatestFrom
+} from "rxjs/operators";
 
 import { ofType, StateObservable } from "redux-observable";
 
@@ -118,7 +126,8 @@ export const toggleStartIncrementEpic = (
     mapTo(1),
     scan((acc, value) => acc + value),
     filter(value => value % 2 === 0),
-    map(() => startIncrementNotifications(state$.value.increment))
+    withLatestFrom(state$),
+    map(([_, state]) => startIncrementNotifications(state.increment))
   );
 
 export const toggleStopIncrementEpic = (
