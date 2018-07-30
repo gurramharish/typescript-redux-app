@@ -7,12 +7,11 @@ import { IHeaderActions, IHeaderData } from "../../components/Header";
 import { IStoreAction, IStoreState } from "../../stores";
 
 import {
-  changeThemeAction,
-  clearNotificationsAction,
-  startAddNotificationsAction,
-  startResetNotificationsAction,
-  stopAddNotificationsAction,
-  stopResetNotificationsAction
+  changeTheme,
+  startIncrementNotifications,
+  startResetNotifications,
+  stopIncrementNotifications,
+  stopResetNotifications
 } from "../../stores";
 
 export default connect(
@@ -21,23 +20,20 @@ export default connect(
     notifications: state.notification.count
   }),
   (dispatch: Dispatch<IStoreAction>): IHeaderActions => ({
-    startAddNotifications(count?: number): void {
-      dispatch(startAddNotificationsAction(count));
+    startIncrementNotifications(count?: number): void {
+      dispatch(startIncrementNotifications(count));
     },
-    stopAddNotifications(): void {
-      dispatch(stopAddNotificationsAction());
+    stopIncrementNotifications(): void {
+      dispatch(stopIncrementNotifications());
     },
     startResetNotifications(): void {
-      dispatch(startResetNotificationsAction());
+      dispatch(startResetNotifications());
     },
     stopResetNotifications(): void {
-      dispatch(stopResetNotificationsAction());
+      dispatch(stopResetNotifications());
     },
     changeTheme(theme): void {
-      dispatch(changeThemeAction(theme));
-    },
-    clearNotifications(): void {
-      dispatch(clearNotificationsAction());
+      dispatch(changeTheme(theme));
     }
   })
 )(HeaderComponent);

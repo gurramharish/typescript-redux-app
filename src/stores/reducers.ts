@@ -3,9 +3,9 @@ import { combineReducers } from "redux";
 import {
   INotificationAction,
   INotificationState,
-  reducer as notification
+  notificationReducer
 } from "./notification";
-import { IThemeAction, IThemeState, reducer as theme } from "./theme";
+import { IThemeAction, IThemeState, themeReducer } from "./theme";
 
 export type IStoreAction = INotificationAction | IThemeAction;
 
@@ -15,6 +15,6 @@ export interface IStoreState {
 }
 
 export const reducer = combineReducers<IStoreState, IStoreAction>({
-  notification,
-  theme
+  notification: notificationReducer,
+  theme: themeReducer
 });

@@ -1,24 +1,20 @@
+import { IReducers } from "../type";
+
 import { INotificationAction } from "./actions";
 import { INotificationState } from "./states";
 
-import { ADD_NOTIFICATIONS, CLEAR_NOTIFICATIONS } from "./types";
+import { addReducers } from "./actions/add";
+import { clearReducers } from "./actions/clear";
 
-export function reducer(
+const reducers: IReducers<INotificationState, INotificationAction> = {
+  ...addReducers,
+  ...clearReducers
+};
+
+export function notificationReducer(
   state: INotificationState = { count: 0 },
   action: INotificationAction
 ): INotificationState {
-  switch (action.type) {
-    case ADD_NOTIFICATIONS:
-      return {
-        ...state,
-        count: state.count + action.notifications
-      };
-    case CLEAR_NOTIFICATIONS:
-      return {
-        ...state,
-        count: 0
-      };
-    default:
-      return state;
-  }
+  const reducer = reducers[action.type];
+  return reducer ? reducer(state, action) : state;
 }

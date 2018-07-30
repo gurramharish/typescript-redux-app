@@ -27,12 +27,11 @@ export interface IHeaderData {
 }
 
 export interface IHeaderActions {
-  startAddNotifications(count?: number): void;
-  stopAddNotifications(): void;
+  startIncrementNotifications(count?: number): void;
+  stopIncrementNotifications(): void;
   startResetNotifications(): void;
   stopResetNotifications(): void;
   changeTheme(theme: "dark" | "light"): void;
-  clearNotifications(): void;
 }
 
 export interface IHeaderStyles {
@@ -104,15 +103,13 @@ export class Header extends Component<
   }
 
   public componentDidMount(): void {
-    const { startAddNotifications, startResetNotifications } = this.props;
-    startAddNotifications(2);
-    startResetNotifications();
+    this.props.startIncrementNotifications(2);
+    this.props.startResetNotifications();
   }
 
   public componentWillUnmount(): void {
-    const { stopAddNotifications, stopResetNotifications } = this.props;
-    stopAddNotifications();
-    stopResetNotifications();
+    this.props.stopIncrementNotifications();
+    this.props.stopResetNotifications();
   }
 
   private toggleTheme = () => {

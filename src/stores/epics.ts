@@ -1,11 +1,5 @@
 import { combineEpics } from "redux-observable";
 
-import {
-  startStopAddNotificationsEpic,
-  startStopResetNotificationsEpic
-} from "./notification";
+import { notificationEpics } from "./notification";
 
-export const epic = combineEpics(
-  startStopAddNotificationsEpic,
-  startStopResetNotificationsEpic
-);
+export const epic = combineEpics(...notificationEpics);

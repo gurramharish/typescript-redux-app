@@ -1,19 +1,18 @@
+import { IReducers } from "../type";
+
 import { IThemeAction } from "./actions";
 import { IThemeState } from "./states";
 
-import { CHANGE_THEME } from "./types";
+import { changeReducers } from "./actions/change";
 
-export function reducer(
+const reducers: IReducers<IThemeState, IThemeAction> = {
+  ...changeReducers,
+};
+
+export function themeReducer(
   state: IThemeState = { mode: "light" },
   action: IThemeAction
 ): IThemeState {
-  switch (action.type) {
-    case CHANGE_THEME:
-      return {
-        ...state,
-        mode: action.mode
-      };
-    default:
-      return state;
-  }
+  const reducer = reducers[action.type];
+  return reducer ? reducer(state, action) : state;
 }
