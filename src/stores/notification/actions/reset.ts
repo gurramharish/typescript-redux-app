@@ -6,11 +6,13 @@ import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
 
 import { ofType } from "redux-observable";
 
+import { namespace } from "../namespace";
+
 import { clearNotifications, IClearNotifications } from "./clear";
 
-const START_RESET_NOTIFICATIONS = "START_RESET_NOTIFICATIONS";
+const START_RESET_NOTIFICATIONS = `${namespace}/START_RESET_NOTIFICATIONS`;
 
-const STOP_RESET_NOTIFICATIONS = "STOP_RESET_NOTIFICATIONS";
+const STOP_RESET_NOTIFICATIONS = `${namespace}/STOP_RESET_NOTIFICATIONS`;
 
 export type StartResetNotifications = typeof START_RESET_NOTIFICATIONS;
 

@@ -1,7 +1,9 @@
 import { IAction, IReducer, IReducers } from "../../types";
 import { INotificationState } from "../states";
 
-const ADD_NOTIFICATIONS = "ADD_NOTIFICATIONS";
+import { namespace } from "../namespace";
+
+const ADD_NOTIFICATIONS = `${namespace}/ADD_NOTIFICATIONS`;
 
 export type AddNotifications = typeof ADD_NOTIFICATIONS;
 

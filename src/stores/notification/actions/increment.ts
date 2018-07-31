@@ -14,13 +14,15 @@ import {
 
 import { ofType, StateObservable } from "redux-observable";
 
+import { namespace } from "../namespace";
+
 import { addNotifications, IAddNotifications } from "./add";
 
-const START_INCREMENT_NOTIFICATIONS = "START_INCREMENT_NOTIFICATIONS";
+const START_INCREMENT_NOTIFICATIONS = `${namespace}/START_INCREMENT_NOTIFICATIONS`;
 
-const STOP_INCREMENT_NOTIFICATIONS = "STOP_INCREMENT_NOTIFICATIONS";
+const STOP_INCREMENT_NOTIFICATIONS = `${namespace}/STOP_INCREMENT_NOTIFICATIONS`;
 
-const TOGGLE_INCREMENT_NOTIFICATIONS = "TOGGLE_INCREMENT_NOTIFICATIONS";
+const TOGGLE_INCREMENT_NOTIFICATIONS = `${namespace}/TOGGLE_INCREMENT_NOTIFICATIONS`;
 
 export type StartIncrementNotifications = typeof START_INCREMENT_NOTIFICATIONS;
 
@@ -119,7 +121,7 @@ export const startStopIncrementEpic = (
 
 export const toggleStartIncrementEpic = (
   action$: Observable<IToggleIncrementNotifications>,
-  state$: StateObservable<{notification: INotificationState}>
+  state$: StateObservable<{ notification: INotificationState }>
 ): Observable<IStartIncrementNotifications | IStopIncrementNotifications> =>
   action$.pipe(
     ofType(TOGGLE_INCREMENT_NOTIFICATIONS),
@@ -127,7 +129,9 @@ export const toggleStartIncrementEpic = (
     scan((acc, value) => acc + value),
     filter(value => value % 2 === 0),
     withLatestFrom(state$),
-    map(([_, state]) => startIncrementNotifications(state.notification.increment))
+    map(([_, state]) =>
+      startIncrementNotifications(state.notification.increment)
+    )
   );
 
 export const toggleStopIncrementEpic = (

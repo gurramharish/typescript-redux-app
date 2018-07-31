@@ -15,6 +15,7 @@ import { IStoreAction, IStoreState, reducer } from "./reducers";
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
     notification: { count: 0 },
+    router: { location: null },
     theme: { mode: "light" }
   };
 }

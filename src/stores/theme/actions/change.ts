@@ -1,7 +1,9 @@
 import { IAction, IReducer, IReducers } from "../../types";
 import { IThemeState } from "../states";
 
-const CHANGE_THEME = "CHANGE_THEME";
+import { namespace } from "../namespace";
+
+const CHANGE_THEME = `${namespace}/CHANGE_THEME`;
 
 export type ChangeTheme = typeof CHANGE_THEME;
 
