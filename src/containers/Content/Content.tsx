@@ -6,7 +6,8 @@ import classNames from "classnames";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
-import Dashboard from "../Dashboard";
+import Blocks from "../../pages/Blocks";
+import Dashboard from "../../pages/Dashboard";
 
 export interface IContentStyles {
   root: React.CSSProperties;
@@ -41,7 +42,7 @@ export class Content extends Component<
               <Dashboard />
             </Route>
             <Route path="/blocks">
-              <Dashboard />
+              <Blocks />
             </Route>
           </Switch>
         </div>

@@ -14,8 +14,8 @@ import Typography from "@material-ui/core/Typography";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-import Clock from "../Clock";
-import Statistic from "../Statistic";
+import Clock from "../../components/Clock";
+import Statistic from "../../components/Statistic";
 
 export interface IDashboardStyles {
   root: React.CSSProperties;
