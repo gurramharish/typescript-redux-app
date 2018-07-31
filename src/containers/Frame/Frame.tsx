@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
 
-import App from "../App";
+import Main from "../Main";
 
 import createMuiFrame from "@material-ui/core/styles/createMuiTheme";
 
@@ -31,7 +31,7 @@ export default class Frame extends Component<IFrameProps, IFrameStates> {
     return (
       <MuiFrameProvider theme={this.getFrame(theme)}>
         <CssBaseline />
-        <App />
+        <Main />
       </MuiFrameProvider>
     );
   }

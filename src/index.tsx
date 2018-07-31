@@ -1,12 +1,12 @@
 import * as React from "react";
 import { render } from "react-dom";
 
-import Boot from "./Boot";
+import App from "./containers/App";
 
 import registerServiceWorker from "./registerServiceWorker";
 
 function main() {
-  render(<Boot />, document.getElementById("root") as HTMLElement);
+  render(<App />, document.getElementById("root") as HTMLElement);
 }
 
 main();
