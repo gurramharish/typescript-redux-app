@@ -1,12 +1,16 @@
-import { DeepPartial, Store } from "redux";
-import { IStoreAction, IStoreState } from "./reducers";
+import { History } from "history";
 
+import { DeepPartial, Store } from "redux";
 import { applyMiddleware, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+
 import { createEpicMiddleware } from "redux-observable";
 
+import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
+
+import { composeWithDevTools } from "redux-devtools-extension";
+
 import { epic } from "./epics";
-import { reducer } from "./reducers";
+import { IStoreAction, IStoreState, reducer } from "./reducers";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
@@ -16,18 +20,17 @@ export function getDefaultState(): DeepPartial<IStoreState> {
 }
 
 export function configure(
+  history: History,
   state: DeepPartial<IStoreState> = getDefaultState()
 ): Store<IStoreState, IStoreAction> {
+  const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();
-
-  const composeEnhancers = composeWithDevTools({
-    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-  });
+  const composeEnhancers = composeWithDevTools({});
 
   const store = createStore<IStoreState, IStoreAction, {}, {}>(
     reducer,
     state,
-    composeEnhancers(applyMiddleware(epicMiddleware))
+    composeEnhancers(applyMiddleware(routerMiddleware, epicMiddleware))
   );
 
   epicMiddleware.run(epic as any);

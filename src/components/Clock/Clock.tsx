@@ -32,7 +32,7 @@ export default class Clock extends Component<IClockProps, IClockStates> {
     }, 1000) as any) as number;
   }
 
-  public compinentWillUnmount() {
+  public componentWillUnmount() {
     clearInterval(this.timeout);
   }
 

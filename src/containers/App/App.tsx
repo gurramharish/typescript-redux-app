@@ -1,32 +1,40 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
 
+import createHistory from "history/createBrowserHistory";
+
 import { Provider } from "react-redux";
+
+import { ConnectedRouter } from "react-router-redux";
 
 import Theme from "../Theme";
 
 import { configure } from "../../stores";
 
-const store = configure({
+const history = createHistory();
+
+const store = configure(history, {
   notification: { count: 2 },
   theme: { mode: "dark" }
 });
 
 // tslint:disable-next-line:no-empty-interface
-export interface IBootProps {}
+export interface IAppProps {}
 
 // tslint:disable-next-line:no-empty-interface
-export interface IBootStates {}
+export interface IAppStates {}
 
-export default class Boot extends Component<IBootProps, IBootStates> {
-  constructor(props: IBootProps, context: {}) {
+export default class App extends Component<IAppProps, IAppStates> {
+  constructor(props: IAppProps, context: {}) {
     super(props, context);
   }
 
   public render(): ReactNode {
     return (
       <Provider {...{ store }}>
-        <Theme />
+        <ConnectedRouter {...{ history }}>
+          <Theme />
+        </ConnectedRouter>
       </Provider>
     );
   }
