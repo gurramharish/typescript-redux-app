@@ -119,7 +119,7 @@ export const startStopIncrementEpic = (
 
 export const toggleStartIncrementEpic = (
   action$: Observable<IToggleIncrementNotifications>,
-  state$: StateObservable<INotificationState>
+  state$: StateObservable<{notification: INotificationState}>
 ): Observable<IStartIncrementNotifications | IStopIncrementNotifications> =>
   action$.pipe(
     ofType(TOGGLE_INCREMENT_NOTIFICATIONS),
@@ -127,7 +127,7 @@ export const toggleStartIncrementEpic = (
     scan((acc, value) => acc + value),
     filter(value => value % 2 === 0),
     withLatestFrom(state$),
-    map(([_, state]) => startIncrementNotifications(state.increment))
+    map(([_, state]) => startIncrementNotifications(state.notification.increment))
   );
 
 export const toggleStopIncrementEpic = (
