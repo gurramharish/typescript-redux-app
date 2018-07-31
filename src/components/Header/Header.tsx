@@ -16,10 +16,12 @@ import Typography from "@material-ui/core/Typography";
 
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
+import MenuIcon from "@material-ui/icons/Menu";
+
+import { Link } from "react-router-dom";
+
 import MoonIcon from "../../icons/Moon";
 import SunIcon from "../../icons/Sun";
-
-import MenuIcon from "@material-ui/icons/Menu";
 
 export interface IHeaderData {
   mode: "dark" | "light";
@@ -38,9 +40,10 @@ export interface IHeaderActions {
 }
 
 export interface IHeaderStyles {
+  incrementing: React.CSSProperties;
+  link: React.CSSProperties;
   root: React.CSSProperties;
   title: React.CSSProperties;
-  incrementing: React.CSSProperties;
 }
 
 export interface IHeaderStyleProps extends WithStyles<keyof IHeaderStyles> {}
@@ -80,6 +83,26 @@ export class Header extends Component<
               noWrap={true}
             >
               TypeScript Redux App
+            </Typography>
+            <Typography
+              className={classes.title}
+              variant="title"
+              color="inherit"
+              noWrap={true}
+            >
+              <Link className={classes.link} to="/">
+                Home
+              </Link>
+            </Typography>
+            <Typography
+              className={classes.title}
+              variant="title"
+              color="inherit"
+              noWrap={true}
+            >
+              <Link className={classes.link} to="/blocks">
+                Blocks
+              </Link>
             </Typography>
             <Tooltip title="light mode" enterDelay={300}>
               <SunIcon />
@@ -134,6 +157,10 @@ export class Header extends Component<
 export default withStyles<keyof IHeaderStyles>({
   incrementing: {
     color: "green"
+  },
+  link: {
+    color: "inherit",
+    textDecoration: "none"
   },
   root: {},
   title: {

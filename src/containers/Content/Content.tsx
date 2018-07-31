@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Route } from "react-router";
 
 import classNames from "classnames";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
+
+import Switch from "../Switch";
 
 import Blocks from "../../pages/Blocks";
 import Dashboard from "../../pages/Dashboard";
@@ -35,18 +37,16 @@ export class Content extends Component<
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
     return (
-      <Router>
-        <div className={root} style={{ ...style }}>
-          <Switch>
-            <Route exact={true} path="/">
-              <Dashboard />
-            </Route>
-            <Route path="/blocks">
-              <Blocks />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <div className={root} style={{ ...style }}>
+        <Switch>
+          <Route exact={true} path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/blocks">
+            <Blocks />
+          </Route>
+        </Switch>
+      </div>
     );
   }
 }
