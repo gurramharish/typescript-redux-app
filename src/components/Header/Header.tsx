@@ -18,7 +18,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import MoonIcon from "../../icons/Moon";
 import SunIcon from "../../icons/Sun";
@@ -40,6 +40,7 @@ export interface IHeaderActions {
 }
 
 export interface IHeaderStyles {
+  activeLink: React.CSSProperties;
   incrementing: React.CSSProperties;
   link: React.CSSProperties;
   root: React.CSSProperties;
@@ -90,9 +91,15 @@ export class Header extends Component<
               color="inherit"
               noWrap={true}
             >
-              <Link className={classes.link} to="/">
+              <NavLink
+                exact={true}
+                strict={true}
+                className={classes.link}
+                activeClassName={classes.activeLink}
+                to="/"
+              >
                 Home
-              </Link>
+              </NavLink>
             </Typography>
             <Typography
               className={classes.title}
@@ -100,9 +107,15 @@ export class Header extends Component<
               color="inherit"
               noWrap={true}
             >
-              <Link className={classes.link} to="/blocks">
+              <NavLink
+                exact={true}
+                strict={true}
+                className={classes.link}
+                activeClassName={classes.activeLink}
+                to="blocks"
+              >
                 Blocks
-              </Link>
+              </NavLink>
             </Typography>
             <Tooltip title="light mode" enterDelay={300}>
               <SunIcon />
@@ -155,6 +168,9 @@ export class Header extends Component<
 }
 
 export default withStyles<keyof IHeaderStyles>({
+  activeLink: {
+    color: "deepskyblue !important"
+  },
   incrementing: {
     color: "green"
   },
