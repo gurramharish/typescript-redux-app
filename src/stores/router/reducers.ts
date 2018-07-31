@@ -5,10 +5,10 @@ import { IRouterState } from "./states";
 
 import { routerReducer as routerReducerCore } from "react-router-redux";
 
-import { pushReducers } from "./actions/push";
+import { pushPathReducers } from "./actions/push";
 
 const reducers: IReducers<IRouterState, IRouterAction> = {
-  ...pushReducers
+  ...pushPathReducers
 };
 
 export function routerReducer(

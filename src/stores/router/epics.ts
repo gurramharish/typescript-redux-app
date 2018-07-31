@@ -1,3 +1,5 @@
-import { pushEpic } from "./actions/push";
+import { callHistoryEpic } from "./actions/call";
+import { locationChangeEpic } from "./actions/change";
+import { pushPathEpic } from "./actions/push";
 
-export const routerEpics = [pushEpic];
+export const routerEpics = [pushPathEpic, callHistoryEpic, locationChangeEpic];

@@ -31,7 +31,7 @@ export function configure(
   const store = createStore<IStoreState, IStoreAction, {}, {}>(
     reducer,
     state,
-    composeEnhancers(applyMiddleware(routerMiddleware, epicMiddleware))
+    composeEnhancers(applyMiddleware(epicMiddleware, routerMiddleware))
   );
 
   epicMiddleware.run(epic as any);
