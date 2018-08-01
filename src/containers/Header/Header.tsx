@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import HeaderComponent from "../../components/Header";
+import Header from "../../components/Header";
 import { IHeaderActions, IHeaderData } from "../../components/Header";
 
 import { IStoreAction, IStoreState } from "../../stores";
@@ -34,4 +34,4 @@ export default connect(
       } as IHeaderActions,
       dispatch
     )
-)(HeaderComponent);
+)(Header);

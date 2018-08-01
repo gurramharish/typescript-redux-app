@@ -1,7 +1,7 @@
 import * as React from "react";
 import { render } from "react-dom";
 
-import App from "./containers/App";
+import App from "./components/App";
 
 import registerServiceWorker from "./registerServiceWorker";
 

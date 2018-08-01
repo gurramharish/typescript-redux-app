@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 import { ConnectedRouter } from "react-router-redux";
 
-import Theme from "../Theme";
+import Theme from "../../containers/Theme";
 
 import { configure } from "../../stores";
 

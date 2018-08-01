@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
-import Switch from "../Switch";
+import Switch from "../../containers/Switch";
 
 import Blocks from "../../pages/Blocks";
 import Dashboard from "../../pages/Dashboard";

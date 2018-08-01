@@ -6,9 +6,10 @@ import classNames from "classnames";
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
 import Content from "../Content";
-import Header from "../Header";
 
-import Footer from "../../components/Footer";
+import Header from "../../containers/Header";
+
+import Footer from "../Footer";
 
 export interface IMainStyles {
   root: React.CSSProperties;

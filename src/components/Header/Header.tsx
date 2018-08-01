@@ -18,7 +18,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import { NavLink } from "react-router-dom";
+import Link from "../../containers/Link";
 
 import MoonIcon from "../../icons/Moon";
 import SunIcon from "../../icons/Sun";
@@ -91,7 +91,7 @@ export class Header extends Component<
               color="inherit"
               noWrap={true}
             >
-              <NavLink
+              <Link
                 exact={true}
                 strict={true}
                 className={classes.link}
@@ -99,7 +99,7 @@ export class Header extends Component<
                 to="/"
               >
                 Home
-              </NavLink>
+              </Link>
             </Typography>
             <Typography
               className={classes.title}
@@ -107,15 +107,15 @@ export class Header extends Component<
               color="inherit"
               noWrap={true}
             >
-              <NavLink
+              <Link
                 exact={true}
                 strict={true}
                 className={classes.link}
                 activeClassName={classes.activeLink}
-                to="blocks"
+                to="/blocks"
               >
                 Blocks
-              </NavLink>
+              </Link>
             </Typography>
             <Tooltip title="light mode" enterDelay={300}>
               <SunIcon />
@@ -172,7 +172,7 @@ export default withStyles<keyof IHeaderStyles>({
     color: "deepskyblue !important"
   },
   incrementing: {
-    color: "green"
+    color: "deeppink"
   },
   link: {
     color: "inherit",
