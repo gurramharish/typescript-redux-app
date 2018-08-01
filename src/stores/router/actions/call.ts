@@ -19,3 +19,5 @@ export const callHistoryEpic = (
     tap(action => console.log(action)),
     map(action => locationChanged(action.payload.args![0] || ""))
   );
+
+export const callEpics = [callHistoryEpic];

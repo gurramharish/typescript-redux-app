@@ -1,10 +1,7 @@
 import { IAction, IReducer, IReducers } from "../../types";
 import { IRouterState } from "../states";
 
-import {
-  push,
-  RouterAction
-} from "react-router-redux";
+import { push, RouterAction } from "react-router-redux";
 
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -50,3 +47,5 @@ export const pushPathEpic = (
     ofType(PUSH_PATH),
     map(action => push(action.path))
   );
+
+export const pushEpics = [pushPathEpic];

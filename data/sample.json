@@ -1,0 +1,986 @@
+{
+    "charts": {
+        "blockPerHour": {
+            "rows": [
+                {
+                    "datetime": "2018-07-31T15:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T16:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T17:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T18:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T19:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T20:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T21:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T22:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T23:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T00:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T01:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T02:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T03:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T04:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T05:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T06:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T07:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T08:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T09:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T10:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T11:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T12:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T13:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T14:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:30:00.000Z",
+                    "count": "5"
+                }
+            ],
+            "loaded": true
+        },
+        "blockPerMin": {
+            "rows": [
+                {
+                    "datetime": "2018-08-01T15:01:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:02:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:03:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:04:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:05:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:06:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:07:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:08:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:09:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:10:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:11:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:12:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:13:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:14:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:15:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:16:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:17:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:18:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:19:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:20:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:21:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:22:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:23:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:24:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:25:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:26:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:27:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:28:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:29:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:31:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:32:00.000Z",
+                    "count": "4"
+                },
+                {
+                    "datetime": "2018-08-01T15:33:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:34:00.000Z",
+                    "count": "1"
+                },
+                {
+                    "datetime": "2018-08-01T15:35:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:36:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:37:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:38:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:39:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:40:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:41:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:42:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:43:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:44:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:45:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:46:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:47:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:48:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:49:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:50:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:51:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:52:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:53:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:54:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:55:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:56:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:57:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:58:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:59:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T16:00:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T16:01:00.000Z",
+                    "count": "0"
+                }
+            ],
+            "loaded": true
+        },
+        "channel": {
+            "currentChannel": "6d5f8eec416d3e5d77a3fc50725797ba0bca04039efd0a9e6942ba16d527aeb2"
+        },
+        "channelList": {
+            "list": [
+                "mychannel"
+            ],
+            "loaded": true
+        },
+        "dashStats": {
+            "chaincodeCount": "1",
+            "txCount": "5",
+            "latestBlock": 4,
+            "peerCount": "0"
+        },
+        "notification": {},
+        "peerStatus": {
+            "list": [
+                {
+                    "status": "RUNNING",
+                    "server_hostname": "peer0.org1.example.com"
+                },
+                {
+                    "status": "RUNNING",
+                    "server_hostname": "peer1.org1.example.com"
+                },
+                {
+                    "status": "RUNNING",
+                    "server_hostname": "peer0.org2.example.com"
+                },
+                {
+                    "status": "RUNNING",
+                    "server_hostname": "peer1.org2.example.com"
+                }
+            ],
+            "loaded": true
+        },
+        "transactionByOrg": {
+            "rows": [
+                {
+                    "count": "3",
+                    "creator_msp_id": "OrdererMSP"
+                },
+                {
+                    "count": "1",
+                    "creator_msp_id": "Org1MSP"
+                },
+                {
+                    "count": "1",
+                    "creator_msp_id": "Org2MSP"
+                }
+            ],
+            "loaded": true
+        },
+        "transactionPerHour": {
+            "rows": [
+                {
+                    "datetime": "2018-07-31T15:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T16:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T17:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T18:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T19:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T20:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T21:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T22:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-07-31T23:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T00:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T01:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T02:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T03:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T04:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T05:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T06:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T07:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T08:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T09:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T10:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T11:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T12:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T13:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T14:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:30:00.000Z",
+                    "count": "5"
+                }
+            ],
+            "loaded": true
+        },
+        "transactionPerMin": {
+            "rows": [
+                {
+                    "datetime": "2018-08-01T15:01:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:02:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:03:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:04:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:05:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:06:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:07:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:08:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:09:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:10:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:11:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:12:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:13:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:14:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:15:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:16:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:17:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:18:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:19:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:20:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:21:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:22:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:23:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:24:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:25:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:26:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:27:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:28:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:29:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:30:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:31:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:32:00.000Z",
+                    "count": "4"
+                },
+                {
+                    "datetime": "2018-08-01T15:33:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:34:00.000Z",
+                    "count": "1"
+                },
+                {
+                    "datetime": "2018-08-01T15:35:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:36:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:37:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:38:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:39:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:40:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:41:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:42:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:43:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:44:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:45:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:46:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:47:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:48:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:49:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:50:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:51:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:52:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:53:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:54:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:55:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:56:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:57:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:58:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T15:59:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T16:00:00.000Z",
+                    "count": "0"
+                },
+                {
+                    "datetime": "2018-08-01T16:01:00.000Z",
+                    "count": "0"
+                }
+            ],
+            "loaded": true
+        }
+    },
+    "tables": {
+        "blockList": {
+            "rows": [
+                {
+                    "blocknum": 4,
+                    "txcount": 1,
+                    "datahash": "90b45781d7a07b008ec0f915494ce6971373b710975c137246fe581cd4b7ccea",
+                    "blockhash": "87e7a205e25a96a3f7e9a70c3b61b686922d6b9115d0e88eb60af703a579651c",
+                    "prehash": "aa6f32a6fff8d74cccf23090248d82bdca267841640e79c1e2264af1a04261e6",
+                    "createdt": "2018-08-01T15:34:18.000Z",
+                    "txhash": [
+                        "b2189ef05a5dc71a46b23ba914d42d54f4025b40851f308afc159ed5e9841f53"
+                    ],
+                    "channelname": "mychannel"
+                },
+                {
+                    "blocknum": 3,
+                    "txcount": 1,
+                    "datahash": "4c7312c34c6083c425cfe9a934c4a43b2c268ec1735cb88129cb242e8fbc0da8",
+                    "blockhash": "aa6f32a6fff8d74cccf23090248d82bdca267841640e79c1e2264af1a04261e6",
+                    "prehash": "df2bc3f002bef4abe684c5aa01f9b3924d16482bc987be77855c62422c2d632b",
+                    "createdt": "2018-08-01T15:32:40.000Z",
+                    "txhash": [
+                        "03a2c1636252412e340bb43546ffef496083809c7e3e7d4afecf9b4ec60debb3"
+                    ],
+                    "channelname": "mychannel"
+                },
+                {
+                    "blocknum": 2,
+                    "txcount": 1,
+                    "datahash": "6ba6ba06b4a2e9729097a86468d90ec0a0031208ddbbc20378e70548ea53c2d3",
+                    "blockhash": "df2bc3f002bef4abe684c5aa01f9b3924d16482bc987be77855c62422c2d632b",
+                    "prehash": "971df518283fc816888b639e6c2d10a3c89348dcc613c0569879df0132cf1b3f",
+                    "createdt": "2018-08-01T15:32:34.000Z",
+                    "txhash": [
+                        ""
+                    ],
+                    "channelname": "mychannel"
+                },
+                {
+                    "blocknum": 1,
+                    "txcount": 1,
+                    "datahash": "846fce7e9067d12186b682f41c6727627de5a93f652a2510f8dd674ce09898a6",
+                    "blockhash": "971df518283fc816888b639e6c2d10a3c89348dcc613c0569879df0132cf1b3f",
+                    "prehash": "6d5f8eec416d3e5d77a3fc50725797ba0bca04039efd0a9e6942ba16d527aeb2",
+                    "createdt": "2018-08-01T15:32:31.000Z",
+                    "txhash": [
+                        ""
+                    ],
+                    "channelname": "mychannel"
+                },
+                {
+                    "blocknum": 0,
+                    "txcount": 1,
+                    "datahash": "6805b879658a5e54c2751b72e21d87000d1332c62957081ccffebe6e6ccfcad9",
+                    "blockhash": "6d5f8eec416d3e5d77a3fc50725797ba0bca04039efd0a9e6942ba16d527aeb2",
+                    "prehash": "",
+                    "createdt": "2018-08-01T15:32:16.000Z",
+                    "txhash": [
+                        ""
+                    ],
+                    "channelname": "mychannel"
+                }
+            ],
+            "loaded": true
+        },
+        "chaincodeList": {
+            "rows": [
+                {
+                    "channel_genesis_hash": "6d5f8eec416d3e5d77a3fc50725797ba0bca04039efd0a9e6942ba16d527aeb2",
+                    "chaincodename": "mycc",
+                    "path": "github.com/chaincode/chaincode_example02/go/",
+                    "version": "1.0",
+                    "txCount": 1,
+                    "source": "/*\nCopyright IBM Corp. 2016 All Rights Reserved.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n\t\t http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n*/\n\npackage main\n\n//WARNING - this chaincode's ID is hard-coded in chaincode_example04 to illustrate one way of\n//calling chaincode from a chaincode. If this example is modified, chaincode_example04.go has\n//to be modified as well with the new ID of chaincode_example02.\n//chaincode_example05 show's how chaincode ID can be passed in as a parameter instead of\n//hard-coding.\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n\n\t\"github.com/hyperledger/fabric/core/chaincode/shim\"\n\tpb \"github.com/hyperledger/fabric/protos/peer\"\n)\n\n// SimpleChaincode example simple Chaincode implementation\ntype SimpleChaincode struct {\n}\n\nfunc (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {\n\tfmt.Println(\"ex02 Init\")\n\t_, args := stub.GetFunctionAndParameters()\n\tvar A, B string    // Entities\n\tvar Aval, Bval int // Asset holdings\n\tvar err error\n\n\tif len(args) != 4 {\n\t\treturn shim.Error(\"Incorrect number of arguments. Expecting 4\")\n\t}\n\n\t// Initialize the chaincode\n\tA = args[0]\n\tAval, err = strconv.Atoi(args[1])\n\tif err != nil {\n\t\treturn shim.Error(\"Expecting integer value for asset holding\")\n\t}\n\tB = args[2]\n\tBval, err = strconv.Atoi(args[3])\n\tif err != nil {\n\t\treturn shim.Error(\"Expecting integer value for asset holding\")\n\t}\n\tfmt.Printf(\"Aval = %d, Bval = %d\\n\", Aval, Bval)\n\n\t// Write the state to the ledger\n\terr = stub.PutState(A, []byte(strconv.Itoa(Aval)))\n\tif err != nil {\n\t\treturn shim.Error(err.Error())\n\t}\n\n\terr = stub.PutState(B, []byte(strconv.Itoa(Bval)))\n\tif err != nil {\n\t\treturn shim.Error(err.Error())\n\t}\n\n\treturn shim.Success(nil)\n}\n\nfunc (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {\n\tfmt.Println(\"ex02 Invoke\")\n\tfunction, args := stub.GetFunctionAndParameters()\n\tif function == \"invoke\" {\n\t\t// Make payment of X units from A to B\n\t\treturn t.invoke(stub, args)\n\t} else if function == \"delete\" {\n\t\t// Deletes an entity from its state\n\t\treturn t.delete(stub, args)\n\t} else if function == \"query\" {\n\t\t// the old \"Query\" is now implemtned in invoke\n\t\treturn t.query(stub, args)\n\t}\n\n\treturn shim.Error(\"Invalid invoke function name. Expecting \\\"invoke\\\" \\\"delete\\\" \\\"query\\\"\")\n}\n\n// Transaction makes payment of X units from A to B\nfunc (t *SimpleChaincode) invoke(stub shim.ChaincodeStubInterface, args []string) pb.Response {\n\tvar A, B string    // Entities\n\tvar Aval, Bval int // Asset holdings\n\tvar X int          // Transaction value\n\tvar err error\n\n\tif len(args) != 3 {\n\t\treturn shim.Error(\"Incorrect number of arguments. Expecting 3\")\n\t}\n\n\tA = args[0]\n\tB = args[1]\n\n\t// Get the state from the ledger\n\t// TODO: will be nice to have a GetAllState call to ledger\n\tAvalbytes, err := stub.GetState(A)\n\tif err != nil {\n\t\treturn shim.Error(\"Failed to get state\")\n\t}\n\tif Avalbytes == nil {\n\t\treturn shim.Error(\"Entity not found\")\n\t}\n\tAval, _ = strconv.Atoi(string(Avalbytes))\n\n\tBvalbytes, err := stub.GetState(B)\n\tif err != nil {\n\t\treturn shim.Error(\"Failed to get state\")\n\t}\n\tif Bvalbytes == nil {\n\t\treturn shim.Error(\"Entity not found\")\n\t}\n\tBval, _ = strconv.Atoi(string(Bvalbytes))\n\n\t// Perform the execution\n\tX, err = strconv.Atoi(args[2])\n\tif err != nil {\n\t\treturn shim.Error(\"Invalid transaction amount, expecting a integer value\")\n\t}\n\tAval = Aval - X\n\tBval = Bval + X\n\tfmt.Printf(\"Aval = %d, Bval = %d\\n\", Aval, Bval)\n\n\t// Write the state back to the ledger\n\terr = stub.PutState(A, []byte(strconv.Itoa(Aval)))\n\tif err != nil {\n\t\treturn shim.Error(err.Error())\n\t}\n\n\terr = stub.PutState(B, []byte(strconv.Itoa(Bval)))\n\tif err != nil {\n\t\treturn shim.Error(err.Error())\n\t}\n\n\treturn shim.Success(nil)\n}\n\n// Deletes an entity from state\nfunc (t *SimpleChaincode) delete(stub shim.ChaincodeStubInterface, args []string) pb.Response {\n\tif len(args) != 1 {\n\t\treturn shim.Error(\"Incorrect number of arguments. Expecting 1\")\n\t}\n\n\tA := args[0]\n\n\t// Delete the key from the state in ledger\n\terr := stub.DelState(A)\n\tif err != nil {\n\t\treturn shim.Error(\"Failed to delete state\")\n\t}\n\n\treturn shim.Success(nil)\n}\n\n// query callback representing the query of a chaincode\nfunc (t *SimpleChaincode) query(stub shim.ChaincodeStubInterface, args []string) pb.Response {\n\tvar A string // Entities\n\tvar err error\n\n\tif len(args) != 1 {\n\t\treturn shim.Error(\"Incorrect number of arguments. Expecting name of the person to query\")\n\t}\n\n\tA = args[0]\n\n\t// Get the state from the ledger\n\tAvalbytes, err := stub.GetState(A)\n\tif err != nil {\n\t\tjsonResp := \"{\\\"Error\\\":\\\"Failed to get state for \" + A + \"\\\"}\"\n\t\treturn shim.Error(jsonResp)\n\t}\n\n\tif Avalbytes == nil {\n\t\tjsonResp := \"{\\\"Error\\\":\\\"Nil amount for \" + A + \"\\\"}\"\n\t\treturn shim.Error(jsonResp)\n\t}\n\n\tjsonResp := \"{\\\"Name\\\":\\\"\" + A + \"\\\",\\\"Amount\\\":\\\"\" + string(Avalbytes) + \"\\\"}\"\n\tfmt.Printf(\"Query Response:%s\\n\", jsonResp)\n\treturn shim.Success(Avalbytes)\n}\n\nfunc main() {\n\terr := shim.Start(new(SimpleChaincode))\n\tif err != nil {\n\t\tfmt.Printf(\"Error starting Simple chaincode: %s\", err)\n\t}\n}\n"
+                }
+            ],
+            "loaded": true
+        },
+        "channels": {
+            "rows": [
+                {
+                    "id": 4,
+                    "channelname": "mychannel",
+                    "blocks": 5,
+                    "genesis_block_hash": "6d5f8eec416d3e5d77a3fc50725797ba0bca04039efd0a9e6942ba16d527aeb2",
+                    "transactions": 5,
+                    "createdat": "8-1-2018 9:02 PM IST",
+                    "channel_hash": "b2189ef05a5dc71a46b23ba914d42d54f4025b40851f308afc159ed5e9841f53"
+                },
+                {
+                    "id": 3,
+                    "channelname": "mychannel",
+                    "blocks": 5,
+                    "genesis_block_hash": "1c115399c1fca6dd0cbfa71253fdf4ea235b6b47d499ba52ae3d714bf50c4816",
+                    "transactions": 5,
+                    "createdat": "7-24-2018 5:08 PM IST",
+                    "channel_hash": "e9289b6c0f6fc8c69b28b85cd3af5713aa996a8a1cd30f743e7affa2e6793803"
+                }
+            ],
+            "loaded": true
+        },
+        "peerList": {
+            "rows": [],
+            "loaded": true
+        },
+        "transaction": {
+            "transaction": {
+                "txhash": "b2189ef05a5dc71a46b23ba914d42d54f4025b40851f308afc159ed5e9841f53",
+                "validation_code": "VALID",
+                "payload_proposal_hash": "3cb08c79ecf745bd380b7489e01158f482ee2099d2ea1b6139050f05995be4b7",
+                "creator_msp_id": "Org1MSP",
+                "endorser_msp_id": "{\"Org1MSP\"}",
+                "chaincodename": "mycc",
+                "type": "ENDORSER_TRANSACTION",
+                "createdt": "2018-08-01T15:34:18.000Z",
+                "read_set": [
+                    {
+                        "chaincode": "lscc",
+                        "set": [
+                            {
+                                "key": "mycc",
+                                "version": {
+                                    "block_num": "3",
+                                    "tx_num": "0"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "chaincode": "mycc",
+                        "set": [
+                            {
+                                "key": "a",
+                                "version": {
+                                    "block_num": "3",
+                                    "tx_num": "0"
+                                }
+                            },
+                            {
+                                "key": "b",
+                                "version": {
+                                    "block_num": "3",
+                                    "tx_num": "0"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "write_set": [
+                    {
+                        "chaincode": "lscc",
+                        "set": []
+                    },
+                    {
+                        "chaincode": "mycc",
+                        "set": [
+                            {
+                                "key": "a",
+                                "is_delete": false,
+                                "value": "90"
+                            },
+                            {
+                                "key": "b",
+                                "is_delete": false,
+                                "value": "210"
+                            }
+                        ]
+                    }
+                ],
+                "channelname": "mychannel"
+            },
+            "loaded": true
+        },
+        "transactionList": {
+            "rows": [
+                {
+                    "creator_msp_id": "OrdererMSP",
+                    "txhash": "",
+                    "type": "CONFIG",
+                    "chaincodename": "",
+                    "createdt": "8-1-2018 9:02 PM IST",
+                    "channelname": "mychannel"
+                },
+                {
+                    "creator_msp_id": "OrdererMSP",
+                    "txhash": "",
+                    "type": "CONFIG",
+                    "chaincodename": "",
+                    "createdt": "8-1-2018 9:02 PM IST",
+                    "channelname": "mychannel"
+                },
+                {
+                    "creator_msp_id": "OrdererMSP",
+                    "txhash": "",
+                    "type": "CONFIG",
+                    "chaincodename": "",
+                    "createdt": "8-1-2018 9:02 PM IST",
+                    "channelname": "mychannel"
+                },
+                {
+                    "creator_msp_id": "Org2MSP",
+                    "txhash": "03a2c1636252412e340bb43546ffef496083809c7e3e7d4afecf9b4ec60debb3",
+                    "type": "ENDORSER_TRANSACTION",
+                    "chaincodename": "lscc",
+                    "createdt": "8-1-2018 9:02 PM IST",
+                    "channelname": "mychannel"
+                },
+                {
+                    "creator_msp_id": "Org1MSP",
+                    "txhash": "b2189ef05a5dc71a46b23ba914d42d54f4025b40851f308afc159ed5e9841f53",
+                    "type": "ENDORSER_TRANSACTION",
+                    "chaincodename": "mycc",
+                    "createdt": "8-1-2018 9:04 PM IST",
+                    "channelname": "mychannel"
+                }
+            ],
+            "loaded": true
+        }
+    }
+}

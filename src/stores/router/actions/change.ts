@@ -52,3 +52,5 @@ export const locationChangeEpic = (
     tap(action => console.log(action)),
     map(action => locationChanged(action.payload.pathname))
   );
+
+export const changeEpics = [locationChangeEpic];

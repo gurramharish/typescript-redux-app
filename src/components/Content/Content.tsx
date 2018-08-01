@@ -9,6 +9,7 @@ import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 import Switch from "../../containers/Switch";
 
 import Blocks from "../../pages/Blocks";
+import Channels from "../../pages/Channels";
 import Dashboard from "../../pages/Dashboard";
 
 export interface IContentStyles {
@@ -44,6 +45,9 @@ export class Content extends Component<
           </Route>
           <Route path="/blocks">
             <Blocks />
+          </Route>
+          <Route path="/channels">
+            <Channels />
           </Route>
         </Switch>
       </div>

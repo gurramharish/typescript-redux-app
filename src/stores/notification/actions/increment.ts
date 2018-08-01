@@ -144,3 +144,9 @@ export const toggleStopIncrementEpic = (
     filter(value => value % 2 !== 0),
     mapTo(stopIncrementNotifications())
   );
+
+  export const incrementEpics = [
+    startStopIncrementEpic,
+    toggleStartIncrementEpic,
+    toggleStopIncrementEpic
+  ];

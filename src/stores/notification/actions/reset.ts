@@ -88,3 +88,5 @@ export const startStopResetEpic = (
       )
     )
   );
+
+export const resetEpics = [startStopResetEpic];
