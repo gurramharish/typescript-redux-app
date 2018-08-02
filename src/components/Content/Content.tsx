@@ -12,6 +12,7 @@ import Blocks from "../../pages/Blocks";
 import Dashboard from "../../pages/Dashboard";
 
 import Channels from "../../containers/Channels";
+import Transactions from "../../containers/Transactions";
 
 export interface IContentStyles {
   root: React.CSSProperties;
@@ -49,6 +50,9 @@ export class Content extends Component<
           </Route>
           <Route path="/channels">
             <Channels />
+          </Route>
+          <Route path="/transactions">
+            <Transactions />
           </Route>
         </Switch>
       </div>

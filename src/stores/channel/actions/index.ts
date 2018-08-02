@@ -1,5 +1,12 @@
-import { IStartLoadingChannels } from "./load";
+import {
+  ILoadedChannels,
+  IStartLoadingChannels,
+  IStopLoadingChannels
+} from "./load";
 
-export * from "./load";
+export { startLoadingChannels, stopLoadingChannels } from "./load";
 
-export type IChannelAction = IStartLoadingChannels;
+export type IChannelAction =
+  | IStartLoadingChannels
+  | ILoadedChannels
+  | IStopLoadingChannels;

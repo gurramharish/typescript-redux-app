@@ -8,10 +8,12 @@ import {
 } from "./notification";
 import {  routerReducer } from "./router";
 import {  themeReducer } from "./theme";
+import {  transactionReducer } from "./transaction";
 
 export const reducer = combineReducers<IStoreState, IStoreAction>({
   channel: channelReducer,
   notification: notificationReducer,
   router: routerReducer,
-  theme: themeReducer
+  theme: themeReducer,
+  transaction: transactionReducer
 });
