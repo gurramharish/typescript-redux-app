@@ -127,9 +127,11 @@ export class Channels extends Component<
 
 export default withStyles<keyof IChannelsStyles>(theme => ({
   body: {
-    fontSize: 14
+    fontSize: 15
   },
   head: {
+    fontSize: 18,
+    fontWeight: "bolder"
     // backgroundColor: theme.palette.common.black,
     // color: theme.palette.common.white
   },

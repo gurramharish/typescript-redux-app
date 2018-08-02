@@ -5,6 +5,7 @@ export * from "./epics";
 
 export * from "./block";
 export * from "./channel";
+export * from "./dashboard";
 export * from "./notification";
 export * from "./router";
 export * from "./theme";

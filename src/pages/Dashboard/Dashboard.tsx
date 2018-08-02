@@ -6,6 +6,8 @@ import classNames from "classnames";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -27,7 +29,16 @@ export interface IDashboardStyles {
 export interface IDashboardStyleProps
   extends WithStyles<keyof IDashboardStyles> {}
 
-export interface IDashboardProps {
+export interface IDashboardData {
+  loading: boolean;
+}
+
+export interface IDashboardActions {
+  startLoadingDashboard(): void;
+  stopLoadingDashboard(): void;
+}
+
+export interface IDashboardProps extends IDashboardData, IDashboardActions {
   style?: React.CSSProperties;
   className?: string;
 }
@@ -50,11 +61,13 @@ export class Dashboard extends Component<
     const { expanded } = this.state;
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
+    const { loading } = this.props;
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>
           <Grid item={true} xs={12}>
             <Clock />
+            {loading && <CircularProgress size={50} thickness={5} />}
           </Grid>
           <Grid item={true} sm={12}>
             <Card className={classes.statistics} square={true}>
@@ -123,6 +136,14 @@ export class Dashboard extends Component<
         </Grid>
       </div>
     );
+  }
+
+  public componentDidMount(): void {
+    this.props.startLoadingDashboard();
+  }
+
+  public componentWillUnmount(): void {
+    this.props.stopLoadingDashboard();
   }
 
   private handleChange = (panel: string) => (

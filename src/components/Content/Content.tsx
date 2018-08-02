@@ -8,10 +8,9 @@ import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
 import Switch from "../../containers/Switch";
 
-import Dashboard from "../../pages/Dashboard";
-
 import Blocks from "../../containers/Blocks";
 import Channels from "../../containers/Channels";
+import Dashboard from "../../containers/Dashboard";
 import Transactions from "../../containers/Transactions";
 
 export interface IContentStyles {

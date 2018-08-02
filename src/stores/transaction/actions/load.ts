@@ -8,6 +8,8 @@ import { ITransaction, ITransactionState } from "../states";
 
 import { namespace } from "../namespace";
 
+import { transactions as data } from "../data";
+
 const START_LOADING_TRANSACTIONS = `${namespace}/START_LOADING_TRANSACTIONS`;
 
 const LOADED_TRANSACTIONS = `${namespace}/LOADED_TRANSACTIONS`;
@@ -33,7 +35,9 @@ export interface ILoadedTransactions extends IAction {
   transactions: ITransaction[];
 }
 
-export function loadedTransactions(transactions: ITransaction[]): ILoadedTransactions {
+export function loadedTransactions(
+  transactions: ITransaction[]
+): ILoadedTransactions {
   return {
     transactions,
     type: LOADED_TRANSACTIONS
@@ -52,7 +56,10 @@ export function stopLoadingTransactions(): IStopLoadingTransactions {
   };
 }
 
-const startLoadingReducer: IReducer<ITransactionState, IStartLoadingTransactions> = (
+const startLoadingReducer: IReducer<
+  ITransactionState,
+  IStartLoadingTransactions
+> = (
   state: ITransactionState,
   action: IStartLoadingTransactions
 ): ITransactionState => {
@@ -73,7 +80,10 @@ const loadedReducer: IReducer<ITransactionState, ILoadedTransactions> = (
   };
 };
 
-const stopLoadingReducer: IReducer<ITransactionState, IStopLoadingTransactions> = (
+const stopLoadingReducer: IReducer<
+  ITransactionState,
+  IStopLoadingTransactions
+> = (
   state: ITransactionState,
   action: IStopLoadingTransactions
 ): ITransactionState => {
@@ -83,7 +93,10 @@ const stopLoadingReducer: IReducer<ITransactionState, IStopLoadingTransactions> 
   };
 };
 
-export const loadReducers: IReducers<ITransactionState, IStartLoadingTransactions> = {
+export const loadReducers: IReducers<
+  ITransactionState,
+  IStartLoadingTransactions
+> = {
   [START_LOADING_TRANSACTIONS]: startLoadingReducer,
   [LOADED_TRANSACTIONS]: loadedReducer,
   [STOP_LOADING_TRANSACTIONS]: stopLoadingReducer
@@ -95,8 +108,8 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_TRANSACTIONS),
     mergeMap(action =>
-      interval(5000).pipe(
-        mapTo(loadedTransactions([])),
+      interval(1000).pipe(
+        mapTo(loadedTransactions(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_TRANSACTIONS)))
       )
     )
