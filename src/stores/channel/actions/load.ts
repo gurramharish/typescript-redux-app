@@ -8,6 +8,8 @@ import { IChannel, IChannelState } from "../states";
 
 import { namespace } from "../namespace";
 
+import { channels as data } from "../data";
+
 const START_LOADING_CHANNELS = `${namespace}/START_LOADING_CHANNELS`;
 
 const LOADED_CHANNELS = `${namespace}/LOADED_CHANNELS`;
@@ -95,8 +97,8 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_CHANNELS),
     mergeMap(action =>
-      interval(5000).pipe(
-        mapTo(loadedChannels([])),
+      interval(1000).pipe(
+        mapTo(loadedChannels(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_CHANNELS)))
       )
     )
