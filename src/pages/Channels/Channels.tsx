@@ -95,7 +95,7 @@ export class Channels extends Component<
                         {channel.id}
                       </TableCell>
                       <TableCell classes={{ body }}>{channel.name}</TableCell>
-                      <TableCell>{channel.hash}</TableCell>
+                      <TableCell classes={{ body }}>{channel.hash}</TableCell>
                       <TableCell classes={{ body }} numeric={true}>
                         {channel.blocks}
                       </TableCell>
