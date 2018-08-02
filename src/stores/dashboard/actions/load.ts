@@ -1,10 +1,24 @@
-import { interval, Observable } from "rxjs";
-import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
+import { interval, Observable, of } from "rxjs";
+import {
+  mapTo,
+  merge,
+  mergeMap,
+  take,
+  takeUntil,
+  tap,
+  // zip
+} from "rxjs/operators";
 
 import { ofType } from "redux-observable";
 
 import { IAction, IReducer, IReducers } from "../../types";
 import { IDashboardState } from "../states";
+
+import { startLoadingChannels } from "../../channel/actions";
+// import { LOADED_CHANNELS } from "../../channel/actions";
+
+import { startLoadingBlocks } from "../../block/actions";
+// import { LOADED_BLOCKS } from "../../block/actions";
 
 import { namespace } from "../namespace";
 
@@ -50,10 +64,7 @@ export function stopLoadingDashboard(): IStopLoadingDashboard {
   };
 }
 
-const startLoadingReducer: IReducer<
-  IDashboardState,
-  IStartLoadingDashboard
-> = (
+const startLoadingReducer: IReducer<IDashboardState, IStartLoadingDashboard> = (
   state: IDashboardState,
   action: IStartLoadingDashboard
 ): IDashboardState => {
@@ -93,16 +104,38 @@ export const loadReducers: IReducers<
 };
 
 export const loadingEpic = (
-  action$: Observable<IStartLoadingDashboard | IStopLoadingDashboard>
+  action$: Observable<IStartLoadingDashboard>
 ): Observable<ILoadedDashboard> =>
   action$.pipe(
     ofType(START_LOADING_DASHBOARD),
-    mergeMap(action =>
-      interval(1000).pipe(
-        mapTo(loadedDashboard()),
-        takeUntil(action$.pipe(ofType(STOP_LOADING_DASHBOARD)))
-      )
-    )
+    mergeMap(() =>
+      interval(10)
+        .pipe(
+          merge(
+            of(startLoadingChannels()),
+            of(startLoadingBlocks()),
+            // zip(
+            //   action$.pipe(
+            //     ofType(LOADED_CHANNELS),
+            //     take(1)
+            //   ),
+            //   action$.pipe(
+            //     ofType(LOADED_BLOCKS),
+            //     take(1)
+            //   )
+            // )
+          ),
+          take(1)
+        )
+        .pipe(
+          // tslint:disable-next-line:no-console
+          tap(x => console.log("x", x)),
+          mapTo(loadedDashboard()),
+          takeUntil(action$.pipe(ofType(STOP_LOADING_DASHBOARD)))
+        )
+    ),
+    // tslint:disable-next-line:no-console
+    tap(y => console.log("y", y)),
   );
 
 export const loadEpics = [loadingEpic];

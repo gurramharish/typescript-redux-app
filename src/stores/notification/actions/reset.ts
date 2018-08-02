@@ -10,9 +10,9 @@ import { namespace } from "../namespace";
 
 import { clearNotifications, IClearNotifications } from "./clear";
 
-const START_RESET_NOTIFICATIONS = `${namespace}/START_RESET_NOTIFICATIONS`;
+export const START_RESET_NOTIFICATIONS = `${namespace}/START_RESET_NOTIFICATIONS`;
 
-const STOP_RESET_NOTIFICATIONS = `${namespace}/STOP_RESET_NOTIFICATIONS`;
+export const STOP_RESET_NOTIFICATIONS = `${namespace}/STOP_RESET_NOTIFICATIONS`;
 
 export type StartResetNotifications = typeof START_RESET_NOTIFICATIONS;
 

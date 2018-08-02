@@ -3,7 +3,7 @@ import { IThemeState } from "../states";
 
 import { namespace } from "../namespace";
 
-const CHANGE_THEME = `${namespace}/CHANGE_THEME`;
+export const CHANGE_THEME = `${namespace}/CHANGE_THEME`;
 
 export type ChangeTheme = typeof CHANGE_THEME;
 

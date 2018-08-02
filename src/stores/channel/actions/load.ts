@@ -10,11 +10,11 @@ import { namespace } from "../namespace";
 
 import { channels as data } from "../data";
 
-const START_LOADING_CHANNELS = `${namespace}/START_LOADING_CHANNELS`;
+export const START_LOADING_CHANNELS = `${namespace}/START_LOADING_CHANNELS`;
 
-const LOADED_CHANNELS = `${namespace}/LOADED_CHANNELS`;
+export const LOADED_CHANNELS = `${namespace}/LOADED_CHANNELS`;
 
-const STOP_LOADING_CHANNELS = `${namespace}/STOP_LOADING_CHANNELS`;
+export const STOP_LOADING_CHANNELS = `${namespace}/STOP_LOADING_CHANNELS`;
 
 export type StartLoadingChannels = typeof START_LOADING_CHANNELS;
 

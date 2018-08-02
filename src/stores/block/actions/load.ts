@@ -10,11 +10,11 @@ import { namespace } from "../namespace";
 
 import { blocks as data } from "../data";
 
-const START_LOADING_BLOCKS = `${namespace}/START_LOADING_BLOCKS`;
+export const START_LOADING_BLOCKS = `${namespace}/START_LOADING_BLOCKS`;
 
-const LOADED_BLOCKS = `${namespace}/LOADED_BLOCKS`;
+export const LOADED_BLOCKS = `${namespace}/LOADED_BLOCKS`;
 
-const STOP_LOADING_BLOCKS = `${namespace}/STOP_LOADING_BLOCKS`;
+export const STOP_LOADING_BLOCKS = `${namespace}/STOP_LOADING_BLOCKS`;
 
 export type StartLoadingBlocks = typeof START_LOADING_BLOCKS;
 
@@ -97,7 +97,7 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_BLOCKS),
     mergeMap(action =>
-      interval(1000).pipe(
+      interval(10000).pipe(
         mapTo(loadedBlocks(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_BLOCKS)))
       )

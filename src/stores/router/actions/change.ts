@@ -10,7 +10,7 @@ import { ofType, StateObservable } from "redux-observable";
 
 import { namespace } from "../namespace";
 
-const LOCATION_CHANGED = `${namespace}/LOCATION_CHANGED`;
+export const LOCATION_CHANGED = `${namespace}/LOCATION_CHANGED`;
 
 export type LocationChanged = typeof LOCATION_CHANGED;
 

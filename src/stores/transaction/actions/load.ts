@@ -10,11 +10,11 @@ import { namespace } from "../namespace";
 
 import { transactions as data } from "../data";
 
-const START_LOADING_TRANSACTIONS = `${namespace}/START_LOADING_TRANSACTIONS`;
+export const START_LOADING_TRANSACTIONS = `${namespace}/START_LOADING_TRANSACTIONS`;
 
-const LOADED_TRANSACTIONS = `${namespace}/LOADED_TRANSACTIONS`;
+export const LOADED_TRANSACTIONS = `${namespace}/LOADED_TRANSACTIONS`;
 
-const STOP_LOADING_TRANSACTIONS = `${namespace}/STOP_LOADING_TRANSACTIONS`;
+export const STOP_LOADING_TRANSACTIONS = `${namespace}/STOP_LOADING_TRANSACTIONS`;
 
 export type StartLoadingTransactions = typeof START_LOADING_TRANSACTIONS;
 

@@ -1,10 +1,6 @@
-import {
-  ILoadedBlocks,
-  IStartLoadingBlocks,
-  IStopLoadingBlocks
-} from "./load";
+import { ILoadedBlocks, IStartLoadingBlocks, IStopLoadingBlocks } from "./load";
 
-export { startLoadingBlocks, stopLoadingBlocks } from "./load";
+export { LOADED_BLOCKS, startLoadingBlocks, stopLoadingBlocks } from "./load";
 
 export type IBlockAction =
   | IStartLoadingBlocks

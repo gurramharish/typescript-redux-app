@@ -10,7 +10,7 @@ import { ofType, StateObservable } from "redux-observable";
 
 import { namespace } from "../namespace";
 
-const PUSH_PATH = `${namespace}/PUSH_PATH`;
+export const PUSH_PATH = `${namespace}/PUSH_PATH`;
 
 export type PushPath = typeof PUSH_PATH;
 

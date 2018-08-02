@@ -3,7 +3,7 @@ import { INotificationState } from "../states";
 
 import { namespace } from "../namespace";
 
-const CLEAR_NOTIFICATIONS = `${namespace}/CLEAR_NOTIFICATIONS`;
+export const CLEAR_NOTIFICATIONS = `${namespace}/CLEAR_NOTIFICATIONS`;
 
 export type ClearNotifications = typeof CLEAR_NOTIFICATIONS;
 
