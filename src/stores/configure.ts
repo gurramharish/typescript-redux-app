@@ -10,7 +10,8 @@ import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { epic } from "./epics";
-import { IStoreAction, IStoreState, reducer } from "./reducers";
+import { reducer } from "./reducers";
+import { IStoreAction, IStoreState } from "./states";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {

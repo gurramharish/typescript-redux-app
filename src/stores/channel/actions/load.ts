@@ -8,53 +8,53 @@ import { IChannel, IChannelState } from "../states";
 
 import { namespace } from "../namespace";
 
-const LOAD_CHANNELS = `${namespace}/LOAD_CHANNELS`;
+const START_LOADING_CHANNELS = `${namespace}/START_LOADING_CHANNELS`;
 
 const LOADED_CHANNELS = `${namespace}/LOADED_CHANNELS`;
 
-const CANCEL_LOAD_CHANNELS = `${namespace}/CANCEL_LOAD_CHANNELS`;
+const STOP_LOADING_CHANNELS = `${namespace}/STOP_LOADING_CHANNELS`;
 
-export type LoadChannels = typeof LOAD_CHANNELS;
+export type StartLoadingChannels = typeof START_LOADING_CHANNELS;
 
-export interface ILoadChannels extends IAction {
-  type: LoadChannels;
+export interface IStartLoadingChannels extends IAction {
+  type: StartLoadingChannels;
 }
 
-export function loadChannel(): ILoadChannels {
+export function startLoadingChannels(): IStartLoadingChannels {
   return {
-    type: LOAD_CHANNELS
+    type: START_LOADING_CHANNELS
   };
 }
 
 export type LoadedChannels = typeof LOADED_CHANNELS;
 
 export interface ILoadedChannels extends IAction {
-  type: LoadChannels;
+  type: StartLoadingChannels;
   channels: IChannel[];
 }
 
-export function loadedChannel(channels: IChannel[]): ILoadedChannels {
+export function loadedChannels(channels: IChannel[]): ILoadedChannels {
   return {
     channels,
     type: LOADED_CHANNELS
   };
 }
 
-export type CancelLoadChannels = typeof CANCEL_LOAD_CHANNELS;
+export type StopLoadingChannels = typeof STOP_LOADING_CHANNELS;
 
-export interface ICancelLoadChannels extends IAction {
-  type: CancelLoadChannels;
+export interface IStopLoadingChannels extends IAction {
+  type: StopLoadingChannels;
 }
 
-export function cancelLoadChannel(): ICancelLoadChannels {
+export function stopLoadingChannels(): IStopLoadingChannels {
   return {
-    type: CANCEL_LOAD_CHANNELS
+    type: STOP_LOADING_CHANNELS
   };
 }
 
-const loadReducer: IReducer<IChannelState, ILoadChannels> = (
+const startLoadingReducer: IReducer<IChannelState, IStartLoadingChannels> = (
   state: IChannelState,
-  action: ILoadChannels
+  action: IStartLoadingChannels
 ): IChannelState => {
   return {
     ...state,
@@ -73,9 +73,9 @@ const loadedReducer: IReducer<IChannelState, ILoadedChannels> = (
   };
 };
 
-const cancelLoadReducer: IReducer<IChannelState, ICancelLoadChannels> = (
+const stopLoadingReducer: IReducer<IChannelState, IStopLoadingChannels> = (
   state: IChannelState,
-  action: ILoadChannels
+  action: IStopLoadingChannels
 ): IChannelState => {
   return {
     ...state,
@@ -83,23 +83,23 @@ const cancelLoadReducer: IReducer<IChannelState, ICancelLoadChannels> = (
   };
 };
 
-export const loadReducers: IReducers<IChannelState, ILoadChannels> = {
-  [LOAD_CHANNELS]: loadReducer,
+export const loadReducers: IReducers<IChannelState, IStartLoadingChannels> = {
+  [START_LOADING_CHANNELS]: startLoadingReducer,
   [LOADED_CHANNELS]: loadedReducer,
-  [CANCEL_LOAD_CHANNELS]: cancelLoadReducer
+  [STOP_LOADING_CHANNELS]: stopLoadingReducer
 };
 
-export const loadEpic = (
-  action$: Observable<ILoadChannels | ICancelLoadChannels>
+export const loadingEpic = (
+  action$: Observable<IStartLoadingChannels | IStopLoadingChannels>
 ): Observable<ILoadedChannels> =>
   action$.pipe(
-    ofType(LOAD_CHANNELS),
+    ofType(START_LOADING_CHANNELS),
     mergeMap(action =>
       interval(5000).pipe(
-        mapTo(loadedChannel([])),
-        takeUntil(action$.pipe(ofType(CANCEL_LOAD_CHANNELS)))
+        mapTo(loadedChannels([])),
+        takeUntil(action$.pipe(ofType(STOP_LOADING_CHANNELS)))
       )
     )
   );
 
-export const loadEpics = [loadEpic];
+export const loadEpics = [loadingEpic];

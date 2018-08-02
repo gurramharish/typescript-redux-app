@@ -14,6 +14,7 @@ import { configure } from "../../stores";
 const history = createHistory();
 
 const store = configure(history, {
+  channel: {channels: []},
   notification: { count: 2 },
   theme: { mode: "dark" }
 });

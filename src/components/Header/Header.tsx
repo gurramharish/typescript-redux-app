@@ -117,6 +117,22 @@ export class Header extends Component<
                 Blocks
               </Link>
             </Typography>
+            <Typography
+              className={classes.title}
+              variant="title"
+              color="inherit"
+              noWrap={true}
+            >
+              <Link
+                exact={true}
+                strict={true}
+                className={classes.link}
+                activeClassName={classes.activeLink}
+                to="/channels"
+              >
+                Channels
+              </Link>
+            </Typography>
             <Tooltip title="light mode" enterDelay={300}>
               <SunIcon />
             </Tooltip>

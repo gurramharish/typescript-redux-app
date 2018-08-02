@@ -1,5 +1,5 @@
-import { ILoadChannels } from "./load";
+import { IStartLoadingChannels } from "./load";
 
 export * from "./load";
 
-export type IChannelAction = ILoadChannels;
+export type IChannelAction = IStartLoadingChannels;

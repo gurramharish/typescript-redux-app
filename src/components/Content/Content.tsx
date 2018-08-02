@@ -9,8 +9,9 @@ import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 import Switch from "../../containers/Switch";
 
 import Blocks from "../../pages/Blocks";
-import Channels from "../../pages/Channels";
 import Dashboard from "../../pages/Dashboard";
+
+import Channels from "../../containers/Channels";
 
 export interface IContentStyles {
   root: React.CSSProperties;
