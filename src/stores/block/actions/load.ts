@@ -97,7 +97,7 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_BLOCKS),
     switchMap(action =>
-      timer(1000).pipe(
+      timer(3000).pipe(
         mapTo(loadedBlocks(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_BLOCKS)))
       )
