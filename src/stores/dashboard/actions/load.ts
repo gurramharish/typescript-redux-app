@@ -1,5 +1,6 @@
-import { interval, Observable, of } from "rxjs";
+import { Observable, of } from "rxjs";
 import {
+  delay,
   mapTo,
   merge,
   mergeMap,
@@ -109,8 +110,8 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_DASHBOARD),
     mergeMap(() =>
-      interval(10)
-        .pipe(
+    of(0).pipe(
+      delay(1000),
           merge(
             of(startLoadingChannels()),
             of(startLoadingBlocks()),

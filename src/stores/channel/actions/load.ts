@@ -1,5 +1,5 @@
-import { interval, Observable } from "rxjs";
-import { mapTo, mergeMap, takeUntil } from "rxjs/operators";
+import { Observable, of } from "rxjs";
+import { delay, mapTo, mergeMap, takeUntil } from "rxjs/operators";
 
 import { ofType } from "redux-observable";
 
@@ -97,7 +97,8 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_CHANNELS),
     mergeMap(action =>
-      interval(1000).pipe(
+      of(0).pipe(
+        delay(1000),
         mapTo(loadedChannels(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_CHANNELS)))
       )
