@@ -10,7 +10,11 @@ import { startLoadingDashboard, stopLoadingDashboard } from "../../stores";
 
 export default connect(
   (state: IStoreState): IDashboardData => ({
-    loading: state.dashboard.loading
+    blocks: state.block.blocks.length,
+    chaincodes: 1,
+    loading: state.dashboard.loading,
+    nodes: 0,
+    transactions: state.transaction.transactions.length
   }),
   (dispatch: Dispatch<IStoreAction>): IDashboardActions =>
     bindActionCreators<IDashboardActions, any>(

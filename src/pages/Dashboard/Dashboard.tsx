@@ -31,6 +31,10 @@ export interface IDashboardStyleProps
 
 export interface IDashboardData {
   loading: boolean;
+  blocks: number;
+  transactions: number;
+  nodes: number;
+  chaincodes: number;
 }
 
 export interface IDashboardActions {
@@ -61,7 +65,7 @@ export class Dashboard extends Component<
     const { expanded } = this.state;
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
-    const { loading } = this.props;
+    const { blocks, chaincodes, loading, nodes, transactions } = this.props;
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>
@@ -71,10 +75,10 @@ export class Dashboard extends Component<
           </Grid>
           <Grid item={true} sm={12}>
             <Card className={classes.statistics} square={true}>
-              <Statistic count={4} label="BLOCKS" />
-              <Statistic count={5} label="TRANSACTIONS" />
-              <Statistic count={0} label="NODES" />
-              <Statistic count={1} label="CHAINCODES" />
+              <Statistic count={blocks} label="BLOCKS" />
+              <Statistic count={transactions} label="TRANSACTIONS" />
+              <Statistic count={nodes} label="NODES" />
+              <Statistic count={chaincodes} label="CHAINCODES" />
             </Card>
           </Grid>
           <Grid item={true} xs={12}>

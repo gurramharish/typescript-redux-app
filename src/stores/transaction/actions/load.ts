@@ -108,7 +108,7 @@ export const loadingEpic = (
   action$.pipe(
     ofType(START_LOADING_TRANSACTIONS),
     switchMap(action =>
-      timer(1000).pipe(
+      timer(2000).pipe(
         mapTo(loadedTransactions(data)),
         takeUntil(action$.pipe(ofType(STOP_LOADING_TRANSACTIONS)))
       )
