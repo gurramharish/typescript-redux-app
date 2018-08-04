@@ -1,12 +1,12 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { INotificationAction } from "./actions";
-import { INotificationState } from "./states";
+import { INotificationAction } from "../actions";
+import { INotificationState } from "../states";
 
-import { addReducers } from "./actions/add";
-import { clearReducers } from "./actions/clear";
-import { incrementReducers } from "./actions/increment";
-import { resetReducers } from "./actions/reset";
+import { addReducers } from "./add";
+import { clearReducers } from "./clear";
+import { incrementReducers } from "./increment";
+import { resetReducers } from "./reset";
 
 const reducers: IReducers<INotificationState, INotificationAction> = {
   ...addReducers,

@@ -1,12 +1,4 @@
-import { IAction, IReducer, IReducers } from "../../types";
-import { IRouterState } from "../states";
-
-import { push, RouterAction } from "react-router-redux";
-
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-
-import { ofType, StateObservable } from "redux-observable";
+import { IAction } from "../../types";
 
 import { namespace } from "../namespace";
 
@@ -25,27 +17,3 @@ export function pushPath(path: string): IPushPath {
     type: PUSH_PATH
   };
 }
-
-const reducer: IReducer<IRouterState, IPushPath> = (
-  state: IRouterState,
-  action: IPushPath
-): IRouterState => {
-  return {
-    ...state
-  };
-};
-
-export const pushPathReducers: IReducers<IRouterState, IPushPath> = {
-  [PUSH_PATH]: reducer
-};
-
-export const pushPathEpic = (
-  action$: Observable<IPushPath>,
-  state$: StateObservable<{ router: IRouterState }>
-): Observable<RouterAction> =>
-  action$.pipe(
-    ofType(PUSH_PATH),
-    map(action => push(action.path))
-  );
-
-export const pushEpics = [pushPathEpic];

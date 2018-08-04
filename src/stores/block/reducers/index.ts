@@ -1,9 +1,9 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { IBlockAction } from "./actions";
-import { IBlockState } from "./states";
+import { IBlockAction } from "../actions";
+import { IBlockState } from "../states";
 
-import { loadReducers } from "./actions/load";
+import { loadReducers } from "./load";
 
 const reducers: IReducers<IBlockState, IBlockAction> = {
   ...loadReducers

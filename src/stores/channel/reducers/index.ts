@@ -1,9 +1,9 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { IChannelAction } from "./actions";
-import { IChannelState } from "./states";
+import { IChannelAction } from "../actions";
+import { IChannelState } from "../states";
 
-import { loadReducers } from "./actions/load";
+import { loadReducers } from "./load";
 
 const reducers: IReducers<IChannelState, IChannelAction> = {
   ...loadReducers

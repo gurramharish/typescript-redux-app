@@ -1,9 +1,9 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { IDashboardAction } from "./actions";
-import { IDashboardState } from "./states";
+import { IDashboardAction } from "../actions";
+import { IDashboardState } from "../states";
 
-import { loadReducers } from "./actions/load";
+import { loadReducers } from "./load";
 
 const reducers: IReducers<IDashboardState, IDashboardAction> = {
   ...loadReducers

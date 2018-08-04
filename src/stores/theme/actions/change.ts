@@ -1,5 +1,4 @@
-import { IAction, IReducer, IReducers } from "../../types";
-import { IThemeState } from "../states";
+import { IAction } from "../../types";
 
 import { namespace } from "../namespace";
 
@@ -18,17 +17,3 @@ export function changeTheme(mode: "light" | "dark"): IChangeTheme {
     type: CHANGE_THEME
   };
 }
-
-const reducer: IReducer<IThemeState, IChangeTheme> = (
-  state: IThemeState,
-  action: IChangeTheme
-): IThemeState => {
-  return {
-    ...state,
-    mode: action.mode
-  };
-};
-
-export const changeReducers: IReducers<IThemeState, IChangeTheme> = {
-  [CHANGE_THEME]: reducer
-};

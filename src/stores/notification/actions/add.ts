@@ -1,5 +1,4 @@
-import { IAction, IReducer, IReducers } from "../../types";
-import { INotificationState } from "../states";
+import { IAction } from "../../types";
 
 import { namespace } from "../namespace";
 
@@ -12,28 +11,9 @@ export interface IAddNotifications extends IAction {
   notifications: number;
 }
 
-export function addNotifications(
-  notifications: number
-): IAddNotifications {
+export function addNotifications(notifications: number): IAddNotifications {
   return {
     notifications,
     type: ADD_NOTIFICATIONS
   };
 }
-
-const reducer: IReducer<INotificationState, IAddNotifications> = (
-  state: INotificationState,
-  action: IAddNotifications
-): INotificationState => {
-  return {
-    ...state,
-    count: state.count + action.notifications
-  };
-};
-
-export const addReducers: IReducers<
-  INotificationState,
-  IAddNotifications
-> = {
-  [ADD_NOTIFICATIONS]: reducer
-};

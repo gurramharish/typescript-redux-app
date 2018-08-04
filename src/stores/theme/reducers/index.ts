@@ -1,12 +1,12 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { IThemeAction } from "./actions";
-import { IThemeState } from "./states";
+import { IThemeAction } from "../actions";
+import { IThemeState } from "../states";
 
-import { changeReducers } from "./actions/change";
+import { changeReducers } from "./change";
 
 const reducers: IReducers<IThemeState, IThemeAction> = {
-  ...changeReducers,
+  ...changeReducers
 };
 
 export function themeReducer(

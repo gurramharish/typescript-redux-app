@@ -1,5 +1,4 @@
-import { IAction, IReducer, IReducers } from "../../types";
-import { INotificationState } from "../states";
+import { IAction } from "../../types";
 
 import { namespace } from "../namespace";
 
@@ -16,20 +15,3 @@ export function clearNotifications(): IClearNotifications {
     type: CLEAR_NOTIFICATIONS
   };
 }
-
-const reducer: IReducer<INotificationState, IClearNotifications> = (
-  state: INotificationState,
-  action: IClearNotifications
-): INotificationState => {
-  return {
-    ...state,
-    count: 0
-  };
-};
-
-export const clearReducers: IReducers<
-  INotificationState,
-  IClearNotifications
-> = {
-  [CLEAR_NOTIFICATIONS]: reducer
-};

@@ -1,14 +1,7 @@
-import { Observable, timer } from "rxjs";
-import { mapTo, switchMap, takeUntil } from "rxjs/operators";
-
-import { ofType } from "redux-observable";
-
-import { IAction, IReducer, IReducers } from "../../types";
-import { IBlock, IBlockState } from "../states";
+import { IAction } from "../../types";
+import { IBlock } from "../states";
 
 import { namespace } from "../namespace";
-
-import { blocks as data } from "../data";
 
 export const START_LOADING_BLOCKS = `${namespace}/START_LOADING_BLOCKS`;
 
@@ -53,55 +46,3 @@ export function stopLoadingBlocks(): IStopLoadingBlocks {
     type: STOP_LOADING_BLOCKS
   };
 }
-
-const startLoadingReducer: IReducer<IBlockState, IStartLoadingBlocks> = (
-  state: IBlockState,
-  action: IStartLoadingBlocks
-): IBlockState => {
-  return {
-    ...state,
-    loading: true
-  };
-};
-
-const loadedReducer: IReducer<IBlockState, ILoadedBlocks> = (
-  state: IBlockState,
-  action: ILoadedBlocks
-): IBlockState => {
-  return {
-    ...state,
-    blocks: action.blocks,
-    loading: false
-  };
-};
-
-const stopLoadingReducer: IReducer<IBlockState, IStopLoadingBlocks> = (
-  state: IBlockState,
-  action: IStopLoadingBlocks
-): IBlockState => {
-  return {
-    ...state,
-    loading: false
-  };
-};
-
-export const loadReducers: IReducers<IBlockState, IStartLoadingBlocks> = {
-  [START_LOADING_BLOCKS]: startLoadingReducer,
-  [LOADED_BLOCKS]: loadedReducer,
-  [STOP_LOADING_BLOCKS]: stopLoadingReducer
-};
-
-export const loadingEpic = (
-  action$: Observable<IStartLoadingBlocks | IStopLoadingBlocks>
-): Observable<ILoadedBlocks> =>
-  action$.pipe(
-    ofType(START_LOADING_BLOCKS),
-    switchMap(action =>
-      timer(3000).pipe(
-        mapTo(loadedBlocks(data)),
-        takeUntil(action$.pipe(ofType(STOP_LOADING_BLOCKS)))
-      )
-    )
-  );
-
-export const loadEpics = [loadingEpic];

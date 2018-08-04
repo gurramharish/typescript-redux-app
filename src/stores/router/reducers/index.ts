@@ -1,14 +1,16 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { IRouterAction } from "./actions";
-import { IRouterState } from "./states";
+import { IRouterAction } from "../actions";
+import { IRouterState } from "../states";
 
 import { routerReducer as routerReducerCore } from "react-router-redux";
 
-import { pushPathReducers } from "./actions/push";
+import { changeReducers } from "./change";
+import { pushPathReducers } from "./push";
 
 const reducers: IReducers<IRouterState, IRouterAction> = {
-  ...pushPathReducers
+  ...pushPathReducers,
+  ...changeReducers
 };
 
 export function routerReducer(

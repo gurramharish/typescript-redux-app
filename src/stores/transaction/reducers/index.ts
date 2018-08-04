@@ -1,9 +1,9 @@
-import { IReducers } from "../types";
+import { IReducers } from "../../types";
 
-import { ITransactionAction } from "./actions";
-import { ITransactionState } from "./states";
+import { ITransactionAction } from "../actions";
+import { ITransactionState } from "../states";
 
-import { loadReducers } from "./actions/load";
+import { loadReducers } from "./load";
 
 const reducers: IReducers<ITransactionState, ITransactionAction> = {
   ...loadReducers

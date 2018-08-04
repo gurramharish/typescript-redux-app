@@ -1,14 +1,7 @@
-import { Observable, timer } from "rxjs";
-import { mapTo, switchMap, takeUntil } from "rxjs/operators";
-
-import { ofType } from "redux-observable";
-
-import { IAction, IReducer, IReducers } from "../../types";
-import { IChannel, IChannelState } from "../states";
+import { IAction } from "../../types";
+import { IChannel } from "../states";
 
 import { namespace } from "../namespace";
-
-import { channels as data } from "../data";
 
 export const START_LOADING_CHANNELS = `${namespace}/START_LOADING_CHANNELS`;
 
@@ -53,55 +46,3 @@ export function stopLoadingChannels(): IStopLoadingChannels {
     type: STOP_LOADING_CHANNELS
   };
 }
-
-const startLoadingReducer: IReducer<IChannelState, IStartLoadingChannels> = (
-  state: IChannelState,
-  action: IStartLoadingChannels
-): IChannelState => {
-  return {
-    ...state,
-    loading: true
-  };
-};
-
-const loadedReducer: IReducer<IChannelState, ILoadedChannels> = (
-  state: IChannelState,
-  action: ILoadedChannels
-): IChannelState => {
-  return {
-    ...state,
-    channels: action.channels,
-    loading: false
-  };
-};
-
-const stopLoadingReducer: IReducer<IChannelState, IStopLoadingChannels> = (
-  state: IChannelState,
-  action: IStopLoadingChannels
-): IChannelState => {
-  return {
-    ...state,
-    loading: false
-  };
-};
-
-export const loadReducers: IReducers<IChannelState, IStartLoadingChannels> = {
-  [START_LOADING_CHANNELS]: startLoadingReducer,
-  [LOADED_CHANNELS]: loadedReducer,
-  [STOP_LOADING_CHANNELS]: stopLoadingReducer
-};
-
-export const loadingEpic = (
-  action$: Observable<IStartLoadingChannels | IStopLoadingChannels>
-): Observable<ILoadedChannels> =>
-  action$.pipe(
-    ofType(START_LOADING_CHANNELS),
-    switchMap(action =>
-      timer(1000).pipe(
-        mapTo(loadedChannels(data)),
-        takeUntil(action$.pipe(ofType(STOP_LOADING_CHANNELS)))
-      )
-    )
-  );
-
-export const loadEpics = [loadingEpic];
