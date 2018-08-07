@@ -1,0 +1,30 @@
+import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+
+import Transactions from "../../components/Transactions";
+import {
+  ITransactionsActions,
+  ITransactionsData
+} from "../../components/Transactions";
+
+import { IStoreAction, IStoreState } from "../../../../stores";
+
+import {
+  startLoadingTransactions,
+  stopLoadingTransactions
+} from "../../../../stores/transaction";
+
+export default connect(
+  (state: IStoreState): ITransactionsData => ({
+    loading: state.transaction.loading,
+    transactions: state.transaction.transactions
+  }),
+  (dispatch: Dispatch<IStoreAction>): ITransactionsActions =>
+    bindActionCreators<ITransactionsActions, any>(
+      {
+        startLoadingTransactions,
+        stopLoadingTransactions
+      } as ITransactionsActions,
+      dispatch
+    )
+)(Transactions);
