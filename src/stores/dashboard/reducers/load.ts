@@ -2,13 +2,13 @@ import { IReducer, IReducers } from "../../types";
 import { IDashboardState } from "../states";
 
 import {
-  ILoadedDashboard,
+  IDoneLoadingDashboard,
   IStartLoadingDashboard,
   IStopLoadingDashboard
 } from "../actions/load";
 
 import {
-  LOADED_DASHBOARD,
+  DONE_LOADING_DASHBOARD,
   START_LOADING_DASHBOARD,
   STOP_LOADING_DASHBOARD
 } from "../actions/load";
@@ -23,9 +23,9 @@ const startLoadingReducer: IReducer<IDashboardState, IStartLoadingDashboard> = (
   };
 };
 
-const loadedReducer: IReducer<IDashboardState, ILoadedDashboard> = (
+const loadedReducer: IReducer<IDashboardState, IDoneLoadingDashboard> = (
   state: IDashboardState,
-  action: ILoadedDashboard
+  action: IDoneLoadingDashboard
 ): IDashboardState => {
   return {
     ...state,
@@ -48,6 +48,6 @@ export const loadReducers: IReducers<
   IStartLoadingDashboard
 > = {
   [START_LOADING_DASHBOARD]: startLoadingReducer,
-  [LOADED_DASHBOARD]: loadedReducer,
+  [DONE_LOADING_DASHBOARD]: loadedReducer,
   [STOP_LOADING_DASHBOARD]: stopLoadingReducer
 };

@@ -10,7 +10,12 @@ const reducers: IReducers<IChannelState, IChannelAction> = {
 };
 
 export function channelReducer(
-  state: IChannelState = { channels: [], loading: false },
+  state: IChannelState = {
+    channels: [],
+    error: null,
+    loaded: false,
+    loading: false
+  },
   action: IChannelAction
 ): IChannelState {
   const reducer = reducers[action.type];

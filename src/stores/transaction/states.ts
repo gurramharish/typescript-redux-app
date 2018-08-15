@@ -41,4 +41,6 @@ export interface ITransaction {
 export interface ITransactionState {
   transactions: ITransaction[];
   loading: boolean;
+  error: string | null;
+  loaded: boolean;
 }

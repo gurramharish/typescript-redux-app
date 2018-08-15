@@ -1,5 +1,6 @@
 import {
-  ILoadedTransactions,
+  IDoneLoadingTransactions,
+  IErrorLoadingTransactions,
   IStartLoadingTransactions,
   IStopLoadingTransactions
 } from "./load";
@@ -7,18 +8,21 @@ import {
 export { startLoadingTransactions, stopLoadingTransactions } from "./load";
 
 export {
-  LOADED_TRANSACTIONS,
+  DONE_LOADING_TRANSACTIONS,
+  ERROR_LOADING_TRANSACTIONS,
   START_LOADING_TRANSACTIONS,
   STOP_LOADING_TRANSACTIONS
 } from "./load";
 
 export {
-  ILoadedTransactions,
+  IDoneLoadingTransactions,
+  IErrorLoadingTransactions,
   IStartLoadingTransactions,
   IStopLoadingTransactions
 };
 
 export type ITransactionAction =
   | IStartLoadingTransactions
-  | ILoadedTransactions
-  | IStopLoadingTransactions;
+  | IDoneLoadingTransactions
+  | IStopLoadingTransactions
+  | IErrorLoadingTransactions;

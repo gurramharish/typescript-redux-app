@@ -11,4 +11,6 @@ export interface IChannel {
 export interface IChannelState {
   channels: IChannel[];
   loading: boolean;
+  error: string | null;
+  loaded: boolean;
 }

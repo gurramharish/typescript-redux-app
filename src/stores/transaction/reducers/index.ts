@@ -10,7 +10,12 @@ const reducers: IReducers<ITransactionState, ITransactionAction> = {
 };
 
 export function transactionReducer(
-  state: ITransactionState = { transactions: [], loading: false },
+  state: ITransactionState = {
+    error: null,
+    loaded: false,
+    loading: false,
+    transactions: []
+  },
   action: ITransactionAction
 ): ITransactionState {
   const reducer = reducers[action.type];

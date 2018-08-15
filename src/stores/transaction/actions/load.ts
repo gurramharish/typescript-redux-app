@@ -5,9 +5,11 @@ import { namespace } from "../namespace";
 
 export const START_LOADING_TRANSACTIONS = `${namespace}/START_LOADING_TRANSACTIONS`;
 
-export const LOADED_TRANSACTIONS = `${namespace}/LOADED_TRANSACTIONS`;
+export const DONE_LOADING_TRANSACTIONS = `${namespace}/DONE_LOADING_TRANSACTIONS`;
 
 export const STOP_LOADING_TRANSACTIONS = `${namespace}/STOP_LOADING_TRANSACTIONS`;
+
+export const ERROR_LOADING_TRANSACTIONS = `${namespace}/ERROR_LOADING_TRANSACTIONS`;
 
 export type StartLoadingTransactions = typeof START_LOADING_TRANSACTIONS;
 
@@ -21,19 +23,19 @@ export function startLoadingTransactions(): IStartLoadingTransactions {
   };
 }
 
-export type LoadedTransactions = typeof LOADED_TRANSACTIONS;
+export type DoneLoadingTransactions = typeof DONE_LOADING_TRANSACTIONS;
 
-export interface ILoadedTransactions extends IAction {
-  type: StartLoadingTransactions;
+export interface IDoneLoadingTransactions extends IAction {
+  type: DoneLoadingTransactions;
   transactions: ITransaction[];
 }
 
-export function loadedTransactions(
+export function doneLoadingTransactions(
   transactions: ITransaction[]
-): ILoadedTransactions {
+): IDoneLoadingTransactions {
   return {
     transactions,
-    type: LOADED_TRANSACTIONS
+    type: DONE_LOADING_TRANSACTIONS
   };
 }
 
@@ -46,5 +48,21 @@ export interface IStopLoadingTransactions extends IAction {
 export function stopLoadingTransactions(): IStopLoadingTransactions {
   return {
     type: STOP_LOADING_TRANSACTIONS
+  };
+}
+
+export type ErrorLoadingTransactions = typeof ERROR_LOADING_TRANSACTIONS;
+
+export interface IErrorLoadingTransactions extends IAction {
+  error: string;
+  type: ErrorLoadingTransactions;
+}
+
+export function errorLoadingTransactions(
+  error: string
+): IErrorLoadingTransactions {
+  return {
+    error,
+    type: ERROR_LOADING_TRANSACTIONS
   };
 }

@@ -2,13 +2,15 @@ import { IReducer, IReducers } from "../../types";
 import { IChannelState } from "../states";
 
 import {
-  ILoadedChannels,
+  IDoneLoadingChannels,
+  IErrorLoadingChannels,
   IStartLoadingChannels,
   IStopLoadingChannels
 } from "../actions/load";
 
 import {
-  LOADED_CHANNELS,
+  DONE_LOADING_CHANNELS,
+  ERROR_LOADING_CHANNELS,
   START_LOADING_CHANNELS,
   STOP_LOADING_CHANNELS
 } from "../actions/load";
@@ -19,17 +21,19 @@ const startLoadingReducer: IReducer<IChannelState, IStartLoadingChannels> = (
 ): IChannelState => {
   return {
     ...state,
+    error: null,
     loading: true
   };
 };
 
-const loadedReducer: IReducer<IChannelState, ILoadedChannels> = (
+const doneLoadingReducer: IReducer<IChannelState, IDoneLoadingChannels> = (
   state: IChannelState,
-  action: ILoadedChannels
+  action: IDoneLoadingChannels
 ): IChannelState => {
   return {
     ...state,
     channels: action.channels,
+    loaded: true,
     loading: false
   };
 };
@@ -44,8 +48,20 @@ const stopLoadingReducer: IReducer<IChannelState, IStopLoadingChannels> = (
   };
 };
 
+const errorLoadingReducer: IReducer<IChannelState, IErrorLoadingChannels> = (
+  state: IChannelState,
+  action: IErrorLoadingChannels
+): IChannelState => {
+  return {
+    ...state,
+    error: action.error,
+    loading: false
+  };
+};
+
 export const loadReducers: IReducers<IChannelState, IStartLoadingChannels> = {
   [START_LOADING_CHANNELS]: startLoadingReducer,
-  [LOADED_CHANNELS]: loadedReducer,
-  [STOP_LOADING_CHANNELS]: stopLoadingReducer
+  [DONE_LOADING_CHANNELS]: doneLoadingReducer,
+  [STOP_LOADING_CHANNELS]: stopLoadingReducer,
+  [ERROR_LOADING_CHANNELS]: errorLoadingReducer
 };

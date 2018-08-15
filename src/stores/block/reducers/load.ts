@@ -2,13 +2,15 @@ import { IReducer, IReducers } from "../../types";
 import { IBlockState } from "../states";
 
 import {
-  ILoadedBlocks,
+  IDoneLoadingBlocks,
+  IErrorLoadingBlocks,
   IStartLoadingBlocks,
   IStopLoadingBlocks
 } from "../actions/load";
 
 import {
-  LOADED_BLOCKS,
+  DONE_LOADING_BLOCKS,
+  ERROR_LOADING_BLOCKS,
   START_LOADING_BLOCKS,
   STOP_LOADING_BLOCKS
 } from "../actions/load";
@@ -19,17 +21,19 @@ const startLoadingReducer: IReducer<IBlockState, IStartLoadingBlocks> = (
 ): IBlockState => {
   return {
     ...state,
+    error: null,
     loading: true
   };
 };
 
-const loadedReducer: IReducer<IBlockState, ILoadedBlocks> = (
+const doneLoadingReducer: IReducer<IBlockState, IDoneLoadingBlocks> = (
   state: IBlockState,
-  action: ILoadedBlocks
+  action: IDoneLoadingBlocks
 ): IBlockState => {
   return {
     ...state,
     blocks: action.blocks,
+    loaded: true,
     loading: false
   };
 };
@@ -44,8 +48,20 @@ const stopLoadingReducer: IReducer<IBlockState, IStopLoadingBlocks> = (
   };
 };
 
+const errorLoadingReducer: IReducer<IBlockState, IErrorLoadingBlocks> = (
+  state: IBlockState,
+  action: IErrorLoadingBlocks
+): IBlockState => {
+  return {
+    ...state,
+    error: action.error,
+    loading: false
+  };
+};
+
 export const loadReducers: IReducers<IBlockState, IStartLoadingBlocks> = {
   [START_LOADING_BLOCKS]: startLoadingReducer,
-  [LOADED_BLOCKS]: loadedReducer,
-  [STOP_LOADING_BLOCKS]: stopLoadingReducer
+  [DONE_LOADING_BLOCKS]: doneLoadingReducer,
+  [STOP_LOADING_BLOCKS]: stopLoadingReducer,
+  [ERROR_LOADING_BLOCKS]: errorLoadingReducer
 };

@@ -5,9 +5,11 @@ import { namespace } from "../namespace";
 
 export const START_LOADING_BLOCKS = `${namespace}/START_LOADING_BLOCKS`;
 
-export const LOADED_BLOCKS = `${namespace}/LOADED_BLOCKS`;
+export const DONE_LOADING_BLOCKS = `${namespace}/DONE_LOADING_BLOCKS`;
 
 export const STOP_LOADING_BLOCKS = `${namespace}/STOP_LOADING_BLOCKS`;
+
+export const ERROR_LOADING_BLOCKS = `${namespace}/ERROR_LOADING_BLOCKS`;
 
 export type StartLoadingBlocks = typeof START_LOADING_BLOCKS;
 
@@ -21,17 +23,17 @@ export function startLoadingBlocks(): IStartLoadingBlocks {
   };
 }
 
-export type LoadedBlocks = typeof LOADED_BLOCKS;
+export type DoneLoadingBlocks = typeof DONE_LOADING_BLOCKS;
 
-export interface ILoadedBlocks extends IAction {
+export interface IDoneLoadingBlocks extends IAction {
   type: StartLoadingBlocks;
   blocks: IBlock[];
 }
 
-export function loadedBlocks(blocks: IBlock[]): ILoadedBlocks {
+export function doneLoadingBlocks(blocks: IBlock[]): IDoneLoadingBlocks {
   return {
     blocks,
-    type: LOADED_BLOCKS
+    type: DONE_LOADING_BLOCKS
   };
 }
 
@@ -44,5 +46,19 @@ export interface IStopLoadingBlocks extends IAction {
 export function stopLoadingBlocks(): IStopLoadingBlocks {
   return {
     type: STOP_LOADING_BLOCKS
+  };
+}
+
+export type ErrorLoadingBlocks = typeof ERROR_LOADING_BLOCKS;
+
+export interface IErrorLoadingBlocks extends IAction {
+  error: string;
+  type: ErrorLoadingBlocks;
+}
+
+export function errorLoadingBlocks(error: string): IErrorLoadingBlocks {
+  return {
+    error,
+    type: ERROR_LOADING_BLOCKS
   };
 }

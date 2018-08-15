@@ -5,30 +5,30 @@ import { ofType } from "redux-observable";
 
 import { IBlockAction } from "../../block/actions";
 import { startLoadingBlocks, stopLoadingBlocks } from "../../block/actions";
-import { LOADED_BLOCKS } from "../../block/actions";
+import { DONE_LOADING_BLOCKS } from "../../block/actions";
 
 import { IChannelAction } from "../../channel/actions";
 import {
   startLoadingChannels,
   stopLoadingChannels
 } from "../../channel/actions";
-import { LOADED_CHANNELS } from "../../channel/actions";
+import { DONE_LOADING_CHANNELS } from "../../channel/actions";
 
 import { ITransactionAction } from "../../transaction/actions";
 import {
   startLoadingTransactions,
   stopLoadingTransactions
 } from "../../transaction/actions";
-import { LOADED_TRANSACTIONS } from "../../transaction/actions";
+import { DONE_LOADING_TRANSACTIONS } from "../../transaction/actions";
 
 import {
-  ILoadedDashboard,
+  IDoneLoadingDashboard,
   IStartLoadingDashboard,
   IStopLoadingDashboard
 } from "../actions/load";
 
 import {
-  loadedDashboard,
+  doneLoadingDashboard,
   START_LOADING_DASHBOARD,
   STOP_LOADING_DASHBOARD
 } from "../actions/load";
@@ -36,7 +36,7 @@ import {
 export const startLoadingEpic = (
   action$: Observable<IStartLoadingDashboard | IStopLoadingDashboard>
 ): Observable<
-  IBlockAction | IChannelAction | ITransactionAction | ILoadedDashboard
+  IBlockAction | IChannelAction | ITransactionAction | IDoneLoadingDashboard
 > =>
   action$.pipe(
     ofType(START_LOADING_DASHBOARD),
@@ -49,18 +49,18 @@ export const startLoadingEpic = (
         ),
         zip(
           action$.pipe(
-            ofType(LOADED_CHANNELS),
+            ofType(DONE_LOADING_CHANNELS),
             take(1)
           ),
           action$.pipe(
-            ofType(LOADED_BLOCKS),
+            ofType(DONE_LOADING_BLOCKS),
             take(1)
           ),
           action$.pipe(
-            ofType(LOADED_TRANSACTIONS),
+            ofType(DONE_LOADING_TRANSACTIONS),
             take(1)
           )
-        ).pipe(mapTo(loadedDashboard()))
+        ).pipe(mapTo(doneLoadingDashboard()))
       ).pipe(takeUntil(action$.pipe(ofType(STOP_LOADING_DASHBOARD))))
     )
   );

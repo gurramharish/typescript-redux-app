@@ -2,13 +2,15 @@ import { IReducer, IReducers } from "../../types";
 import { ITransactionState } from "../states";
 
 import {
-  ILoadedTransactions,
+  IDoneLoadingTransactions,
+  IErrorLoadingTransactions,
   IStartLoadingTransactions,
   IStopLoadingTransactions
 } from "../actions/load";
 
 import {
-  LOADED_TRANSACTIONS,
+  DONE_LOADING_TRANSACTIONS,
+  ERROR_LOADING_TRANSACTIONS,
   START_LOADING_TRANSACTIONS,
   STOP_LOADING_TRANSACTIONS
 } from "../actions/load";
@@ -22,16 +24,21 @@ const startLoadingReducer: IReducer<
 ): ITransactionState => {
   return {
     ...state,
+    error: null,
     loading: true
   };
 };
 
-const loadedReducer: IReducer<ITransactionState, ILoadedTransactions> = (
+const doneLoadingReducer: IReducer<
+  ITransactionState,
+  IDoneLoadingTransactions
+> = (
   state: ITransactionState,
-  action: ILoadedTransactions
+  action: IDoneLoadingTransactions
 ): ITransactionState => {
   return {
     ...state,
+    loaded: true,
     loading: false,
     transactions: action.transactions
   };
@@ -50,11 +57,26 @@ const stopLoadingReducer: IReducer<
   };
 };
 
+const errorLoadingReducer: IReducer<
+  ITransactionState,
+  IErrorLoadingTransactions
+> = (
+  state: ITransactionState,
+  action: IErrorLoadingTransactions
+): ITransactionState => {
+  return {
+    ...state,
+    error: action.error,
+    loading: false
+  };
+};
+
 export const loadReducers: IReducers<
   ITransactionState,
   IStartLoadingTransactions
 > = {
   [START_LOADING_TRANSACTIONS]: startLoadingReducer,
-  [LOADED_TRANSACTIONS]: loadedReducer,
-  [STOP_LOADING_TRANSACTIONS]: stopLoadingReducer
+  [DONE_LOADING_TRANSACTIONS]: doneLoadingReducer,
+  [STOP_LOADING_TRANSACTIONS]: stopLoadingReducer,
+  [ERROR_LOADING_TRANSACTIONS]: errorLoadingReducer
 };

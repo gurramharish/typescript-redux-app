@@ -10,7 +10,12 @@ const reducers: IReducers<IBlockState, IBlockAction> = {
 };
 
 export function blockReducer(
-  state: IBlockState = { blocks: [], loading: false },
+  state: IBlockState = {
+    blocks: [],
+    error: null,
+    loaded: false,
+    loading: false
+  },
   action: IBlockAction
 ): IBlockState {
   const reducer = reducers[action.type];

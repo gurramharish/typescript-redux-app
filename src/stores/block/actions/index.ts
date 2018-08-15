@@ -1,16 +1,28 @@
-import { ILoadedBlocks, IStartLoadingBlocks, IStopLoadingBlocks } from "./load";
+import {
+  IDoneLoadingBlocks,
+  IErrorLoadingBlocks,
+  IStartLoadingBlocks,
+  IStopLoadingBlocks
+} from "./load";
 
 export { startLoadingBlocks, stopLoadingBlocks } from "./load";
 
 export {
-  LOADED_BLOCKS,
+  DONE_LOADING_BLOCKS,
+  ERROR_LOADING_BLOCKS,
   START_LOADING_BLOCKS,
   STOP_LOADING_BLOCKS
 } from "./load";
 
-export { ILoadedBlocks, IStartLoadingBlocks, IStopLoadingBlocks };
+export {
+  IDoneLoadingBlocks,
+  IErrorLoadingBlocks,
+  IStartLoadingBlocks,
+  IStopLoadingBlocks
+};
 
 export type IBlockAction =
   | IStartLoadingBlocks
-  | ILoadedBlocks
-  | IStopLoadingBlocks;
+  | IDoneLoadingBlocks
+  | IStopLoadingBlocks
+  | IErrorLoadingBlocks;

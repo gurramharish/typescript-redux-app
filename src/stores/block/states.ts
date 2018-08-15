@@ -11,4 +11,6 @@ export interface IBlock {
 export interface IBlockState {
   blocks: IBlock[];
   loading: boolean;
+  error: string | null;
+  loaded: boolean;
 }
