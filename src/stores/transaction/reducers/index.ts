@@ -11,10 +11,10 @@ const reducers: IReducers<ITransactionState, ITransactionAction> = {
 
 export function transactionReducer(
   state: ITransactionState = {
+    entities: [],
     error: null,
     loaded: false,
-    loading: false,
-    transactions: []
+    loading: false
   },
   action: ITransactionAction
 ): ITransactionState {

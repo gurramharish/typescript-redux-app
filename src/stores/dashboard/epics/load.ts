@@ -4,74 +4,57 @@ import { mapTo, switchMap, take, takeUntil } from "rxjs/operators";
 import { ofType } from "redux-observable";
 
 import { IBlockAction } from "../../block/actions";
-import { startLoadingBlocks, stopLoadingBlocks } from "../../block/actions";
-import { DONE_LOADING_BLOCKS } from "../../block/actions";
+import { blockActions } from "../../block/actions";
 
 import { IChannelAction } from "../../channel/actions";
-import {
-  startLoadingChannels,
-  stopLoadingChannels
-} from "../../channel/actions";
-import { DONE_LOADING_CHANNELS } from "../../channel/actions";
+import { channelActions } from "../../channel/actions";
 
 import { ITransactionAction } from "../../transaction/actions";
-import {
-  startLoadingTransactions,
-  stopLoadingTransactions
-} from "../../transaction/actions";
-import { DONE_LOADING_TRANSACTIONS } from "../../transaction/actions";
+import { transactionActions } from "../../transaction/actions";
 
-import {
-  IDoneLoadingDashboard,
-  IStartLoadingDashboard,
-  IStopLoadingDashboard
-} from "../actions/load";
+import { IDashboardAction } from "../actions";
 
-import {
-  doneLoadingDashboard,
-  START_LOADING_DASHBOARD,
-  STOP_LOADING_DASHBOARD
-} from "../actions/load";
+import { loadActions } from "../actions/load";
 
 export const startLoadingEpic = (
-  action$: Observable<IStartLoadingDashboard | IStopLoadingDashboard>
+  action$: Observable<IDashboardAction>
 ): Observable<
-  IBlockAction | IChannelAction | ITransactionAction | IDoneLoadingDashboard
+  IBlockAction | IChannelAction | ITransactionAction | IDashboardAction
 > =>
   action$.pipe(
-    ofType(START_LOADING_DASHBOARD),
+    ofType(loadActions.START),
     switchMap(() =>
       concat(
         of(
-          startLoadingChannels(),
-          startLoadingBlocks(),
-          startLoadingTransactions()
+          channelActions.start(),
+          blockActions.start(),
+          transactionActions.start()
         ),
         zip(
           action$.pipe(
-            ofType(DONE_LOADING_CHANNELS),
+            ofType(channelActions.DONE),
             take(1)
           ),
           action$.pipe(
-            ofType(DONE_LOADING_BLOCKS),
+            ofType(blockActions.DONE),
             take(1)
           ),
           action$.pipe(
-            ofType(DONE_LOADING_TRANSACTIONS),
+            ofType(transactionActions.DONE),
             take(1)
           )
-        ).pipe(mapTo(doneLoadingDashboard()))
-      ).pipe(takeUntil(action$.pipe(ofType(STOP_LOADING_DASHBOARD))))
+        ).pipe(mapTo(loadActions.done([])))
+      ).pipe(takeUntil(action$.pipe(ofType(loadActions.STOP))))
     )
   );
 
 export const stopLoadingEpic = (
-  action$: Observable<IStopLoadingDashboard>
+  action$: Observable<IDashboardAction>
 ): Observable<IBlockAction | IChannelAction> =>
   action$.pipe(
-    ofType(STOP_LOADING_DASHBOARD),
+    ofType(loadActions.STOP),
     switchMap(() =>
-      of(stopLoadingChannels(), stopLoadingBlocks(), stopLoadingTransactions())
+      of(channelActions.stop(), blockActions.stop(), transactionActions.stop())
     )
   );
 

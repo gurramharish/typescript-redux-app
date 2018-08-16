@@ -1,36 +1,15 @@
-import { Observable, of, timer } from "rxjs";
-import { catchError, mapTo, switchMap, takeUntil } from "rxjs/operators";
+import { timer } from "rxjs";
+import { mapTo } from "rxjs/operators";
 
-import { ofType } from "redux-observable";
+import { epics } from "../../entity";
 
-import {
-  IDoneLoadingChannels,
-  IErrorLoadingChannels,
-  IStartLoadingChannels,
-  IStopLoadingChannels
-} from "../actions/load";
+import { IChannel } from "../states";
 
-import {
-  doneLoadingChannels,
-  errorLoadingChannels,
-  START_LOADING_CHANNELS,
-  STOP_LOADING_CHANNELS
-} from "../actions/load";
+import { loadActions } from "../actions/load";
 
 import { channels as data } from "../data";
 
-export const loadingEpic = (
-  action$: Observable<IStartLoadingChannels | IStopLoadingChannels>
-): Observable<IDoneLoadingChannels | IErrorLoadingChannels> =>
-  action$.pipe(
-    ofType(START_LOADING_CHANNELS),
-    switchMap(action =>
-      timer(1000).pipe(
-        mapTo(doneLoadingChannels(data)),
-        takeUntil(action$.pipe(ofType(STOP_LOADING_CHANNELS))),
-        catchError(error => of(errorLoadingChannels(error)))
-      )
-    )
-  );
-
-export const loadEpics = [loadingEpic];
+export const loadEpics = epics<IChannel>(
+  loadActions,
+  timer(1000).pipe(mapTo(data))
+);

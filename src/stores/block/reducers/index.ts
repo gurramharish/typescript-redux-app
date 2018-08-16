@@ -11,7 +11,7 @@ const reducers: IReducers<IBlockState, IBlockAction> = {
 
 export function blockReducer(
   state: IBlockState = {
-    blocks: [],
+    entities: [],
     error: null,
     loaded: false,
     loading: false

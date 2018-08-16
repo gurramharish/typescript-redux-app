@@ -11,7 +11,7 @@ const reducers: IReducers<IChannelState, IChannelAction> = {
 
 export function channelReducer(
   state: IChannelState = {
-    channels: [],
+    entities: [],
     error: null,
     loaded: false,
     loading: false

@@ -9,21 +9,18 @@ import {
 
 import { IStoreAction, IStoreState } from "../../../../stores";
 
-import {
-  startLoadingTransactions,
-  stopLoadingTransactions
-} from "../../../../stores/transaction";
+import { transactionActions } from "../../../../stores/transaction";
 
 export default connect(
   (state: IStoreState): ITransactionsData => ({
     loading: state.transaction.loading,
-    transactions: state.transaction.transactions
+    transactions: state.transaction.entities
   }),
   (dispatch: Dispatch<IStoreAction>): ITransactionsActions =>
     bindActionCreators<ITransactionsActions, any>(
       {
-        startLoadingTransactions,
-        stopLoadingTransactions
+        startLoadingTransactions: () => transactionActions.start(),
+        stopLoadingTransactions: () => transactionActions.stop()
       } as ITransactionsActions,
       dispatch
     )

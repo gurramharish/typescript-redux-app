@@ -1,3 +1,5 @@
+import { IEntity, IEntityState } from "../entity";
+
 export interface IReadSetVersion {
   block: string;
   transaction: string;
@@ -24,7 +26,7 @@ export interface IWriteSet {
   set: IWriteSetItem[];
 }
 
-export interface ITransaction {
+export interface ITransaction extends IEntity {
   chaincode: string;
   channel: string;
   created: string;
@@ -38,9 +40,5 @@ export interface ITransaction {
   writeSets: IWriteSet[];
 }
 
-export interface ITransactionState {
-  transactions: ITransaction[];
-  loading: boolean;
-  error: string | null;
-  loaded: boolean;
+export interface ITransactionState extends IEntityState<ITransaction> {
 }

@@ -30,7 +30,7 @@ export interface IBlocksStyles {
 export interface IBlocksStyleProps extends WithStyles<keyof IBlocksStyles> {}
 
 export interface IBlocksData {
-  blocks: IBlock[];
+  entities: IBlock[];
   loading: boolean;
 }
 
@@ -57,7 +57,7 @@ export class Blocks extends Component<
 
   public render(): ReactNode {
     const { className, classes, style } = this.props;
-    const { blocks } = this.props;
+    const { entities } = this.props;
     const root: string = classNames(classes!.root, className);
     const { body, head } = classes;
     return (
@@ -87,22 +87,24 @@ export class Blocks extends Component<
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {blocks.map(block => (
-                    <TableRow className={classes.row} key={block.id}>
+                  {entities.map(entity => (
+                    <TableRow className={classes.row} key={entity.id}>
                       <TableCell classes={{ body }} component="th" scope="row">
-                        {block.id}
+                        {entity.id}
                       </TableCell>
-                      <TableCell classes={{ body }}>{block.channel}</TableCell>
+                      <TableCell classes={{ body }}>{entity.channel}</TableCell>
                       <TableCell classes={{ body }} numeric={true}>
-                        {block.transactions.length}
-                      </TableCell>
-                      <TableCell classes={{ body }}>{block.dataHash}</TableCell>
-                      <TableCell classes={{ body }}>{block.hash}</TableCell>
-                      <TableCell classes={{ body }}>
-                        {block.previousHash}
+                        {entity.transactions.length}
                       </TableCell>
                       <TableCell classes={{ body }}>
-                        {block.transactions}
+                        {entity.dataHash}
+                      </TableCell>
+                      <TableCell classes={{ body }}>{entity.hash}</TableCell>
+                      <TableCell classes={{ body }}>
+                        {entity.previousHash}
+                      </TableCell>
+                      <TableCell classes={{ body }}>
+                        {entity.transactions}
                       </TableCell>
                     </TableRow>
                   ))}

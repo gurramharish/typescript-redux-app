@@ -6,21 +6,18 @@ import { IBlocksActions, IBlocksData } from "../../components/Blocks";
 
 import { IStoreAction, IStoreState } from "../../../../stores";
 
-import {
-  startLoadingBlocks,
-  stopLoadingBlocks
-} from "../../../../stores/block";
+import { blockActions } from "../../../../stores/block";
 
 export default connect(
   (state: IStoreState): IBlocksData => ({
-    blocks: state.block.blocks,
+    entities: state.block.entities,
     loading: state.block.loading
   }),
   (dispatch: Dispatch<IStoreAction>): IBlocksActions =>
     bindActionCreators<IBlocksActions, any>(
       {
-        startLoadingBlocks,
-        stopLoadingBlocks
+        startLoadingBlocks: () => blockActions.start(),
+        stopLoadingBlocks: () => blockActions.stop()
       } as IBlocksActions,
       dispatch
     )

@@ -1,4 +1,6 @@
-export interface IBlock {
+import { IEntity, IEntityState } from "../entity";
+
+export interface IBlock extends IEntity {
   channel: string;
   created: string;
   dataHash: string;
@@ -8,9 +10,5 @@ export interface IBlock {
   transactions: string[];
 }
 
-export interface IBlockState {
-  blocks: IBlock[];
-  loading: boolean;
-  error: string | null;
-  loaded: boolean;
+export interface IBlockState extends IEntityState<IBlock> {
 }

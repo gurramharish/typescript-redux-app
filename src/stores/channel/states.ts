@@ -1,4 +1,6 @@
-export interface IChannel {
+import { IEntity, IEntityState } from "../entity";
+
+export interface IChannel extends IEntity {
   id: number;
   name: string;
   blocks: number;
@@ -8,9 +10,5 @@ export interface IChannel {
   hash: string;
 }
 
-export interface IChannelState {
-  channels: IChannel[];
-  loading: boolean;
-  error: string | null;
-  loaded: boolean;
+export interface IChannelState extends IEntityState<IChannel> {
 }
