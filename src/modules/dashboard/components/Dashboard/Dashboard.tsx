@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import classNames from "classnames";
 
@@ -19,6 +19,10 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Clock from "../Clock";
 import Statistic from "../Statistic";
 
+import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
+import Loader from "../../../entity/components/Loader";
+
 export interface IDashboardStyles {
   root: React.CSSProperties;
   heading: React.CSSProperties;
@@ -29,7 +33,7 @@ export interface IDashboardStyles {
 export interface IDashboardStyleProps
   extends WithStyles<keyof IDashboardStyles> {}
 
-export interface IDashboardData {
+export interface IDashboardData extends ILoaderData {
   loading: boolean;
   blocks: number;
   transactions: number;
@@ -37,22 +41,22 @@ export interface IDashboardData {
   chaincodes: number;
 }
 
-export interface IDashboardActions {
-  startLoadingDashboard(): void;
-  stopLoadingDashboard(): void;
-}
+// tslint:disable-next-line:no-empty-interface
+export interface IDashboardActions extends ILoaderActions {}
 
-export interface IDashboardProps extends IDashboardData, IDashboardActions {
+export interface IDashboardProps
+  extends ILoaderProps,
+    IDashboardData,
+    IDashboardActions {
   style?: React.CSSProperties;
   className?: string;
 }
 
-// tslint:disable-next-line:no-empty-interface
-export interface IDashboardStates {
+export interface IDashboardStates extends ILoaderStates {
   expanded: string;
 }
 
-export class Dashboard extends Component<
+export class Dashboard extends Loader<
   IDashboardProps & IDashboardStyleProps,
   IDashboardStates
 > {
@@ -140,14 +144,6 @@ export class Dashboard extends Component<
         </Grid>
       </div>
     );
-  }
-
-  public componentDidMount(): void {
-    this.props.startLoadingDashboard();
-  }
-
-  public componentWillUnmount(): void {
-    this.props.stopLoadingDashboard();
   }
 
   private handleChange = (panel: string) => (

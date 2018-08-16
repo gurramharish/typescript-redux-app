@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import classNames from "classnames";
 
@@ -17,6 +17,10 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { ITransaction } from "../../../../stores/transaction";
 
+import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
+import Loader from "../../../entity/components/Loader";
+
 export interface ITransactionsStyles {
   body: React.CSSProperties;
   head: React.CSSProperties;
@@ -30,27 +34,26 @@ export interface ITransactionsStyles {
 export interface ITransactionsStyleProps
   extends WithStyles<keyof ITransactionsStyles> {}
 
-export interface ITransactionsData {
+export interface ITransactionsData extends ILoaderData {
   transactions: ITransaction[];
   loading: boolean;
 }
 
-export interface ITransactionsActions {
-  startLoadingTransactions(): void;
-  stopLoadingTransactions(): void;
-}
+// tslint:disable-next-line:no-empty-interface
+export interface ITransactionsActions extends ILoaderActions {}
 
 export interface ITransactionsProps
-  extends ITransactionsData,
+  extends ILoaderProps,
+    ITransactionsData,
     ITransactionsActions {
   style?: React.CSSProperties;
   className?: string;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface ITransactionsStates {}
+export interface ITransactionsStates extends ILoaderStates {}
 
-export class Transactions extends Component<
+export class Transactions extends Loader<
   ITransactionsProps & ITransactionsStyleProps,
   ITransactionsStates
 > {
@@ -79,9 +82,7 @@ export class Transactions extends Component<
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>
-                    <TableCell classes={{ head }}>
-                      Id
-                    </TableCell>
+                    <TableCell classes={{ head }}>Id</TableCell>
                     <TableCell classes={{ head }}>Creator</TableCell>
                     <TableCell classes={{ head }}>Channel</TableCell>
                     <TableCell classes={{ head }}>Type</TableCell>
@@ -119,14 +120,6 @@ export class Transactions extends Component<
         </Grid>
       </div>
     );
-  }
-
-  public componentDidMount(): void {
-    this.props.startLoadingTransactions();
-  }
-
-  public componentWillUnmount(): void {
-    this.props.stopLoadingTransactions();
   }
 }
 

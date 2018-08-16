@@ -11,13 +11,14 @@ import { channelActions } from "../../../../stores/channel";
 export default connect(
   (state: IStoreState): IChannelsData => ({
     channels: state.channel.entities,
+    loaded: state.channel.loaded,
     loading: state.channel.loading
   }),
   (dispatch: Dispatch<IStoreAction>): IChannelsActions =>
     bindActionCreators<IChannelsActions, any>(
       {
-        startLoadingChannels: () => channelActions.start(),
-        stopLoadingChannels: () => channelActions.stop()
+        start: () => channelActions.start(),
+        stop: () => channelActions.stop()
       } as IChannelsActions,
       dispatch
     )

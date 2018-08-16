@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import classNames from "classnames";
 
@@ -17,6 +17,10 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { IChannel } from "../../../../stores/channel";
 
+import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
+import Loader from "../../../entity/components/Loader";
+
 export interface IChannelsStyles {
   body: React.CSSProperties;
   head: React.CSSProperties;
@@ -30,25 +34,26 @@ export interface IChannelsStyles {
 export interface IChannelsStyleProps
   extends WithStyles<keyof IChannelsStyles> {}
 
-export interface IChannelsData {
+export interface IChannelsData extends ILoaderData {
   channels: IChannel[];
   loading: boolean;
 }
 
-export interface IChannelsActions {
-  startLoadingChannels(): void;
-  stopLoadingChannels(): void;
-}
+// tslint:disable-next-line:no-empty-interface
+export interface IChannelsActions extends ILoaderActions {}
 
-export interface IChannelsProps extends IChannelsData, IChannelsActions {
+export interface IChannelsProps
+  extends ILoaderProps,
+    IChannelsData,
+    IChannelsActions {
   style?: React.CSSProperties;
   className?: string;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IChannelsStates {}
+export interface IChannelsStates extends ILoaderStates {}
 
-export class Channels extends Component<
+export class Channels extends Loader<
   IChannelsProps & IChannelsStyleProps,
   IChannelsStates
 > {
@@ -114,14 +119,6 @@ export class Channels extends Component<
         </Grid>
       </div>
     );
-  }
-
-  public componentDidMount(): void {
-    this.props.startLoadingChannels();
-  }
-
-  public componentWillUnmount(): void {
-    this.props.stopLoadingChannels();
   }
 }
 

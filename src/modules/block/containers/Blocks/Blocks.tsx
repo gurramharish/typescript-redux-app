@@ -11,13 +11,14 @@ import { blockActions } from "../../../../stores/block";
 export default connect(
   (state: IStoreState): IBlocksData => ({
     entities: state.block.entities,
+    loaded: state.block.loaded,
     loading: state.block.loading
   }),
   (dispatch: Dispatch<IStoreAction>): IBlocksActions =>
     bindActionCreators<IBlocksActions, any>(
       {
-        startLoadingBlocks: () => blockActions.start(),
-        stopLoadingBlocks: () => blockActions.stop()
+        start: () => blockActions.start(),
+        stop: () => blockActions.stop()
       } as IBlocksActions,
       dispatch
     )

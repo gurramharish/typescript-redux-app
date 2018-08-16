@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import classNames from "classnames";
 
@@ -17,6 +17,10 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { IBlock } from "../../../../stores/block";
 
+import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
+import Loader from "../../../entity/components/Loader";
+
 export interface IBlocksStyles {
   body: React.CSSProperties;
   head: React.CSSProperties;
@@ -29,25 +33,26 @@ export interface IBlocksStyles {
 
 export interface IBlocksStyleProps extends WithStyles<keyof IBlocksStyles> {}
 
-export interface IBlocksData {
+export interface IBlocksData extends ILoaderData {
   entities: IBlock[];
   loading: boolean;
 }
 
-export interface IBlocksActions {
-  startLoadingBlocks(): void;
-  stopLoadingBlocks(): void;
-}
+// tslint:disable-next-line:no-empty-interface
+export interface IBlocksActions extends ILoaderActions {}
 
-export interface IBlocksProps extends IBlocksData, IBlocksActions {
+export interface IBlocksProps
+  extends ILoaderProps,
+    IBlocksData,
+    IBlocksActions {
   style?: React.CSSProperties;
   className?: string;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IBlocksStates {}
+export interface IBlocksStates extends ILoaderStates {}
 
-export class Blocks extends Component<
+export class Blocks extends Loader<
   IBlocksProps & IBlocksStyleProps,
   IBlocksStates
 > {
@@ -115,14 +120,6 @@ export class Blocks extends Component<
         </Grid>
       </div>
     );
-  }
-
-  public componentDidMount(): void {
-    this.props.startLoadingBlocks();
-  }
-
-  public componentWillUnmount(): void {
-    this.props.stopLoadingBlocks();
   }
 }
 

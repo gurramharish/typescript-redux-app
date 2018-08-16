@@ -13,14 +13,15 @@ import { transactionActions } from "../../../../stores/transaction";
 
 export default connect(
   (state: IStoreState): ITransactionsData => ({
+    loaded: state.transaction.loaded,
     loading: state.transaction.loading,
     transactions: state.transaction.entities
   }),
   (dispatch: Dispatch<IStoreAction>): ITransactionsActions =>
     bindActionCreators<ITransactionsActions, any>(
       {
-        startLoadingTransactions: () => transactionActions.start(),
-        stopLoadingTransactions: () => transactionActions.stop()
+        start: () => transactionActions.start(),
+        stop: () => transactionActions.stop()
       } as ITransactionsActions,
       dispatch
     )

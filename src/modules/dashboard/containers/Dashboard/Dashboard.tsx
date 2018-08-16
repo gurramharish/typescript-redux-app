@@ -12,6 +12,7 @@ export default connect(
   (state: IStoreState): IDashboardData => ({
     blocks: state.block.entities.length,
     chaincodes: 1,
+    loaded: state.dashboard.loaded,
     loading: state.dashboard.loading,
     nodes: 0,
     transactions: state.transaction.entities.length
@@ -19,8 +20,8 @@ export default connect(
   (dispatch: Dispatch<IStoreAction>): IDashboardActions =>
     bindActionCreators<IDashboardActions, any>(
       {
-        startLoadingDashboard: () => dashboardActions.start(),
-        stopLoadingDashboard: () => dashboardActions.stop()
+        start: () => dashboardActions.start(),
+        stop: () => dashboardActions.stop()
       } as IDashboardActions,
       dispatch
     )
