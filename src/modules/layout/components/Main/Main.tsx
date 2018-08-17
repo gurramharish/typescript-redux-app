@@ -46,10 +46,10 @@ export class Main extends Component<IMainProps & IMainStyleProps, IMainStates> {
 
 export default withStyles<keyof IMainStyles>({
   content: {
-    alignSets: "center",
-    display: "flex",
+    // alignSelf: "center",
+    // display: "flex",
     height: "100%",
-    justifyContent: "center",
+    // justifyContent: "center",
     paddingLeft: 5,
     paddingRight: 5
   },

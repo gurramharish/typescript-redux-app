@@ -1,17 +1,11 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
-import { Route } from "react-router";
 
 import classNames from "classnames";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
-import Switch from "../../containers/Switch";
-
-import Block from "../../../block";
-import Channel from "../../../channel";
-import Dashboard from "../../../dashboard";
-import Transaction from "../../../transaction";
+import Router from "../Router";
 
 export interface IContentStyles {
   root: React.CSSProperties;
@@ -38,24 +32,7 @@ export class Content extends Component<
   public render(): ReactNode {
     const { className, classes, style } = this.props;
     const root: string = classNames(classes!.root, className);
-    return (
-      <div className={root} style={{ ...style }}>
-        <Switch>
-          <Route exact={true} path="/">
-            <Dashboard />
-          </Route>
-          <Route path="/block">
-            <Block />
-          </Route>
-          <Route path="/channel">
-            <Channel />
-          </Route>
-          <Route path="/transaction">
-            <Transaction />
-          </Route>
-        </Switch>
-      </div>
-    );
+    return <Router className={root} style={{ ...style }} />;
   }
 }
 

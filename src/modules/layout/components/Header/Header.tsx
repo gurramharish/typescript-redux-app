@@ -18,10 +18,10 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
-import Link from "../../containers/Link";
+import Link from "../../../common/containers/Link";
 
-import MoonIcon from "../../../common/icons/Moon";
-import SunIcon from "../../../common/icons/Sun";
+import MoonIcon from "../../../common/components/icons/Moon";
+import SunIcon from "../../../common/components/icons/Sun";
 
 export interface IHeaderData {
   mode: "dark" | "light";

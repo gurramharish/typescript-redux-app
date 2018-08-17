@@ -21,6 +21,8 @@ import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
 import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
 import Loader from "../../../entity/components/Loader";
 
+import Link from "../../../common/containers/Link";
+
 export interface IBlocksStyles {
   body: React.CSSProperties;
   head: React.CSSProperties;
@@ -104,7 +106,15 @@ export class Blocks extends Loader<
                       <TableCell classes={{ body }}>
                         {entity.dataHash}
                       </TableCell>
-                      <TableCell classes={{ body }}>{entity.hash}</TableCell>
+                      <TableCell classes={{ body }}>
+                        <Link
+                          exact={true}
+                          strict={true}
+                          to={`/block/${entity.hash}`}
+                        >
+                          {entity.hash}
+                        </Link>
+                      </TableCell>
                       <TableCell classes={{ body }}>
                         {entity.previousHash}
                       </TableCell>

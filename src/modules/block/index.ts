@@ -1,3 +1,3 @@
-import Blocks from "./containers/Blocks";
+import Router from "./components/Router";
 
-export default Blocks;
+export default Router;
