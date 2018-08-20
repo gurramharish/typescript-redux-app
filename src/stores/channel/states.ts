@@ -1,4 +1,4 @@
-import { IEntity, IEntityState } from "../entity";
+import { IEntitiesState, IEntity } from "../entity";
 
 export interface IChannel extends IEntity {
   id: number;
@@ -10,5 +10,5 @@ export interface IChannel extends IEntity {
   hash: string;
 }
 
-export interface IChannelState extends IEntityState<IChannel> {
+export interface IChannelState extends IEntitiesState<IChannel> {
 }

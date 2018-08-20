@@ -15,7 +15,9 @@ export default connect(
   (state: IStoreState): ITransactionsData => ({
     loaded: state.transaction.loaded,
     loading: state.transaction.loading,
-    transactions: state.transaction.entities
+    transactions: state.transaction.entities.map(
+      transaction => transaction.entity
+    )
   }),
   (dispatch: Dispatch): ITransactionsActions =>
     bindActionCreators<ITransactionsActions, any>(

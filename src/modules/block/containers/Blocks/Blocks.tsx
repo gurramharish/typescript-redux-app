@@ -10,7 +10,7 @@ import { blockActions } from "../../../../stores/block";
 
 export default connect(
   (state: IStoreState): IBlocksData => ({
-    entities: state.block.entities,
+    entities: state.block.entities.map(block => block.entity),
     loaded: state.block.loaded,
     loading: state.block.loading
   }),

@@ -9,5 +9,18 @@ export interface IState<E extends IEntity> {
 }
 
 export interface IEntityState<E extends IEntity> extends IState<E> {
-  entities: E[];
+  entity: E;
+}
+
+export interface IEntitiesState<E extends IEntity> extends IState<E> {
+  entities: Array<IEntityState<E>>;
+}
+
+export function asLoaded<E extends IEntity>(entity: E): IEntityState<E> {
+  return {
+    entity,
+    error: null,
+    loaded: true,
+    loading: false
+  };
 }

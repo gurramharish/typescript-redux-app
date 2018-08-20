@@ -1,4 +1,4 @@
-import { IEntity, IEntityState } from "../entity";
+import { IEntitiesState, IEntity } from "../entity";
 
 export interface IBlock extends IEntity {
   channel: string;
@@ -10,5 +10,5 @@ export interface IBlock extends IEntity {
   transactions: string[];
 }
 
-export interface IBlockState extends IEntityState<IBlock> {
+export interface IBlockState extends IEntitiesState<IBlock> {
 }

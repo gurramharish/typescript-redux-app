@@ -1,4 +1,4 @@
-import { IEntity, IEntityState } from "../entity";
+import { IEntitiesState, IEntity } from "../entity";
 
 export interface IReadSetVersion {
   block: string;
@@ -40,5 +40,5 @@ export interface ITransaction extends IEntity {
   writeSets: IWriteSet[];
 }
 
-export interface ITransactionState extends IEntityState<ITransaction> {
+export interface ITransactionState extends IEntitiesState<ITransaction> {
 }

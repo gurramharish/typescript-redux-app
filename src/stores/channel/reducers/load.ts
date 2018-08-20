@@ -1,15 +1,15 @@
 import { IReducers } from "../../types";
 import { IChannel, IChannelState } from "../states";
 
-import { ILoader, reducers } from "../../entity";
+import { IEntityState, ILoader, reducers } from "../../entity";
 
 import { actions } from "../actions/load";
 
 export const loadReducers: IReducers<
   IChannelState,
-  ILoader<IChannel, IChannel[]>
+  ILoader<IChannel, Array<IEntityState<IChannel>>>
 > = reducers<
   IChannel,
-  IChannel[],
+  Array<IEntityState<IChannel>>,
   IChannelState
 >(actions, (state, { data }) => ({ entities: data }));

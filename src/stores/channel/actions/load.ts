@@ -3,6 +3,7 @@ import { IChannel } from "../states";
 import {
   getActions,
   IActions,
+  IEntityState,
   ILoadAction,
   ILoader,
   LoadAction
@@ -12,8 +13,8 @@ import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: ILoadAction<IChannel, IChannel[]> = new LoadAction<IChannel, IChannel[]>(
+export const loadActions: ILoadAction<IChannel, Array<IEntityState<IChannel>>> = new LoadAction<IChannel, Array<IEntityState<IChannel>>>(
   actions
 );
 
-export type IChannelLoadAction = ILoader<IChannel, IChannel[]>;
+export type IChannelLoadAction = ILoader<IChannel, Array<IEntityState<IChannel>>>;

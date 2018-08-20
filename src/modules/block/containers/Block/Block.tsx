@@ -19,6 +19,6 @@ export interface IBlockRouteProps extends RouteComponentProps<IRouterParams> {
 
 export default connect(
   (state: IStoreState, props: IBlockRouteProps): IBlockProps => ({
-    block: state.block.entities.filter(block => block.hash === props.match.params.id)[0]!
+    block: state.block.entities.filter(block => block.entity.hash === props.match.params.id)[0]!.entity
   })
 )(Block);

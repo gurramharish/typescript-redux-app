@@ -10,7 +10,7 @@ import { channelActions } from "../../../../stores/channel";
 
 export default connect(
   (state: IStoreState): IChannelsData => ({
-    channels: state.channel.entities,
+    channels: state.channel.entities.map(channel => channel.entity),
     loaded: state.channel.loaded,
     loading: state.channel.loading
   }),

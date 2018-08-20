@@ -3,6 +3,7 @@ import { ITransaction } from "../states";
 import {
   getActions,
   IActions,
+  IEntityState,
   ILoadAction,
   ILoader,
   LoadAction
@@ -14,7 +15,7 @@ export const actions: IActions = getActions(namespace);
 
 export const loadActions: ILoadAction<
   ITransaction,
-  ITransaction[]
-> = new LoadAction<ITransaction, ITransaction[]>(actions);
+  Array<IEntityState<ITransaction>>
+> = new LoadAction<ITransaction, Array<IEntityState<ITransaction>>>(actions);
 
-export type ITransactionLoadAction = ILoader<ITransaction, ITransaction[]>;
+export type ITransactionLoadAction = ILoader<ITransaction, Array<IEntityState<ITransaction>>>;
