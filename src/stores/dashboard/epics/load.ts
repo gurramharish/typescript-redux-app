@@ -4,7 +4,7 @@ import { mapTo, switchMap, take, takeUntil } from "rxjs/operators";
 import { ofType } from "redux-observable";
 
 import { IBlockAction } from "../../block/actions";
-import { blockActions } from "../../block/actions";
+import { blockListActions } from "../../block/actions";
 
 import { IChannelAction } from "../../channel/actions";
 import { channelActions } from "../../channel/actions";
@@ -27,7 +27,7 @@ export const startLoadingEpic = (
       concat(
         of(
           channelActions.start(),
-          blockActions.start(),
+          blockListActions.start(),
           transactionActions.start()
         ),
         zip(
@@ -36,7 +36,7 @@ export const startLoadingEpic = (
             take(1)
           ),
           action$.pipe(
-            ofType(blockActions.DONE),
+            ofType(blockListActions.DONE),
             take(1)
           ),
           action$.pipe(
@@ -54,7 +54,7 @@ export const stopLoadingEpic = (
   action$.pipe(
     ofType(loadActions.STOP),
     switchMap(() =>
-      of(channelActions.stop(), blockActions.stop(), transactionActions.stop())
+      of(channelActions.stop(), blockListActions.stop(), transactionActions.stop())
     )
   );
 

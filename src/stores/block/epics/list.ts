@@ -5,11 +5,11 @@ import { asLoaded, epics, IEntityState } from "../../entity";
 
 import { IBlock } from "../states";
 
-import { loadActions } from "../actions/load";
+import { listLoadActions } from "../actions/list";
 
 import { blocks as data } from "../data";
 
-export const loadEpics = epics<IBlock, Array<IEntityState<IBlock>>>(
-  loadActions,
+export const listLoadEpics = epics<IBlock, Array<IEntityState<IBlock>>>(
+  listLoadActions,
   timer(1000).pipe(mapTo(data.map(block => asLoaded(block))))
 );

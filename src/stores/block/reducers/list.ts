@@ -3,11 +3,11 @@ import { IBlock, IBlockState } from "../states";
 
 import { IEntityState, ILoader, reducers } from "../../entity";
 
-import { actions } from "../actions/load";
+import { actions } from "../actions/list";
 
-export const loadReducers: IReducers<
+export const listLoadReducers: IReducers<
   IBlockState,
-  ILoader<IBlock, IBlock[]>
+  ILoader<IBlock, Array<IEntityState<IBlock>>>
 > = reducers<
   IBlock,
   Array<IEntityState<IBlock>>,

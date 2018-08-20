@@ -12,7 +12,7 @@ export interface IEntityState<E extends IEntity> extends IState<E> {
   entity: E;
 }
 
-export interface IEntitiesState<E extends IEntity> extends IState<E> {
+export interface IEntityListState<E extends IEntity> extends IState<E> {
   entities: Array<IEntityState<E>>;
 }
 

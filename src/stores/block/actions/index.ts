@@ -1,5 +1,6 @@
-import { IBlockLoadAction } from "./load";
+import { IBlockListLoadAction } from "./list";
 
-export { loadActions as blockActions } from "./load";
+export { listLoadActions as blockListActions } from "./list";
+export { itemLoadActions as blocItemActions } from "./item";
 
-export type IBlockAction = IBlockLoadAction;
+export type IBlockAction = IBlockListLoadAction;

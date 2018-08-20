@@ -3,10 +3,12 @@ import { IReducers } from "../../types";
 import { IBlockAction } from "../actions";
 import { IBlockState } from "../states";
 
-import { loadReducers } from "./load";
+import { itemLoadReducers } from "./item";
+import { listLoadReducers } from "./list";
 
 const reducers: IReducers<IBlockState, IBlockAction> = {
-  ...loadReducers
+  ...itemLoadReducers,
+  ...listLoadReducers
 };
 
 export function blockReducer(

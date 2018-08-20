@@ -1,3 +1,3 @@
-import { loadEpics } from "./load";
+import { listLoadEpics } from "./list";
 
-export const blockEpics = [...loadEpics];
+export const blockEpics = [...listLoadEpics];
