@@ -11,7 +11,7 @@ import {
 
 import { namespace } from "../namespace";
 
-export const actions: IActions = getActions(`${namespace}/@@list`);
+export const actions: IActions = getActions(`${namespace}/list`);
 
 export const listLoadActions: ILoadAction<IBlock, Array<IEntityState<IBlock>>> = new LoadAction<IBlock, Array<IEntityState<IBlock>>>(
   actions

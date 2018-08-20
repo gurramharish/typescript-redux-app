@@ -1,1 +1,1 @@
-export const namespace: string = "@@store";
+export const namespace: string = "/store";

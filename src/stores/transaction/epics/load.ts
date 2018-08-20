@@ -1,7 +1,7 @@
 import { timer } from "rxjs";
 import { mapTo } from "rxjs/operators";
 
-import { asLoaded, epics, IEntityState } from "../../entity";
+import { asLoaded, epics, IEntityState, IStart } from "../../entity";
 
 import { ITransaction } from "../states";
 
@@ -11,5 +11,6 @@ import { transactions as data } from "../data";
 
 export const loadEpics = epics<ITransaction, Array<IEntityState<ITransaction>>>(
   loadActions,
-  timer(1000).pipe(mapTo(data.map(transaction => asLoaded(transaction))))
+  (action: IStart<ITransaction>) =>
+    timer(1000).pipe(mapTo(data.map(transaction => asLoaded(transaction))))
 );

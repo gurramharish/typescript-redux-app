@@ -1,7 +1,7 @@
 import { timer } from "rxjs";
 import { mapTo } from "rxjs/operators";
 
-import { asLoaded, epics, IEntityState } from "../../entity";
+import { asLoaded, epics, IEntityState, IStart } from "../../entity";
 
 import { IChannel } from "../states";
 
@@ -11,5 +11,6 @@ import { channels as data } from "../data";
 
 export const loadEpics = epics<IChannel, Array<IEntityState<IChannel>>>(
   loadActions,
-  timer(1000).pipe(mapTo(data.map(channel => asLoaded(channel))))
+  (action: IStart<IChannel>) =>
+    timer(1000).pipe(mapTo(data.map(channel => asLoaded(channel))))
 );
