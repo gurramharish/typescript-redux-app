@@ -5,16 +5,18 @@ import createHistory from "history/createBrowserHistory";
 
 import { Provider } from "react-redux";
 
-import { ConnectedRouter } from "react-router-redux";
+import { ConnectedRouter as Router } from "react-router-redux";
 
 import Theme from "../../containers/Theme";
+
+import Main from "../Main";
 
 import { configure } from "../../../../stores";
 
 const history = createHistory();
 
 const store = configure(history, {
-  channel: {entities: []},
+  channel: { entities: [] },
   notification: { count: 2 },
   theme: { mode: "dark" }
 });
@@ -33,9 +35,11 @@ export default class App extends Component<IAppProps, IAppStates> {
   public render(): ReactNode {
     return (
       <Provider {...{ store }}>
-        <ConnectedRouter {...{ history }}>
-          <Theme />
-        </ConnectedRouter>
+        <Theme>
+          <Router {...{ history }}>
+            <Main />
+          </Router>
+        </Theme>
       </Provider>
     );
   }
