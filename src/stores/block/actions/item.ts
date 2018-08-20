@@ -11,10 +11,12 @@ import {
 
 import { namespace } from "../namespace";
 
+import { IBlockOptions } from "../states";
+
 export const actions: IActions = getActions(`${namespace}/item`);
 
-export const itemLoadActions: ILoadAction<IBlock, IEntityState<IBlock>> = new LoadAction<IBlock, IEntityState<IBlock>>(
+export const itemLoadActions: ILoadAction<IBlock, IEntityState<IBlock>, IBlockOptions> = new LoadAction<IBlock, IEntityState<IBlock>, IBlockOptions>(
   actions
 );
 
-export type IBlockItemLoadAction = ILoader<IBlock, IEntityState<IBlock>>;
+export type IBlockItemLoadAction = ILoader<IBlock, IEntityState<IBlock>, IBlockOptions>;

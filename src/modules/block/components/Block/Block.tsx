@@ -1,9 +1,13 @@
 import * as React from "react";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import classNames from "classnames";
 
-import { IBlock } from "../../../../stores/block";
+import { IBlock, IBlockOptions } from "../../../../stores/block";
+
+import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
+import Loader from "../../../entity/components/Loader";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 
@@ -29,16 +33,25 @@ export interface IBlockStyles {
 
 export interface IBlockStyleProps extends WithStyles<keyof IBlockStyles> {}
 
-export interface IBlockProps {
-  style?: React.CSSProperties;
-  className?: string;
-  block: IBlock;
+export interface IBlockData extends ILoaderData {
+  block?: IBlock;
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IBlockStates {}
+export interface IBlockActions extends ILoaderActions<IBlockOptions> {}
 
-export class Block extends Component<
+export interface IBlockProps
+  extends IBlockData,
+    IBlockActions,
+    ILoaderProps<IBlockOptions> {
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+// tslint:disable-next-line:no-empty-interface
+export interface IBlockStates extends ILoaderStates {}
+
+export class Block extends Loader<
   IBlockProps & IBlockStyleProps,
   IBlockStates
 > {
@@ -51,6 +64,11 @@ export class Block extends Component<
     const { block } = this.props;
     const root: string = classNames(classes!.root, className);
     const { body, head } = classes;
+
+    if (!block) {
+      return null;
+    }
+
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>

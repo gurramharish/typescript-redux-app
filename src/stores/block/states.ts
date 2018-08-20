@@ -10,5 +10,9 @@ export interface IBlock extends IEntity {
   transactions: string[];
 }
 
+export interface IBlockOptions {
+  hash: string;
+}
+
 export interface IBlockState extends IEntityListState<IBlock> {
 }

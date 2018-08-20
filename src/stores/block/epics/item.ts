@@ -3,14 +3,20 @@ import { mapTo } from "rxjs/operators";
 
 import { asLoaded, epics, IEntityState, IStart } from "../../entity";
 
-import { IBlock } from "../states";
+import { IBlock, IBlockOptions } from "../states";
 
 import { itemLoadActions } from "../actions/item";
 
 import { blocks as data } from "../data";
 
-export const itemLoadEpics = epics<IBlock, IEntityState<IBlock>>(
+export const itemLoadEpics = epics<IBlock, IEntityState<IBlock>, IBlockOptions>(
   itemLoadActions,
-  (action: IStart<IBlock>) =>
-    timer(1000).pipe(mapTo(data.map(block => asLoaded(block))[0]))
+  (action: IStart<IBlock, IBlockOptions>) =>
+    timer(1000).pipe(
+      mapTo(
+        data
+          .filter(block => block.hash === action.options!.hash)
+          .map(block => asLoaded(block))[0]
+      )
+    )
 );

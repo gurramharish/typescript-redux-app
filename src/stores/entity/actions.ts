@@ -1,7 +1,10 @@
 import { IAction } from "../types";
 import { IEntity } from "./states";
 
-export interface IStart<E extends IEntity> extends IAction<string> {}
+export interface IStart<E extends IEntity, O = {}>
+  extends IAction<string> {
+  options?: O;
+}
 
 export interface IStop<E extends IEntity> extends IAction<string> {}
 
@@ -13,8 +16,8 @@ export interface IError<E extends IEntity> extends IAction<string> {
   error: string;
 }
 
-export type ILoader<E extends IEntity, D> =
-  | IStart<E>
+export type ILoader<E extends IEntity, D, O = {}> =
+  | IStart<E, O>
   | IStop<E>
   | IDone<D>
   | IError<E>;
@@ -26,8 +29,9 @@ export interface IActions {
   readonly STOP: string;
 }
 
-export interface ILoadAction<E extends IEntity, D> extends IActions {
-  start(): IStart<E>;
+export interface ILoadAction<E extends IEntity, D, O = {}>
+  extends IActions {
+  start(options?: O): IStart<E, O>;
   stop(): IStop<E>;
   error(error: string): IError<E>;
   done(data: D): IDone<D>;
@@ -42,7 +46,8 @@ export function getActions(type: string): IActions {
   };
 }
 
-export class LoadAction<E extends IEntity, D> implements ILoadAction<E, D> {
+export class LoadAction<E extends IEntity, D, O = {}>
+  implements ILoadAction<E, D, O> {
   constructor(private actions: IActions) {}
 
   get DONE(): string {
@@ -61,8 +66,8 @@ export class LoadAction<E extends IEntity, D> implements ILoadAction<E, D> {
     return this.actions.STOP;
   }
 
-  public start(): IStart<E> {
-    return { type: this.START };
+  public start(options?: O): IStart<E, O> {
+    return { options, type: this.START };
   }
 
   public stop(): IStop<E> {

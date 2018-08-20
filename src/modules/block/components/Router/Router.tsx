@@ -43,7 +43,7 @@ export class Router extends Component<
       <div className={root} style={{ ...style }}>
         <Switch>
           <Route exact={true} path={match.url} component={Blocks} />
-          <Route path={`${match.url}/:id`} component={Block} />
+          <Route path={`${match.url}/:hash`} component={Block} />
         </Switch>
       </div>
     );

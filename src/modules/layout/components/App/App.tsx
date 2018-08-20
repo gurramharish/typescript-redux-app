@@ -16,9 +16,11 @@ import { configure } from "../../../../stores";
 const history = createHistory();
 
 const store = configure(history, {
+  block: { entities: [] },
   channel: { entities: [] },
   notification: { count: 2 },
-  theme: { mode: "dark" }
+  theme: { mode: "dark" },
+  transaction: { entities: [] }
 });
 
 // tslint:disable-next-line:no-empty-interface

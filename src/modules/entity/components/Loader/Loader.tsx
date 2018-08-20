@@ -1,15 +1,16 @@
 import { Component, ReactNode } from "react";
 
-export interface ILoaderData {
+export interface ILoaderData<O = {}> {
   loaded: boolean;
+  options?: O;
 }
 
-export interface ILoaderActions {
-  start(): void;
+export interface ILoaderActions<O = {}> {
+  start(options?: O): void;
   stop(): void;
 }
 
-export interface ILoaderProps extends ILoaderData, ILoaderActions {}
+export interface ILoaderProps<O = {}> extends ILoaderData, ILoaderActions<O> {}
 
 // tslint:disable-next-line:no-empty-interface
 export interface ILoaderStates {}
@@ -23,11 +24,15 @@ export default abstract class Loader<
   }
 
   public componentDidMount(): void {
-    this.props.start();
+    if (!this.props.loaded) {
+      this.props.start(this.props.options);
+    }
   }
 
   public componentWillUnmount(): void {
-    this.props.stop();
+    if (!this.props.loaded) {
+      this.props.stop();
+    }
   }
 
   public abstract render(): ReactNode;
