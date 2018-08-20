@@ -41,7 +41,9 @@ export interface IBlocksData extends ILoaderData {
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface IBlocksActions extends ILoaderActions {}
+export interface IBlocksActions extends ILoaderActions {
+  fancy(): void;
+}
 
 export interface IBlocksProps
   extends ILoaderProps,
@@ -60,6 +62,11 @@ export class Blocks extends Loader<
 > {
   constructor(props: IBlocksProps & IBlocksStyleProps, context: {}) {
     super(props, context);
+  }
+
+  public componentDidMount(): void {
+    super.componentDidMount();
+    setInterval(() => this.props.fancy(), 2000);
   }
 
   public render(): ReactNode {

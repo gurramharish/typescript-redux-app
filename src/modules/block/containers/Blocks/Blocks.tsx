@@ -6,7 +6,7 @@ import { IBlocksActions, IBlocksData } from "../../components/Blocks";
 
 import { IStoreState } from "../../../../stores";
 
-import { blockListActions } from "../../../../stores/block";
+import { blockItemActions, blockListActions } from "../../../../stores/block";
 
 export default connect(
   (state: IStoreState): IBlocksData => ({
@@ -17,6 +17,7 @@ export default connect(
   (dispatch: Dispatch): IBlocksActions =>
     bindActionCreators<IBlocksActions, any>(
       {
+        fancy: () => blockItemActions.start(),
         start: () => blockListActions.start(),
         stop: () => blockListActions.stop()
       } as IBlocksActions,
