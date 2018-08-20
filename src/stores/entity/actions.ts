@@ -5,18 +5,18 @@ export interface IStart<E extends IEntity> extends IAction<string> {}
 
 export interface IStop<E extends IEntity> extends IAction<string> {}
 
-export interface IDone<E extends IEntity> extends IAction<string> {
-  entities: E[];
+export interface IDone<D> extends IAction<string> {
+  data: D;
 }
 
 export interface IError<E extends IEntity> extends IAction<string> {
   error: string;
 }
 
-export type ILoader<E extends IEntity> =
+export type ILoader<E extends IEntity, D> =
   | IStart<E>
   | IStop<E>
-  | IDone<E>
+  | IDone<D>
   | IError<E>;
 
 export interface IActions {
@@ -26,11 +26,11 @@ export interface IActions {
   readonly STOP: string;
 }
 
-export interface IEntityAction<E extends IEntity> extends IActions {
+export interface ILoadAction<E extends IEntity, D> extends IActions {
   start(): IStart<E>;
   stop(): IStop<E>;
   error(error: string): IError<E>;
-  done(entities: E[]): IDone<E>;
+  done(data: D): IDone<D>;
 }
 
 export function getActions(type: string): IActions {
@@ -42,7 +42,7 @@ export function getActions(type: string): IActions {
   };
 }
 
-export class EntityAction<E extends IEntity> implements IEntityAction<E> {
+export class LoadAction<E extends IEntity, D> implements ILoadAction<E, D> {
   constructor(private actions: IActions) {}
 
   get DONE(): string {
@@ -73,7 +73,7 @@ export class EntityAction<E extends IEntity> implements IEntityAction<E> {
     return { error, type: this.ERROR };
   }
 
-  public done(entities: E[]): IDone<E> {
-    return { type: this.DONE, entities };
+  public done(data: D): IDone<D> {
+    return { type: this.DONE, data };
   }
 }

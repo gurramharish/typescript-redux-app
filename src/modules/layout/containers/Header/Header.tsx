@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import Header from "../../components/Header";
 import { IHeaderActions, IHeaderData } from "../../components/Header";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import {
   changeTheme,
@@ -22,7 +22,7 @@ export default connect(
     notifications: state.notification.count,
     reseting: state.notification.reseting
   }),
-  (dispatch: Dispatch<IStoreAction>): IHeaderActions =>
+  (dispatch: Dispatch): IHeaderActions =>
     bindActionCreators<IHeaderActions, any>(
       {
         changeTheme,

@@ -4,13 +4,13 @@ import { Dispatch } from "redux";
 import Link from "../../components/Link";
 import { ILinkActions, ILinkData } from "../../components/Link";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import { pushPath } from "../../../../stores";
 
 export default connect(
   (state: IStoreState): ILinkData => ({}),
-  (dispatch: Dispatch<IStoreAction>): ILinkActions => ({
+  (dispatch: Dispatch): ILinkActions => ({
     navigate(path: string): void {
       dispatch(pushPath(path));
     }

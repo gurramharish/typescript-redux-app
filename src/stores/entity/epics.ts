@@ -5,19 +5,19 @@ import { ofType } from "redux-observable";
 
 import { IEntity } from "./states";
 
-import { IEntityAction } from "./actions";
+import { ILoadAction } from "./actions";
 import { ILoader } from "./actions";
 
-export function epics<E extends IEntity>(
-  actions: IEntityAction<E>,
-  loader: Observable<E[]>
-): Array<(actions$: Observable<ILoader<E>>) => Observable<ILoader<E>>> {
-  const epic = (action$: Observable<ILoader<E>>): Observable<ILoader<E>> =>
+export function epics<E extends IEntity, D>(
+  actions: ILoadAction<E, D>,
+  loader: Observable<D>
+): Array<(actions$: Observable<ILoader<E, D>>) => Observable<ILoader<E, D>>> {
+  const epic = (action$: Observable<ILoader<E, D>>): Observable<ILoader<E, D>> =>
     action$.pipe(
       ofType(actions.START),
       switchMap(action =>
         loader.pipe(
-          map((data: E[]) => actions.done(data)),
+          map((data) => actions.done(data)),
           takeUntil(action$.pipe(ofType(actions.STOP))),
           catchError(error => of(actions.error(error)))
         )

@@ -1,19 +1,19 @@
 import { IChannel } from "../states";
 
 import {
-  EntityAction,
   getActions,
   IActions,
-  IEntityAction,
-  ILoader
+  ILoadAction,
+  ILoader,
+  LoadAction
 } from "../../entity";
 
 import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: IEntityAction<IChannel> = new EntityAction<IChannel>(
+export const loadActions: ILoadAction<IChannel, IChannel[]> = new LoadAction<IChannel, IChannel[]>(
   actions
 );
 
-export type IChannelLoadAction = ILoader<IChannel>;
+export type IChannelLoadAction = ILoader<IChannel, IChannel[]>;

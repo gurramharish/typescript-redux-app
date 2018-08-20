@@ -9,7 +9,7 @@ import { loadActions } from "../actions/load";
 
 import { transactions as data } from "../data";
 
-export const loadEpics = epics<ITransaction>(
+export const loadEpics = epics<ITransaction, ITransaction[]>(
   loadActions,
   timer(1000).pipe(mapTo(data))
 );

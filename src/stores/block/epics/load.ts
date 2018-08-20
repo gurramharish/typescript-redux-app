@@ -9,4 +9,7 @@ import { loadActions } from "../actions/load";
 
 import { blocks as data } from "../data";
 
-export const loadEpics = epics<IBlock>(loadActions, timer(1000).pipe(mapTo(data)));
+export const loadEpics = epics<IBlock, IBlock[]>(
+  loadActions,
+  timer(1000).pipe(mapTo(data))
+);

@@ -9,7 +9,7 @@ import { loadActions } from "../actions/load";
 
 import { channels as data } from "../data";
 
-export const loadEpics = epics<IChannel>(
+export const loadEpics = epics<IChannel, IChannel[]>(
   loadActions,
   timer(1000).pipe(mapTo(data))
 );

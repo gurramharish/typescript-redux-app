@@ -7,7 +7,7 @@ import {
   ITransactionsData
 } from "../../components/Transactions";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import { transactionActions } from "../../../../stores/transaction";
 
@@ -17,7 +17,7 @@ export default connect(
     loading: state.transaction.loading,
     transactions: state.transaction.entities
   }),
-  (dispatch: Dispatch<IStoreAction>): ITransactionsActions =>
+  (dispatch: Dispatch): ITransactionsActions =>
     bindActionCreators<ITransactionsActions, any>(
       {
         start: () => transactionActions.start(),

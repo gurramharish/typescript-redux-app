@@ -7,5 +7,9 @@ import { actions } from "../actions/load";
 
 export const loadReducers: IReducers<
   ITransactionState,
-  ILoader<ITransaction>
-> = reducers<ITransaction>(actions);
+  ILoader<ITransaction, ITransaction[]>
+> = reducers<
+  ITransaction,
+  ITransaction[],
+  ITransactionState
+>(actions, (state, { data }) => ({ entities: data }));

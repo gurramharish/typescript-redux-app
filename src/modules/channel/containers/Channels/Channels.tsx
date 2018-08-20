@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import Channels from "../../components/Channels";
 import { IChannelsActions, IChannelsData } from "../../components/Channels";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import { channelActions } from "../../../../stores/channel";
 
@@ -14,7 +14,7 @@ export default connect(
     loaded: state.channel.loaded,
     loading: state.channel.loading
   }),
-  (dispatch: Dispatch<IStoreAction>): IChannelsActions =>
+  (dispatch: Dispatch): IChannelsActions =>
     bindActionCreators<IChannelsActions, any>(
       {
         start: () => channelActions.start(),

@@ -11,7 +11,6 @@ const reducers: IReducers<IDashboardState, IDashboardAction> = {
 
 export function dashboardReducer(
   state: IDashboardState = {
-    entities: [],
     error: null,
     loaded: false,
     loading: false

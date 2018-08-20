@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import Blocks from "../../components/Blocks";
 import { IBlocksActions, IBlocksData } from "../../components/Blocks";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import { blockActions } from "../../../../stores/block";
 
@@ -14,7 +14,7 @@ export default connect(
     loaded: state.block.loaded,
     loading: state.block.loading
   }),
-  (dispatch: Dispatch<IStoreAction>): IBlocksActions =>
+  (dispatch: Dispatch): IBlocksActions =>
     bindActionCreators<IBlocksActions, any>(
       {
         start: () => blockActions.start(),

@@ -1,19 +1,20 @@
 import { ITransaction } from "../states";
 
 import {
-  EntityAction,
   getActions,
   IActions,
-  IEntityAction,
-  ILoader
+  ILoadAction,
+  ILoader,
+  LoadAction
 } from "../../entity";
 
 import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: IEntityAction<ITransaction> = new EntityAction<ITransaction>(
-  actions
-);
+export const loadActions: ILoadAction<
+  ITransaction,
+  ITransaction[]
+> = new LoadAction<ITransaction, ITransaction[]>(actions);
 
-export type ITransactionLoadAction = ILoader<ITransaction>;
+export type ITransactionLoadAction = ILoader<ITransaction, ITransaction[]>;

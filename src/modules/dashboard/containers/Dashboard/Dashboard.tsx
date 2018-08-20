@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import Dashboard from "../../components/Dashboard";
 import { IDashboardActions, IDashboardData } from "../../components/Dashboard";
 
-import { IStoreAction, IStoreState } from "../../../../stores";
+import { IStoreState } from "../../../../stores";
 
 import { dashboardActions } from "../../../../stores/dashboard";
 
@@ -17,7 +17,7 @@ export default connect(
     nodes: 0,
     transactions: state.transaction.entities.length
   }),
-  (dispatch: Dispatch<IStoreAction>): IDashboardActions =>
+  (dispatch: Dispatch): IDashboardActions =>
     bindActionCreators<IDashboardActions, any>(
       {
         start: () => dashboardActions.start(),

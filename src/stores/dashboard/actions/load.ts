@@ -1,19 +1,19 @@
 import { IDashboard } from "../states";
 
 import {
-  EntityAction,
   getActions,
   IActions,
-  IEntityAction,
-  ILoader
+  ILoadAction,
+  ILoader,
+  LoadAction
 } from "../../entity";
 
 import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: IEntityAction<IDashboard> = new EntityAction<IDashboard>(
+export const loadActions: ILoadAction<IDashboard, IDashboard[]> = new LoadAction<IDashboard, IDashboard[]>(
   actions
 );
 
-export type IDashboardLoadAction = ILoader<IDashboard>;
+export type IDashboardLoadAction = ILoader<IDashboard, IDashboard[]>;

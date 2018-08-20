@@ -7,5 +7,9 @@ import { actions } from "../actions/load";
 
 export const loadReducers: IReducers<
   IDashboardState,
-  ILoader<IDashboard>
-> = reducers<IDashboard>(actions);
+  ILoader<IDashboard, undefined>
+> = reducers<
+  IDashboard,
+  undefined,
+  IDashboardState
+>(actions, (state, { data }) => ({}));

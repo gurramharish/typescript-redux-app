@@ -1,51 +1,40 @@
 import { IReducer, IReducers } from "../types";
-import { IEntity, IEntityState } from "./states";
+import { IEntity, IState } from "./states";
 
 import { IDone, IError, IStart, IStop } from "./actions";
 import { IActions, ILoader } from "./actions";
 
-export function reducers<E extends IEntity>(
-  actions: IActions
-): IReducers<IEntityState<E>, ILoader<E>> {
-  const start: IReducer<IEntityState<E>, IStart<E>> = (
-    state: IEntityState<E>,
-    action: IStart<E>
-  ): IEntityState<E> => {
+export function reducers<E extends IEntity, D, S extends IState<E>>(
+  actions: IActions,
+  mapper: (state: S, done: IDone<D>) => Partial<S>
+): IReducers<S, ILoader<E, D>> {
+  const start: IReducer<S, IStart<E>> = (state: S, action: IStart<E>): S => {
     return {
-      ...state,
+      ...state as any,
       error: null,
       loading: true
     };
   };
 
-  const done: IReducer<IEntityState<E>, IDone<E>> = (
-    state: IEntityState<E>,
-    action: IDone<E>
-  ): IEntityState<E> => {
+  const done: IReducer<S, IDone<D>> = (state: S, action: IDone<D>): S => {
     return {
-      ...state,
-      entities: action.entities,
+      ...state as any,
+      ...mapper(state, action) as any,
       loaded: true,
       loading: false
     };
   };
 
-  const stop: IReducer<IEntityState<E>, IStop<E>> = (
-    state: IEntityState<E>,
-    action: IStop<E>
-  ): IEntityState<E> => {
+  const stop: IReducer<S, IStop<E>> = (state: S, action: IStop<E>): S => {
     return {
-      ...state,
+      ...state as any,
       loading: false
     };
   };
 
-  const error: IReducer<IEntityState<E>, IError<E>> = (
-    state: IEntityState<E>,
-    action: IError<E>
-  ): IEntityState<E> => {
+  const error: IReducer<S, IError<E>> = (state: S, action: IError<E>): S => {
     return {
-      ...state,
+      ...state as any,
       error: action.error,
       loading: false
     };
