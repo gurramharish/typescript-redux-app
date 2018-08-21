@@ -1,4 +1,4 @@
-import { IReducers } from "../../types";
+import { IReducers } from "../../core/types";
 
 import { IChannelAction } from "../actions";
 import { IChannelState } from "../states";

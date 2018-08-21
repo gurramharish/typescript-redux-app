@@ -67,9 +67,6 @@ export class Blocks extends Loader<
     const { entities, loaded } = this.props;
     const root: string = classNames(classes!.root, className);
     const { body, head } = classes;
-    if (!loaded) {
-      return null;
-    }
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>
@@ -97,35 +94,42 @@ export class Blocks extends Loader<
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {entities.map(entity => (
-                    <TableRow className={classes.row} key={entity.id}>
-                      <TableCell classes={{ body }} component="th" scope="row">
-                        {entity.id}
-                      </TableCell>
-                      <TableCell classes={{ body }}>{entity.channel}</TableCell>
-                      <TableCell classes={{ body }} numeric={true}>
-                        {entity.transactions.length}
-                      </TableCell>
-                      <TableCell classes={{ body }}>
-                        {entity.dataHash}
-                      </TableCell>
-                      <TableCell classes={{ body }}>
-                        <Link
-                          exact={true}
-                          strict={true}
-                          to={`/block/${entity.hash}`}
+                  {loaded &&
+                    entities.map(entity => (
+                      <TableRow className={classes.row} key={entity.id}>
+                        <TableCell
+                          classes={{ body }}
+                          component="th"
+                          scope="row"
                         >
-                          {entity.hash}
-                        </Link>
-                      </TableCell>
-                      <TableCell classes={{ body }}>
-                        {entity.previousHash}
-                      </TableCell>
-                      <TableCell classes={{ body }}>
-                        {entity.transactions}
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                          {entity.id}
+                        </TableCell>
+                        <TableCell classes={{ body }}>
+                          {entity.channel}
+                        </TableCell>
+                        <TableCell classes={{ body }} numeric={true}>
+                          {entity.transactions.length}
+                        </TableCell>
+                        <TableCell classes={{ body }}>
+                          {entity.dataHash}
+                        </TableCell>
+                        <TableCell classes={{ body }}>
+                          <Link
+                            exact={true}
+                            strict={true}
+                            to={`/block/${entity.hash}`}
+                          >
+                            {entity.hash}
+                          </Link>
+                        </TableCell>
+                        <TableCell classes={{ body }}>
+                          {entity.previousHash}
+                        </TableCell>
+                        <TableCell classes={{ body }}>
+                          {entity.transactions}
+                        </TableCell>
+                      </TableRow>
+                    ))}
                 </TableBody>
               </Table>
             </Paper>

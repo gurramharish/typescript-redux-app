@@ -1,6 +1,6 @@
 import produce from "immer";
 
-import { IMutator, IReducer, IReducers } from "../types";
+import { IMutator, IReducer, IReducers } from "../core/types";
 import { IEntity, IState } from "./states";
 
 import { IDone, IError, IStart, IStop } from "./actions";

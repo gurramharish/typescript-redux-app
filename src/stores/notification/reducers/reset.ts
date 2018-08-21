@@ -1,4 +1,4 @@
-import { IReducer, IReducers } from "../../types";
+import { IReducer, IReducers } from "../../core/types";
 import { INotificationState } from "../states";
 
 import {

@@ -1,4 +1,4 @@
-import { IReducers } from "../../types";
+import { IReducers } from "../../core/types";
 
 import { IBlockAction } from "../actions";
 import { IBlockState } from "../states";

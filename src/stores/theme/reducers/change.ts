@@ -1,4 +1,4 @@
-import { IReducer, IReducers } from "../../types";
+import { IReducer, IReducers } from "../../core/types";
 import { IThemeState } from "../states";
 
 import { IChangeTheme } from "../actions/change";

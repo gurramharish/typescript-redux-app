@@ -1,4 +1,4 @@
-import { IReducers } from "../../types";
+import { IReducers } from "../../core/types";
 
 import { IRouterAction } from "../actions";
 import { IRouterState } from "../states";
