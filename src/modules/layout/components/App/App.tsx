@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Component, ReactNode } from "react";
 
-import createHistory from "history/createBrowserHistory";
+import { Store } from "redux";
+
+import { History } from "history";
 
 import { Provider } from "react-redux";
 
@@ -11,20 +13,13 @@ import Theme from "../../containers/Theme";
 
 import Main from "../Main";
 
-import { configure } from "../../../../stores";
-
-const history = createHistory();
-
-const store = configure(history, {
-  block: { entities: [] },
-  channel: { entities: [] },
-  notification: { count: 2 },
-  theme: { mode: "dark" },
-  transaction: { entities: [] }
-});
+import { IStoreAction, IStoreState } from "../../../../stores";
 
 // tslint:disable-next-line:no-empty-interface
-export interface IAppProps {}
+export interface IAppProps {
+  history: History;
+  store: Store<IStoreState, IStoreAction>;
+}
 
 // tslint:disable-next-line:no-empty-interface
 export interface IAppStates {}
@@ -35,6 +30,7 @@ export default class App extends Component<IAppProps, IAppStates> {
   }
 
   public render(): ReactNode {
+    const { history, store } = this.props;
     return (
       <Provider {...{ store }}>
         <Theme>
