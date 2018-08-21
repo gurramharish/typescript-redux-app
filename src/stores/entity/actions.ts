@@ -41,10 +41,10 @@ export interface ILoadAction<E extends IEntity, D, O = {}> extends IActions {
 
 export function getActions(type: string): IActions {
   return {
-    DONE: `${type}/DONE`,
-    ERROR: `${type}/ERROR`,
-    START: `${type}/START`,
-    STOP: `${type}/STOP`
+    DONE: `${type}/done`,
+    ERROR: `${type}/error`,
+    START: `${type}/start`,
+    STOP: `${type}/stop`
   };
 }
 
