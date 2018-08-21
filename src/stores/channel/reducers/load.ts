@@ -8,8 +8,9 @@ import { actions } from "../actions/load";
 export const loadReducers: IReducers<
   IChannelState,
   ILoader<IChannel, Array<IEntityState<IChannel>>>
-> = reducers<
-  IChannel,
-  Array<IEntityState<IChannel>>,
-  IChannelState
->(actions, (state, { data }) => ({ entities: data }));
+> = reducers<IChannel, Array<IEntityState<IChannel>>, IChannelState>(
+  actions,
+  (state, { data }) => {
+    state.entities = data;
+  }
+);

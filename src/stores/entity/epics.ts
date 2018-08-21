@@ -21,9 +21,9 @@ export function epics<E extends IEntity, D, O = {}>(
       ofType(actions.START),
       switchMap(action =>
         loader(action).pipe(
-          map(data => actions.done(data)),
+          map(data => actions.done(data, action.options)),
           takeUntil(action$.pipe(ofType(actions.STOP))),
-          catchError(error => of(actions.error(error)))
+          catchError(error => of(actions.error(error, action.options)))
         )
       )
     );

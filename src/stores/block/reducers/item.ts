@@ -1,5 +1,5 @@
 import { IReducers } from "../../types";
-import { IBlock, IBlockState } from "../states";
+import { IBlock, IBlockOptions, IBlockState } from "../states";
 
 import { IEntityState, ILoader, reducers } from "../../entity";
 
@@ -7,17 +7,30 @@ import { actions } from "../actions/item";
 
 export const itemLoadReducers: IReducers<
   IBlockState,
-  ILoader<IBlock, IEntityState<IBlock>>
-> = reducers<IBlock, IEntityState<IBlock>, IBlockState>(
+  ILoader<IBlock, IEntityState<IBlock>, IBlockOptions>
+> = reducers<
+  IBlock,
+  IEntityState<IBlock>,
+  IBlockState,
+  IEntityState<IBlock>,
+  IBlockOptions
+>(
   actions,
   (state, { data }) => {
-    const found = state.entities.filter(
-      entity => entity.entity.hash === data.entity.hash
-    )[0];
-    if (found) {
-      Object.assign(found, data);
-      return { entities: [...state.entities] };
+    Object.assign(state, data);
+  },
+  (state, action) => {
+    const hash = action.options!.hash;
+    let block = state.entities.filter(entity => entity.entity.hash === hash)[0];
+    if (!block) {
+      block = {
+        entity: { hash } as any,
+        error: null,
+        loaded: false,
+        loading: false
+      };
+      state.entities.push(block);
     }
-    return { entities: [...state.entities, data] };
+    return block;
   }
 );

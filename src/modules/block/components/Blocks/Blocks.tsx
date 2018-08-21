@@ -64,9 +64,12 @@ export class Blocks extends Loader<
 
   public render(): ReactNode {
     const { className, classes, style } = this.props;
-    const { entities } = this.props;
+    const { entities, loaded } = this.props;
     const root: string = classNames(classes!.root, className);
     const { body, head } = classes;
+    if (!loaded) {
+      return null;
+    }
     return (
       <div className={root} style={{ ...style }}>
         <Grid container={true} spacing={24}>

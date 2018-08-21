@@ -1,51 +1,57 @@
-import { IReducer, IReducers } from "../types";
+import produce from "immer";
+
+import { IMutator, IReducer, IReducers } from "../types";
 import { IEntity, IState } from "./states";
 
 import { IDone, IError, IStart, IStop } from "./actions";
 import { IActions, ILoader } from "./actions";
 
-export function reducers<E extends IEntity, D, S extends IState<E>>(
+export function reducers<
+  E extends IEntity,
+  D,
+  S extends IState<E>,
+  T extends IState<E> = S,
+  O = {}
+>(
   actions: IActions,
-  mapper: (state: S, done: IDone<D>) => Partial<S>
-): IReducers<S, ILoader<E, D>> {
-  const start: IReducer<S, IStart<E>> = (state: S, action: IStart<E>): S => {
-    return {
-      ...state as any,
-      error: null,
-      loading: true
-    };
+  mutator: IMutator<T, IDone<D, O>>,
+  extract: (state: S, action: ILoader<E, D, O>) => T = state => (state as any) as T
+): IReducers<S, ILoader<E, D, O>> {
+  const start: IMutator<T, IStart<E, O>> = (state: T, action: IStart<E, O>): void => {
+    state.error = null;
+    state.loading = true;
   };
 
-  const done: IReducer<S, IDone<D>> = (state: S, action: IDone<D>): S => {
-    return {
-      ...state as any,
-      ...mapper(state, action) as any,
-      loaded: true,
-      loading: false
-    };
+  const done: IMutator<T, IDone<D, O>> = (state: T, action: IDone<D, O>): void => {
+    mutator(state, action);
+    state.loaded = true;
+    state.loading = false;
   };
 
-  const stop: IReducer<S, IStop<E>> = (state: S, action: IStop<E>): S => {
-    return {
-      ...state as any,
-      loading: false
-    };
+  const stop: IMutator<T, IStop<E, O>> = (state: T, action: IStop<E, O>): void => {
+    state.loading = false;
   };
 
-  const error: IReducer<S, IError<E>> = (state: S, action: IError<E>): S => {
-    return {
-      ...state as any,
-      error: action.error,
-      loading: false
-    };
+  const error: IMutator<T, IError<E, O>> = (state: T, action: IError<E, O>): void => {
+    state.error = action.error;
+    state.loading = false;
   };
 
   const { START, STOP, ERROR, DONE } = actions;
 
+  const wrap = (
+    mutate: IMutator<T, ILoader<E, D, O>>
+  ): IReducer<S, ILoader<E, D, O>> => {
+    return (state: S, action: any): S =>
+      produce(state, draft => {
+        mutate(extract(draft as S, action), action);
+      });
+  };
+
   return {
-    [START]: start,
-    [DONE]: done,
-    [STOP]: stop,
-    [ERROR]: error
+    [START]: wrap(start),
+    [DONE]: wrap(done),
+    [STOP]: wrap(stop),
+    [ERROR]: wrap(error)
   };
 }

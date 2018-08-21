@@ -7,7 +7,7 @@ export interface ILoaderData<O = {}> {
 
 export interface ILoaderActions<O = {}> {
   start(options?: O): void;
-  stop(): void;
+  stop(options?: O): void;
 }
 
 export interface ILoaderProps<O = {}> extends ILoaderData, ILoaderActions<O> {}
@@ -31,7 +31,7 @@ export default abstract class Loader<
 
   public componentWillUnmount(): void {
     if (!this.props.loaded) {
-      this.props.stop();
+      this.props.stop(this.props.options);
     }
   }
 

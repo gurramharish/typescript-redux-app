@@ -12,4 +12,6 @@ export const loadReducers: IReducers<
   ITransaction,
   Array<IEntityState<ITransaction>>,
   ITransactionState
->(actions, (state, { data }) => ({ entities: data }));
+>(actions, (state, { data }) => {
+  state.entities = data;
+});

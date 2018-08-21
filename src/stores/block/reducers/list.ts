@@ -8,10 +8,9 @@ import { actions } from "../actions/list";
 export const listLoadReducers: IReducers<
   IBlockState,
   ILoader<IBlock, Array<IEntityState<IBlock>>>
-> = reducers<
-  IBlock,
-  Array<IEntityState<IBlock>>,
-  IBlockState
->(actions, (state, { data }) => ({
-  entities: data
-}));
+> = reducers<IBlock, Array<IEntityState<IBlock>>, IBlockState>(
+  actions,
+  (state, { data }) => {
+    state.entities = data;
+  }
+);

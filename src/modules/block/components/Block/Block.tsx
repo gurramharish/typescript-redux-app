@@ -61,11 +61,11 @@ export class Block extends Loader<
 
   public render(): ReactNode {
     const { className, classes, style } = this.props;
-    const { block } = this.props;
+    const { block, loaded } = this.props;
     const root: string = classNames(classes!.root, className);
     const { body, head } = classes;
 
-    if (!block) {
+    if (!loaded || !block) {
       return null;
     }
 

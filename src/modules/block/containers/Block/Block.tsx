@@ -25,12 +25,13 @@ export default connect(
   (state: IStoreState, props: IBlockRouteProps): IBlockData => {
     const hash = props.match.params.hash;
     const filtered = state.block.entities.filter(
-      entity => entity.entity.hash === hash
+      enti => enti.entity.hash === hash
     );
-    const block = filtered.length ? filtered[0].entity : undefined;
+    const entity = filtered[0];
+    const block = entity && entity.entity;
     return {
       block,
-      loaded: !!block,
+      loaded: entity && entity.loaded,
       options: { hash }
     };
   },
@@ -38,7 +39,7 @@ export default connect(
     bindActionCreators<IBlockActions, any>(
       {
         start: (options?: IBlockOptions) => blockItemActions.start(options),
-        stop: () => blockItemActions.stop()
+        stop: (options?: IBlockOptions) => blockItemActions.stop(options)
       } as IBlockActions,
       dispatch
     )
