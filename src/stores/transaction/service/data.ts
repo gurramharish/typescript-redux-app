@@ -1,4 +1,4 @@
-import { ITransaction } from "./states";
+import { ITransaction } from "../states";
 
 export const transactions: ITransaction[] = [
   {

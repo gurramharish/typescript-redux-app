@@ -3,7 +3,7 @@ import { History } from "history";
 import { DeepPartial, Store } from "redux";
 import { applyMiddleware, createStore } from "redux";
 
-import { createEpicMiddleware } from "redux-observable";
+import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
 
@@ -11,12 +11,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { Container } from "inversify";
 
-import { getEpic } from "./epics";
+import { configs } from "./configs";
 import { reducer } from "./reducers";
 import { IStoreAction, IStoreState } from "./states";
-
-import blockConfigure from "../block/configure";
-import channelConfigure from "../channel/configure";
 
 import { IEnvironment, IEpics } from "../entity";
 
@@ -38,10 +35,7 @@ export function configure(
     .bind<IEnvironment>("environment")
     .toConstantValue({ mode: "development" });
 
-  blockConfigure(container);
-  channelConfigure(container);
-
-  const epic = getEpic(container.getAll<IEpics>("epics"));
+  configs.forEach(config => config(container));
 
   const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();
@@ -53,6 +47,10 @@ export function configure(
     composeEnhancers(applyMiddleware(epicMiddleware, routerMiddleware))
   );
 
+  const epics = container.getAll<IEpics>("epics");
+  const epic = combineEpics(
+    ...epics.reduce((eps, item) => [...eps, ...item.epics], [])
+  );
   epicMiddleware.run(epic as any);
 
   return store;
