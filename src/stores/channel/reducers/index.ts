@@ -1,12 +1,12 @@
-import { IReducers } from "../../core/types";
+import { IReducers } from "../../entity/types";
 
 import { IChannelAction } from "../actions";
 import { IChannelState } from "../states";
 
-import { loadReducers } from "./load";
+import { listLoadReducers } from "./list";
 
 const reducers: IReducers<IChannelState, IChannelAction> = {
-  ...loadReducers
+  ...listLoadReducers
 };
 
 export function channelReducer(

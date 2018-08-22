@@ -6,7 +6,7 @@ import { IChannelsActions, IChannelsData } from "../../components/Channels";
 
 import { IStoreState } from "../../../../stores";
 
-import { channelActions } from "../../../../stores/channel";
+import { channelListActions } from "../../../../stores/channel";
 
 export default connect(
   (state: IStoreState): IChannelsData => ({
@@ -17,8 +17,8 @@ export default connect(
   (dispatch: Dispatch): IChannelsActions =>
     bindActionCreators<IChannelsActions, any>(
       {
-        start: () => channelActions.start(),
-        stop: () => channelActions.stop()
+        start: () => channelListActions.start(),
+        stop: () => channelListActions.stop()
       } as IChannelsActions,
       dispatch
     )

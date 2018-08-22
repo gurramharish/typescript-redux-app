@@ -7,7 +7,7 @@ import { IBlockAction } from "../../block/actions";
 import { blockListActions } from "../../block/actions";
 
 import { IChannelAction } from "../../channel/actions";
-import { channelActions } from "../../channel/actions";
+import { channelListActions } from "../../channel/actions";
 
 import { ITransactionAction } from "../../transaction/actions";
 import { transactionActions } from "../../transaction/actions";
@@ -26,23 +26,14 @@ export const startLoadingEpic = (
     switchMap(() =>
       concat(
         of(
-          channelActions.start(),
+          channelListActions.start(),
           blockListActions.start(),
           transactionActions.start()
         ),
         zip(
-          action$.pipe(
-            ofType(channelActions.DONE),
-            take(1)
-          ),
-          action$.pipe(
-            ofType(blockListActions.DONE),
-            take(1)
-          ),
-          action$.pipe(
-            ofType(transactionActions.DONE),
-            take(1)
-          )
+          action$.pipe(ofType(channelListActions.DONE), take(1)),
+          action$.pipe(ofType(blockListActions.DONE), take(1)),
+          action$.pipe(ofType(transactionActions.DONE), take(1))
         ).pipe(mapTo(loadActions.done([])))
       ).pipe(takeUntil(action$.pipe(ofType(loadActions.STOP))))
     )
@@ -54,7 +45,11 @@ export const stopLoadingEpic = (
   action$.pipe(
     ofType(loadActions.STOP),
     switchMap(() =>
-      of(channelActions.stop(), blockListActions.stop(), transactionActions.stop())
+      of(
+        channelListActions.stop(),
+        blockListActions.stop(),
+        transactionActions.stop()
+      )
     )
   );
 

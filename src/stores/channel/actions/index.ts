@@ -1,5 +1,5 @@
-import { IChannelLoadAction } from "./load";
+import { IChannelLoadAction } from "./list";
 
-export { loadActions as channelActions } from "./load";
+export { listLoadActions as channelListActions } from "./list";
 
 export type IChannelAction = IChannelLoadAction;

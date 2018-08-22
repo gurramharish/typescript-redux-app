@@ -1,4 +1,4 @@
-import { IChannel } from "./states";
+import { IChannel } from "../states";
 
 export const channels: IChannel[] = [
   {

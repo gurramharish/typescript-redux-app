@@ -1,4 +1,4 @@
-import { IAction } from "../core/types";
+import { IAction } from "../entity/types";
 import { IEntity } from "./states";
 
 export interface IStart<E extends IEntity, O = {}> extends IAction<string> {

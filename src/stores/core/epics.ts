@@ -1,19 +1,21 @@
 import { combineEpics } from "redux-observable";
+import { IEffect, IEpic } from "../entity";
 
-import { blockEpics } from "../block";
-import { channelEpics } from "../channel";
 import { dashboardEpics } from "../dashboard";
 import { notificationEpics } from "../notification";
 import { routerEpics } from "../router";
 import { transactionEpics } from "../transaction";
 
-export const epic = combineEpics(
-  ...[
-    ...blockEpics,
-    ...channelEpics,
-    ...dashboardEpics,
-    ...notificationEpics,
-    ...routerEpics,
-    ...transactionEpics
-  ]
-);
+export function getEpic(effects: IEffect[]): IEpic<any, any> {
+  const epics = effects.reduce((eps, effect) => [...eps, ...effect.epics], []);
+  const epic = combineEpics(
+    ...[
+      ...epics,
+      ...dashboardEpics,
+      ...notificationEpics,
+      ...routerEpics,
+      ...transactionEpics
+    ]
+  );
+  return epic as IEpic<any, any>;
+}

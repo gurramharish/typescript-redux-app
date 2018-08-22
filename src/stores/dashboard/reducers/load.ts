@@ -1,4 +1,4 @@
-import { IReducers } from "../../core/types";
+import { IReducers } from "../../entity/types";
 import { IDashboard, IDashboardState } from "../states";
 
 import { ILoader, reducers } from "../../entity";

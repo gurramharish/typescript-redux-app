@@ -13,7 +13,7 @@ import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: ILoadAction<IChannel, Array<IEntityState<IChannel>>> = new LoadAction<IChannel, Array<IEntityState<IChannel>>>(
+export const listLoadActions: ILoadAction<IChannel, Array<IEntityState<IChannel>>> = new LoadAction<IChannel, Array<IEntityState<IChannel>>>(
   actions
 );
 

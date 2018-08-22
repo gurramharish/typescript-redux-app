@@ -1,4 +1,4 @@
-import { IAction } from "../../core/types";
+import { IAction } from "../../entity/types";
 
 import { namespace } from "../namespace";
 

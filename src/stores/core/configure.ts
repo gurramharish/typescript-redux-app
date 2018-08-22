@@ -9,9 +9,16 @@ import { routerMiddleware as createRouterMiddleware } from "react-router-redux";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { epic } from "./epics";
+import { Container } from "inversify";
+
+import { getEpic } from "./epics";
 import { reducer } from "./reducers";
 import { IStoreAction, IStoreState } from "./states";
+
+import blockConfigure from "../block/configure";
+import channelConfigure from "../channel/configure";
+
+import { IEffect, IEnvironment } from "../entity";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
@@ -25,6 +32,18 @@ export function configure(
   history: History,
   state: DeepPartial<IStoreState> = getDefaultState()
 ): Store<IStoreState, IStoreAction> {
+  const container = new Container();
+
+  container
+    .bind<IEnvironment>("environment")
+    .toConstantValue({ mode: "development" });
+
+  blockConfigure(container);
+  channelConfigure(container);
+
+  const effects = container.getAll<IEffect>("effect");
+  const epic = getEpic(effects);
+
   const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();
   const composeEnhancers = composeWithDevTools({});

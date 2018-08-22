@@ -14,5 +14,4 @@ export interface IBlockOptions {
   hash: string;
 }
 
-export interface IBlockState extends IEntityListState<IBlock> {
-}
+export interface IBlockState extends IEntityListState<IBlock> {}

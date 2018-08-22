@@ -1,4 +1,4 @@
-import { IReducers } from "../../core/types";
+import { IReducers } from "../../entity/types";
 import { ITransaction, ITransactionState } from "../states";
 
 import { IEntityState, ILoader, reducers } from "../../entity";

@@ -1,4 +1,4 @@
-import { IReducers } from "../../core/types";
+import { IReducers } from "../../entity/types";
 
 import { IDashboardAction } from "../actions";
 import { IDashboardState } from "../states";

@@ -1,4 +1,4 @@
-import { IBlock } from "./states";
+import { IBlock } from "../states";
 
 export const blocks: IBlock[] = [
   {
