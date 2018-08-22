@@ -18,7 +18,7 @@ import { IStoreAction, IStoreState } from "./states";
 import blockConfigure from "../block/configure";
 import channelConfigure from "../channel/configure";
 
-import { IEffect, IEnvironment } from "../entity";
+import { IEnvironment, IEpics } from "../entity";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
@@ -41,8 +41,7 @@ export function configure(
   blockConfigure(container);
   channelConfigure(container);
 
-  const effects = container.getAll<IEffect>("effect");
-  const epic = getEpic(effects);
+  const epic = getEpic(container.getAll<IEpics>("epics"));
 
   const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();

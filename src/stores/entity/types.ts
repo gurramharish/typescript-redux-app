@@ -14,7 +14,7 @@ export interface IReducers<S, A extends IAction> {
 
 export type IEpic<I, O> = (actions$: Observable<I>) => Observable<O>;
 
-export interface IEffect<I = {}, O = I> {
+export interface IEpics<I = {}, O = I> {
   readonly epics: Array<IEpic<I, O>>;
 }
 

@@ -1,14 +1,14 @@
 import { inject, injectable, named } from "inversify";
 
-import { IEffect, IEpic, ILoader } from "../entity";
-import { IChannelService } from "./service";
-import { IChannel } from "./states";
+import { IEpic, IEpics, ILoader } from "../../entity";
+import { IChannelService } from "../service";
+import { IChannel } from "../states";
 
-import { getListLoadEpics } from "./epics/list";
+import { getListLoadEpics } from "./list";
 
 @injectable()
-export default class Effort
-  implements IEffect<ILoader<IChannel, any>, ILoader<IChannel, any>> {
+export default class Epics
+  implements IEpics<ILoader<IChannel, any>, ILoader<IChannel, any>> {
   constructor(
     @inject("service")
     @named("channel")

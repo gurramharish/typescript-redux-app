@@ -1,15 +1,15 @@
 import { inject, injectable, named } from "inversify";
 
-import { IEffect, IEpic, ILoader } from "../entity";
-import { IBlockService } from "./service";
-import { IBlock } from "./states";
+import { IEpic, IEpics, ILoader } from "../../entity";
+import { IBlockService } from "../service";
+import { IBlock } from "../states";
 
-import { getItemLoadEpics } from "./epics/item";
-import { getListLoadEpics } from "./epics/list";
+import { getItemLoadEpics } from "./item";
+import { getListLoadEpics } from "./list";
 
 @injectable()
-export default class Effort
-  implements IEffect<ILoader<IBlock, any>, ILoader<IBlock, any>> {
+export default class Epics
+  implements IEpics<ILoader<IBlock, any>, ILoader<IBlock, any>> {
   constructor(
     @inject("service")
     @named("block")
