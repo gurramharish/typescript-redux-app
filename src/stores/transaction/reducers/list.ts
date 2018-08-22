@@ -3,9 +3,9 @@ import { ITransaction, ITransactionState } from "../states";
 
 import { IEntityState, ILoader, reducers } from "../../entity";
 
-import { actions } from "../actions/load";
+import { actions } from "../actions/list";
 
-export const loadReducers: IReducers<
+export const listLoadReducers: IReducers<
   ITransactionState,
   ILoader<ITransaction, Array<IEntityState<ITransaction>>>
 > = reducers<

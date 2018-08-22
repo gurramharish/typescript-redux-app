@@ -3,10 +3,10 @@ import { IReducers } from "../../entity/types";
 import { ITransactionAction } from "../actions";
 import { ITransactionState } from "../states";
 
-import { loadReducers } from "./load";
+import { listLoadReducers } from "./list";
 
 const reducers: IReducers<ITransactionState, ITransactionAction> = {
-  ...loadReducers
+  ...listLoadReducers
 };
 
 export function transactionReducer(

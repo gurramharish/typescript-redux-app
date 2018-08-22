@@ -13,7 +13,7 @@ import { namespace } from "../namespace";
 
 export const actions: IActions = getActions(namespace);
 
-export const loadActions: ILoadAction<
+export const listLoadActions: ILoadAction<
   ITransaction,
   Array<IEntityState<ITransaction>>
 > = new LoadAction<ITransaction, Array<IEntityState<ITransaction>>>(actions);

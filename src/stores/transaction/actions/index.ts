@@ -1,5 +1,5 @@
-import { ITransactionLoadAction } from "./load";
+import { ITransactionLoadAction } from "./list";
 
-export { loadActions as transactionActions } from "./load";
+export { listLoadActions as transactionListActions } from "./list";
 
 export type ITransactionAction = ITransactionLoadAction;
