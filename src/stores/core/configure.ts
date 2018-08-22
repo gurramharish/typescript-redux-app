@@ -11,11 +11,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { Container } from "inversify";
 
-import { configs } from "./configs";
+import { configs } from "../configs";
 import { reducer } from "./reducers";
 import { IStoreAction, IStoreState } from "./states";
 
-import { IEnvironment, IEpics } from "../entity";
+import { IEnvironment, IEpicConfig } from "../entity";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
@@ -47,7 +47,7 @@ export function configure(
     composeEnhancers(applyMiddleware(epicMiddleware, routerMiddleware))
   );
 
-  const epics = container.getAll<IEpics>("epics");
+  const epics = container.getAll<IEpicConfig>("epics");
   const epic = combineEpics(
     ...epics.reduce((eps, item) => [...eps, ...item.epics], [])
   );
