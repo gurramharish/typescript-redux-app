@@ -1,7 +1,7 @@
 import { History } from "history";
 
-import { DeepPartial, Store } from "redux";
-import { applyMiddleware, createStore } from "redux";
+import { DeepPartial, Reducer, Store } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
 import { combineEpics, createEpicMiddleware } from "redux-observable";
 
@@ -11,11 +11,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { Container } from "inversify";
 
-import { configs } from "../configs";
-import { reducer } from "./reducers";
+import { configs } from "./configs";
+// import { reducer } from "./reducers";
 import { IStoreAction, IStoreState } from "./states";
 
-import { IEnvironment, IEpicConfig } from "../entity";
+import { IEnvironment, IEpicConfig, IReducerConfig } from "./entity";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
   return {
@@ -25,7 +25,7 @@ export function getDefaultState(): DeepPartial<IStoreState> {
   };
 }
 
-export function configure(
+export default function configure(
   history: History,
   state: DeepPartial<IStoreState> = getDefaultState()
 ): Store<IStoreState, IStoreAction> {
@@ -37,9 +37,15 @@ export function configure(
 
   configs.forEach(config => config(container));
 
+  const reducers = container.getAll<IReducerConfig>("reducers");
+
   const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();
   const composeEnhancers = composeWithDevTools({});
+
+  const reducer = (combineReducers(
+    reducers.reduce((eps, item) => ({ ...eps, ...item.reducers }), {})
+  ) as any) as Reducer<IStoreState, IStoreAction>;
 
   const store = createStore<IStoreState, IStoreAction, {}, {}>(
     reducer,

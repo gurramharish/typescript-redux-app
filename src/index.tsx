@@ -3,7 +3,7 @@ import { render } from "react-dom";
 
 import "reflect-metadata";
 
-import { configure, IThemeState } from "./stores";
+import configure, { IThemeState } from "./stores";
 
 import createHistory from "history/createBrowserHistory";
 
