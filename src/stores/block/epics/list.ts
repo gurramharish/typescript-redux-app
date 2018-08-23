@@ -1,6 +1,6 @@
 import { epics, IEntityState, IEpic, ILoader, IStart } from "../../common";
 import { listLoadActions } from "../actions/list";
-import { IBlockService } from "../service";
+import { IBlockService } from "../services";
 import { IBlock } from "../states";
 
 export function getListLoadEpics(

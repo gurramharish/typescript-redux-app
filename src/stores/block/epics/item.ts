@@ -1,6 +1,6 @@
 import { epics, IEntityState, IEpic, ILoader, IStart } from "../../common";
 import { itemLoadActions } from "../actions/item";
-import { IBlockService } from "../service";
+import { IBlockService } from "../services";
 import { IBlock, IBlockOptions } from "../states";
 
 export function getItemLoadEpics(

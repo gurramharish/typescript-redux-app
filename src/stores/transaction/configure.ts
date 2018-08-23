@@ -1,16 +1,16 @@
 import { interfaces } from "inversify";
 
-import { IEpicConfig, IReducerConfig } from "../common";
+import { IEpicConfig, Injects, IReducerConfig } from "../common";
 import EpicConfig from "./epics/Epics";
 import ReducerConfig from "./reducers/Reducers";
 
-import { ITransactionService, LocalService } from "./service";
+import { ITransactionService, LocalService, Services } from "./services";
 
 export default function configure(container: interfaces.Container): void {
-  container.bind<IEpicConfig>("epics").to(EpicConfig);
-  container.bind<IReducerConfig>("reducers").to(ReducerConfig);
+  container.bind<IEpicConfig>(Injects.Epics).to(EpicConfig);
+  container.bind<IReducerConfig>(Injects.Reducers).to(ReducerConfig);
   container
-    .bind<ITransactionService>("service")
+    .bind<ITransactionService>(Injects.Service)
     .to(LocalService)
-    .whenTargetNamed("transaction");
+    .whenTargetNamed(Services.Transaction);
 }

@@ -9,7 +9,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { combineEpics, createEpicMiddleware } from "redux-observable";
 
-import { IEnvironment, IEpicConfig, IReducerConfig } from "./common";
+import { IEnvironment, IEpicConfig, Injects, IReducerConfig } from "./common";
 import { configs, IStoreAction, IStoreState } from "./states";
 
 export function getDefaultState(): DeepPartial<IStoreState> {
@@ -29,12 +29,11 @@ export default function configure(
   container.bind<IEnvironment>("environment").toConstantValue(env);
   configs.forEach(config => config(container));
 
-  const reducers = container.getAll<IReducerConfig>("reducers");
-
   const routerMiddleware = createRouterMiddleware(history);
   const epicMiddleware = createEpicMiddleware();
   const composeEnhancers = composeWithDevTools({});
 
+  const reducers = container.getAll<IReducerConfig>(Injects.Reducers);
   const reducer = (combineReducers(
     reducers.reduce((eps, item) => ({ ...eps, ...item.reducers }), {})
   ) as any) as Reducer<IStoreState, IStoreAction>;
@@ -45,7 +44,7 @@ export default function configure(
     composeEnhancers(applyMiddleware(epicMiddleware, routerMiddleware))
   );
 
-  const epics = container.getAll<IEpicConfig>("epics");
+  const epics = container.getAll<IEpicConfig>(Injects.Epics);
   const epic = combineEpics(
     ...epics.reduce((eps, item) => [...eps, ...item.epics], [])
   );

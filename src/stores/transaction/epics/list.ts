@@ -1,6 +1,6 @@
 import { epics, IEntityState, IEpic, ILoader, IStart } from "../../common";
 import { listLoadActions } from "../actions/list";
-import { ITransactionService } from "../service";
+import { ITransactionService } from "../services";
 import { ITransaction } from "../states";
 
 export function getListLoadEpics(

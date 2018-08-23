@@ -1,7 +1,7 @@
 import { inject, injectable, named } from "inversify";
 
-import { IEpic, IEpicConfig, ILoader } from "../../common";
-import { IBlockService } from "../service";
+import { IEpic, IEpicConfig, ILoader, Injects } from "../../common";
+import { IBlockService, Services } from "../services";
 import { IBlock } from "../states";
 
 import { getItemLoadEpics } from "./item";
@@ -11,8 +11,8 @@ import { getListLoadEpics } from "./list";
 export default class EpicConfig
   implements IEpicConfig<ILoader<IBlock, any>, ILoader<IBlock, any>> {
   constructor(
-    @inject("service")
-    @named("block")
+    @inject(Injects.Service)
+    @named(Services.Block)
     private service: IBlockService
   ) {}
 

@@ -4,6 +4,12 @@ import { Observable } from "rxjs";
 // tslint:disable-next-line:no-empty-interface
 export interface IService {}
 
+export class Injects {
+  public static Epics = Symbol("epics");
+  public static Reducers = Symbol("reducers");
+  public static Service = Symbol("service");
+}
+
 export interface IEnvironment {
   mode: "development" | "staging" | "production";
 }

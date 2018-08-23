@@ -1,7 +1,7 @@
 import { inject, injectable, named } from "inversify";
 
-import { IEpic, IEpicConfig, ILoader } from "../../common";
-import { IChannelService } from "../service";
+import { IEpic, IEpicConfig, ILoader, Injects } from "../../common";
+import { IChannelService, Services } from "../services";
 import { IChannel } from "../states";
 
 import { getListLoadEpics } from "./list";
@@ -10,8 +10,8 @@ import { getListLoadEpics } from "./list";
 export default class EpicConfig
   implements IEpicConfig<ILoader<IChannel, any>, ILoader<IChannel, any>> {
   constructor(
-    @inject("service")
-    @named("channel")
+    @inject(Injects.Service)
+    @named(Services.Channel)
     private service: IChannelService
   ) {}
 
