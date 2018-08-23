@@ -1,4 +1,4 @@
-import { IReducer, IReducers } from "../../entity/types";
+import { IReducer, IReducers } from "../../common/types";
 import { IRouterState } from "../states";
 
 import { IPushPath } from "../actions/push";

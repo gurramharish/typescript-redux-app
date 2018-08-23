@@ -1,19 +1,19 @@
-import { IReducer, IReducers } from "../../entity/types";
+import { IReducer, IReducers } from "../../common/types";
 import { IRouterState } from "../states";
 
-import { ILocationChanged } from "../actions/change";
+import { ILocationChange } from "../actions/change";
 
-import { LOCATION_CHANGED } from "../actions/change";
+import { LOCATION_CHANGE } from "../actions/change";
 
-const reducer: IReducer<IRouterState, ILocationChanged> = (
+const reducer: IReducer<IRouterState, ILocationChange> = (
   state: IRouterState,
-  action: ILocationChanged
+  action: ILocationChange
 ): IRouterState => {
   return {
     ...state
   };
 };
 
-export const changeReducers: IReducers<IRouterState, ILocationChanged> = {
-  [LOCATION_CHANGED]: reducer
+export const changeReducers: IReducers<IRouterState, ILocationChange> = {
+  [LOCATION_CHANGE]: reducer
 };

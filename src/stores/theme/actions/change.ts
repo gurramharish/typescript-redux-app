@@ -1,8 +1,8 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const CHANGE_THEME = `${namespace}/CHANGE_THEME`;
+export const CHANGE_THEME = `${namespace}/change`;
 
 export type ChangeTheme = typeof CHANGE_THEME;
 

@@ -6,7 +6,7 @@ import {
   ILoadAction,
   ILoader,
   LoadAction
-} from "../../entity";
+} from "../../common";
 
 import { namespace } from "../namespace";
 

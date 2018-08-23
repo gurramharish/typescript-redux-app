@@ -5,9 +5,9 @@ import classNames from "classnames";
 
 import { IBlock, IBlockOptions } from "../../../../stores/block";
 
-import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
-import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
-import Loader from "../../../entity/components/Loader";
+import { ILoaderActions, ILoaderData } from "../../../common/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../common/components/Loader";
+import Loader from "../../../common/components/Loader";
 
 import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 

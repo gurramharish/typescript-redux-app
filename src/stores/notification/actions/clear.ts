@@ -1,8 +1,8 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const CLEAR_NOTIFICATIONS = `${namespace}/CLEAR_NOTIFICATIONS`;
+export const CLEAR_NOTIFICATIONS = `${namespace}/clear`;
 
 export type ClearNotifications = typeof CLEAR_NOTIFICATIONS;
 

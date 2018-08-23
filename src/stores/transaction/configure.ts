@@ -1,6 +1,6 @@
 import { interfaces } from "inversify";
 
-import { IEpicConfig, IReducerConfig } from "../entity";
+import { IEpicConfig, IReducerConfig } from "../common";
 import EpicConfig from "./epics/Epics";
 import ReducerConfig from "./reducers/Reducers";
 

@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 
-import { IEpic, IEpicConfig } from "../../entity";
+import { IEpic, IEpicConfig } from "../../common";
 
 import { incrementEpics } from "./increment";
 import { resetEpics } from "./reset";

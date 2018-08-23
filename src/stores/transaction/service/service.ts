@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { IEntityState, IService } from "../../entity";
+import { IEntityState, IService } from "../../common";
 import { ITransaction } from "../states";
 
 export interface ITransactionService extends IService {

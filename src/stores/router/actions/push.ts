@@ -1,8 +1,8 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const PUSH_PATH = `${namespace}/PUSH_PATH`;
+export const PUSH_PATH = `${namespace}/path/push`;
 
 export type PushPath = typeof PUSH_PATH;
 

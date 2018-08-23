@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { Observable, timer } from "rxjs";
 import { mapTo } from "rxjs/operators";
-import { asLoaded, IEntityState } from "../../entity";
+import { asLoaded, IEntityState } from "../../common";
 import { ITransaction } from "../states";
 import { ITransactionService } from "./service";
 

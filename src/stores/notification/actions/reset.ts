@@ -1,10 +1,10 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const START_RESET_NOTIFICATIONS = `${namespace}/START_RESET_NOTIFICATIONS`;
+export const START_RESET_NOTIFICATIONS = `${namespace}/reset/start`;
 
-export const STOP_RESET_NOTIFICATIONS = `${namespace}/STOP_RESET_NOTIFICATIONS`;
+export const STOP_RESET_NOTIFICATIONS = `${namespace}/reset/stop`;
 
 export type StartResetNotifications = typeof START_RESET_NOTIFICATIONS;
 

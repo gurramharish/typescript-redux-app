@@ -1,6 +1,6 @@
 import { interfaces } from "inversify";
 
-import { IReducerConfig } from "../entity";
+import { IReducerConfig } from "../common";
 import ReducerConfig from "./reducers/Reducers";
 
 export default function configure(container: interfaces.Container): void {

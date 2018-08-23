@@ -1,7 +1,7 @@
-import { IReducers } from "../../entity/types";
+import { IReducers } from "../../common/types";
 import { IBlock, IBlockOptions, IBlockState } from "../states";
 
-import { IEntityState, ILoader, reducers } from "../../entity";
+import { IEntityState, ILoader, reducers } from "../../common";
 
 import { actions } from "../actions/item";
 

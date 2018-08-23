@@ -1,4 +1,4 @@
-import { epics, IEntityState, IEpic, ILoader, IStart } from "../../entity";
+import { epics, IEntityState, IEpic, ILoader, IStart } from "../../common";
 import { itemLoadActions } from "../actions/item";
 import { IBlockService } from "../service";
 import { IBlock, IBlockOptions } from "../states";

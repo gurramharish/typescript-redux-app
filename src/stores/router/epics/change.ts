@@ -5,17 +5,17 @@ import { map } from "rxjs/operators";
 
 import { ofType, StateObservable } from "redux-observable";
 
-import { ILocationChanged, locationChanged } from "../actions/change";
+import { ILocationChange, locationChange } from "../actions/change";
 
 import { LOCATION_CHANGE, LocationChangeAction } from "react-router-redux";
 
 export const changeEpic = (
   action$: Observable<LocationChangeAction>,
   state$: StateObservable<{ router: IRouterState }>
-): Observable<ILocationChanged> =>
+): Observable<ILocationChange> =>
   action$.pipe(
     ofType(LOCATION_CHANGE),
-    map(action => locationChanged(action.payload.pathname))
+    map(action => locationChange(action.payload.pathname))
   );
 
 export const changeEpics = [changeEpic];

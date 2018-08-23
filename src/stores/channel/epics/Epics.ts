@@ -1,6 +1,6 @@
 import { inject, injectable, named } from "inversify";
 
-import { IEpic, IEpicConfig, ILoader } from "../../entity";
+import { IEpic, IEpicConfig, ILoader } from "../../common";
 import { IChannelService } from "../service";
 import { IChannel } from "../states";
 

@@ -19,9 +19,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Clock from "../Clock";
 import Statistic from "../Statistic";
 
-import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
-import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
-import Loader from "../../../entity/components/Loader";
+import { ILoaderActions, ILoaderData } from "../../../common/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../common/components/Loader";
+import Loader from "../../../common/components/Loader";
 
 export interface IDashboardStyles {
   root: React.CSSProperties;

@@ -1,19 +1,19 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const LOCATION_CHANGED = `${namespace}/LOCATION_CHANGED`;
+export const LOCATION_CHANGE = `${namespace}/location/change`;
 
-export type LocationChanged = typeof LOCATION_CHANGED;
+export type LocationChange = typeof LOCATION_CHANGE;
 
-export interface ILocationChanged extends IAction {
-  type: LocationChanged;
+export interface ILocationChange extends IAction {
+  type: LocationChange;
   path: string;
 }
 
-export function locationChanged(path: string): ILocationChanged {
+export function locationChange(path: string): ILocationChange {
   return {
     path,
-    type: LOCATION_CHANGED
+    type: LOCATION_CHANGE
   };
 }

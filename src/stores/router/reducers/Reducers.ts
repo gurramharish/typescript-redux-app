@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 
-import { IReducerConfig, IReducers } from "../../entity";
+import { IReducerConfig, IReducers } from "../../common";
 
 import { IRouterAction } from "../actions";
 import { IRouterState } from "../states";

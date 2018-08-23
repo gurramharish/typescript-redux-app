@@ -17,9 +17,9 @@ import TableRow from "@material-ui/core/TableRow";
 
 import { IChannel } from "../../../../stores/channel";
 
-import { ILoaderActions, ILoaderData } from "../../../entity/components/Loader";
-import { ILoaderProps, ILoaderStates } from "../../../entity/components/Loader";
-import Loader from "../../../entity/components/Loader";
+import { ILoaderActions, ILoaderData } from "../../../common/components/Loader";
+import { ILoaderProps, ILoaderStates } from "../../../common/components/Loader";
+import Loader from "../../../common/components/Loader";
 
 export interface IChannelsStyles {
   body: React.CSSProperties;

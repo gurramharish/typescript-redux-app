@@ -7,15 +7,15 @@ import { map } from "rxjs/operators";
 
 import { ofType, StateObservable } from "redux-observable";
 
-import { ILocationChanged, locationChanged } from "../actions/change";
+import { ILocationChange, locationChange } from "../actions/change";
 
 export const callHistoryEpic = (
   action$: Observable<RouterAction>,
   state$: StateObservable<{ router: IRouterState }>
-): Observable<ILocationChanged> =>
+): Observable<ILocationChange> =>
   action$.pipe(
     ofType(CALL_HISTORY_METHOD),
-    map(action => locationChanged(action.payload.args![0] || ""))
+    map(action => locationChange(action.payload.args![0] || ""))
   );
 
 export const callEpics = [callHistoryEpic];

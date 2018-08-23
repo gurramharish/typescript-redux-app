@@ -1,4 +1,4 @@
-import { epics, IEntityState, IEpic, ILoader, IStart } from "../../entity";
+import { epics, IEntityState, IEpic, ILoader, IStart } from "../../common";
 import { listLoadActions } from "../actions/list";
 import { IChannelService } from "../service";
 import { IChannel } from "../states";

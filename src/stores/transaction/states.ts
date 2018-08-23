@@ -1,4 +1,4 @@
-import { IEntity, IEntityListState } from "../entity";
+import { IEntity, IEntityListState } from "../common";
 
 export interface IReadSetVersion {
   block: string;

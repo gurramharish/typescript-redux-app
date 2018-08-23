@@ -1,12 +1,12 @@
-import { IAction } from "../../entity/types";
+import { IAction } from "../../common/types";
 
 import { namespace } from "../namespace";
 
-export const START_INCREMENT_NOTIFICATIONS = `${namespace}/START_INCREMENT_NOTIFICATIONS`;
+export const START_INCREMENT_NOTIFICATIONS = `${namespace}/increment/start`;
 
-export const STOP_INCREMENT_NOTIFICATIONS = `${namespace}/STOP_INCREMENT_NOTIFICATIONS`;
+export const STOP_INCREMENT_NOTIFICATIONS = `${namespace}/increment/stop`;
 
-export const TOGGLE_INCREMENT_NOTIFICATIONS = `${namespace}/TOGGLE_INCREMENT_NOTIFICATIONS`;
+export const TOGGLE_INCREMENT_NOTIFICATIONS = `${namespace}/increment/toggle`;
 
 export type StartIncrementNotifications = typeof START_INCREMENT_NOTIFICATIONS;
 

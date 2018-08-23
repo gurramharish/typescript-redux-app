@@ -1,7 +1,7 @@
-import { IReducers } from "../../entity/types";
+import { IReducers } from "../../common/types";
 import { IDashboard, IDashboardState } from "../states";
 
-import { ILoader, reducers } from "../../entity";
+import { ILoader, reducers } from "../../common";
 
 import { actions } from "../actions/load";
 
