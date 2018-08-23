@@ -10,15 +10,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 import { IEnvironment, IEpicConfig, Injects, IReducerConfig } from "./common";
-import { configs, IStoreAction, IStoreState } from "./states";
-
-export function getDefaultState(): DeepPartial<IStoreState> {
-  return {
-    notification: { count: 0 },
-    router: { location: null },
-    theme: { mode: "light" }
-  };
-}
+import { IStoreAction, IStoreState } from "./states";
+import { getConfigs, getDefaultState } from "./states";
 
 export default function configure(
   history: History,
@@ -27,16 +20,16 @@ export default function configure(
 ): Store<IStoreState, IStoreAction> {
   const container = new Container();
   container.bind<IEnvironment>(Injects.Environment).toConstantValue(env);
-  configs.forEach(config => config(container));
-
-  const routerMiddleware = createRouterMiddleware(history);
-  const epicMiddleware = createEpicMiddleware();
-  const composeEnhancers = composeWithDevTools({});
+  getConfigs().forEach(config => config(container));
 
   const reducers = container.getAll<IReducerConfig>(Injects.Reducers);
   const reducer = (combineReducers(
     reducers.reduce((eps, item) => ({ ...eps, ...item.reducers }), {})
   ) as any) as Reducer<IStoreState, IStoreAction>;
+
+  const routerMiddleware = createRouterMiddleware(history);
+  const epicMiddleware = createEpicMiddleware();
+  const composeEnhancers = composeWithDevTools({});
 
   const store = createStore<IStoreState, IStoreAction, {}, {}>(
     reducer,

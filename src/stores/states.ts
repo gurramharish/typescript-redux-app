@@ -1,4 +1,5 @@
 import { interfaces } from "inversify";
+import { DeepPartial } from "redux";
 
 import block, { IBlockAction, IBlockState } from "./block";
 import channel, { IChannelAction, IChannelState } from "./channel";
@@ -13,18 +14,6 @@ import transaction, {
   ITransactionAction,
   ITransactionState
 } from "./transaction";
-
-export type IConfigure = (container: interfaces.Container) => void;
-
-export const configs: IConfigure[] = [
-  block,
-  channel,
-  dashboard,
-  notification,
-  router,
-  theme,
-  transaction
-];
 
 export type IStoreAction =
   | IBlockAction
@@ -43,4 +32,18 @@ export interface IStoreState {
   router: IRouterState;
   theme: IThemeState;
   transaction: ITransactionState;
+}
+
+export type IConfigure = (container: interfaces.Container) => void;
+
+export function getConfigs(): IConfigure[] {
+  return [block, channel, dashboard, notification, router, theme, transaction];
+}
+
+export function getDefaultState(): DeepPartial<IStoreState> {
+  return {
+    notification: { count: 0 },
+    router: { location: null },
+    theme: { mode: "light" }
+  };
 }
