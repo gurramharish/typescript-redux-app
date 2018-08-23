@@ -28,6 +28,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
+    "lint": "tslint -p .",
     "precommit": "npm run lint && pretty-quick --staged",
     "pretty": "prettier --write src/**/*.ts"
   },
@@ -43,6 +44,7 @@
     "@types/react-router-redux": "^5.0.15",
     "husky": "^0.14.3",
     "prettier": "^1.14.2",
+    "pretty-quick": "^1.6.0",
     "react-scripts-ts": "2.16.0",
     "typescript": "3.0.1"
   }
