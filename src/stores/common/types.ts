@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 export interface IService {}
 
 export class Injects {
+  public static Environment = Symbol("environment");
   public static Epics = Symbol("epics");
   public static Reducers = Symbol("reducers");
   public static Service = Symbol("service");

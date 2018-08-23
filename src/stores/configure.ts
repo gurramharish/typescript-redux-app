@@ -26,7 +26,7 @@ export default function configure(
   env: IEnvironment = { mode: "development" }
 ): Store<IStoreState, IStoreAction> {
   const container = new Container();
-  container.bind<IEnvironment>("environment").toConstantValue(env);
+  container.bind<IEnvironment>(Injects.Environment).toConstantValue(env);
   configs.forEach(config => config(container));
 
   const routerMiddleware = createRouterMiddleware(history);
